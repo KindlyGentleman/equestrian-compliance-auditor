@@ -16,13 +16,13 @@
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Stage 1** | Environment Setup & Scaffolding | 3 | 0 | 0 | 3 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 2** | SOTA Ingestion & OCR Pipeline | 5 | 0 | 0 | 5 | 0 | 0 | `[TESTED_BY_AI]` |
-| **Stage 3** | Pydantic Schema & Structuring | 4 | 4 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
+| **Stage 3** | Pydantic Schema & Structuring | 4 | 0 | 0 | 4 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 4** | Regulatory Knowledge Base & RAG | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
 | **Stage 5** | Dual-Layer Comparative Audit Engine | 3 | 3 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
 | **Stage 6** | Verifier Gate & Vendor Action Generator | 4 | 4 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
 | **Stage 7** | FastAPI Backend & Endpoints | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
 | **Stage 8** | Next.js Luxury UI & Split-Screen | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
-| **Total** | **All Stages** | **34** | **26** | **0** | **8** | **0** | **0** | `24% Tested by AI` |
+| **Total** | **All Stages** | **34** | **22** | **0** | **12** | **0** | **0** | `35% Tested by AI` |
 
 ---
 
@@ -41,10 +41,10 @@
 - [x] [TICK-0205](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0205-ingestion-benchmark.md) — Ingestion pipeline integration test & speed benchmark (< 3s latency budget) `[TESTED_BY_AI]`
 
 ### STAGE 3: Pydantic Schema Structuring & Modeling (FR-2)
-- [ ] [TICK-0301](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0301-pydantic-schemas.md) — Comprehensive Pydantic v2 schemas (`FabricSpec`, `BOMComponent`, `MeasurementTolerances`, `BrandingLogoSpec`, `CostingSpec`) `[BACKLOG]`
-- [ ] [TICK-0302](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0302-gemini-structuring-engine.md) — Gemini 2.0 Flash structured JSON extraction engine using native `response_schema` `[BACKLOG]`
-- [ ] [TICK-0303](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0303-missing-data-sanitizer.md) — Incomplete spec handler, unit normalizer (inches to cm, oz to gsm), and schema validator `[BACKLOG]`
-- [ ] [TICK-0304](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0304-extraction-validation-suite.md) — Automated test suite for structured extraction across sample tech packs `[BACKLOG]`
+- [x] [TICK-0301](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0301-pydantic-schemas.md) — Comprehensive Pydantic v2 schemas (`FabricSpec`, `BOMComponent`, `MeasurementTolerances`, `BrandingLogoSpec`, `CostingSpec`) `[TESTED_BY_AI]`
+- [x] [TICK-0302](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0302-gemini-structuring-engine.md) — Gemini 2.0 Flash structured JSON extraction engine using native `response_schema` `[TESTED_BY_AI]`
+- [x] [TICK-0303](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0303-missing-data-sanitizer.md) — Incomplete spec handler, unit normalizer (inches to cm, oz to gsm), and schema validator `[TESTED_BY_AI]`
+- [x] [TICK-0304](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0304-extraction-validation-suite.md) — Automated test suite for structured extraction across sample tech packs `[TESTED_BY_AI]`
 
 ### STAGE 4: Regulatory Knowledge Base & Hybrid RAG (FR-3)
 - [ ] [TICK-0401](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0401-fei-corpus-curation.md) — FEI Rulebook ingestion & chunking (Show Jumping Art 256, Dressage Art 427, Eventing Art 538, Logo Guidelines) `[BACKLOG]`

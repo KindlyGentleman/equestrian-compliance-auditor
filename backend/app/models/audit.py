@@ -14,6 +14,11 @@ class FindingCategory(str):
     AESTHETICS = "Aesthetics & Elegance"
 
 
+# Domain Aliases
+AuditSeverity = ComplianceStatus
+AuditRuleType = FindingCategory
+
+
 class AuditFinding(BaseModel):
     finding_id: str = Field(description="Unique finding identifier")
     rule_id: str = Field(description="Associated rule ID e.g. FEI-JUMP-LOGO-COLLAR")
@@ -74,3 +79,7 @@ class VendorRevisionDocument(BaseModel):
     action_items: List[VendorRevisionItem] = Field(default_factory=list)
     markdown_content: str
     email_draft_content: str
+
+
+VendorActionNote = VendorRevisionItem
+

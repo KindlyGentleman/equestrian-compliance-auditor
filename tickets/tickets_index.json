@@ -1,12 +1,12 @@
 {
   "project": "Equestrian Compliance & Specification Auditor",
   "version": "1.0.0",
-  "last_updated": "2026-09-29T22:56:30+07:00",
+  "last_updated": "2026-09-30T20:10:00+07:00",
   "status_summary": {
     "total": 34,
-    "backlog": 26,
+    "backlog": 22,
     "in_progress": 0,
-    "tested_by_ai": 8,
+    "tested_by_ai": 12,
     "human_review_pending": 0,
     "done": 0
   },
@@ -21,10 +21,10 @@
     {"id": "TICK-0204", "stage": "Stage 2", "title": "RapidOCR-ONNX Fallback Parser for Scanned Elements", "status": "TESTED_BY_AI", "file": "tickets/TICK-0204-rapidocr-fallback.md"},
     {"id": "TICK-0205", "stage": "Stage 2", "title": "Ingestion Pipeline Integration Test & Speed Benchmark", "status": "TESTED_BY_AI", "file": "tickets/TICK-0205-ingestion-benchmark.md"},
 
-    {"id": "TICK-0301", "stage": "Stage 3", "title": "Comprehensive Pydantic v2 Domain Schemas", "status": "BACKLOG", "file": "tickets/TICK-0301-pydantic-schemas.md"},
-    {"id": "TICK-0302", "stage": "Stage 3", "title": "Gemini 2.0 Flash Structured Extraction Engine", "status": "BACKLOG", "file": "tickets/TICK-0302-gemini-structuring-engine.md"},
-    {"id": "TICK-0303", "stage": "Stage 3", "title": "Missing Data Sanitizer & Unit Normalizer", "status": "BACKLOG", "file": "tickets/TICK-0303-missing-data-sanitizer.md"},
-    {"id": "TICK-0304", "stage": "Stage 3", "title": "Extraction Validation Suite & Edge-Case Tests", "status": "BACKLOG", "file": "tickets/TICK-0304-extraction-validation-suite.md"},
+    {"id": "TICK-0301", "stage": "Stage 3", "title": "Comprehensive Pydantic v2 Domain Schemas", "status": "TESTED_BY_AI", "file": "tickets/TICK-0301-pydantic-schemas.md"},
+    {"id": "TICK-0302", "stage": "Stage 3", "title": "Gemini 2.0 Flash Structured Extraction Engine", "status": "TESTED_BY_AI", "file": "tickets/TICK-0302-gemini-structuring-engine.md"},
+    {"id": "TICK-0303", "stage": "Stage 3", "title": "Missing Data Sanitizer & Unit Normalizer", "status": "TESTED_BY_AI", "file": "tickets/TICK-0303-missing-data-sanitizer.md"},
+    {"id": "TICK-0304", "stage": "Stage 3", "title": "Extraction Validation Suite & Edge-Case Tests", "status": "TESTED_BY_AI", "file": "tickets/TICK-0304-extraction-validation-suite.md"},
 
     {"id": "TICK-0401", "stage": "Stage 4", "title": "FEI Regulatory Corpus Curation & Ingestion", "status": "BACKLOG", "file": "tickets/TICK-0401-fei-corpus-curation.md"},
     {"id": "TICK-0402", "stage": "Stage 4", "title": "Luxury Brand Quality & Production SOP Corpus", "status": "BACKLOG", "file": "tickets/TICK-0402-brand-sop-corpus.md"},

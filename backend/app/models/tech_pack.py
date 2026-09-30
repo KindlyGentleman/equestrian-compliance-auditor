@@ -38,6 +38,7 @@ class GarmentMetadata(BaseModel):
 class FabricSpec(BaseModel):
     primary_composition: str = Field(description="e.g. 78% Polyamide, 22% Elastane")
     weight_gsm: float = Field(description="Fabric weight in grams per square meter")
+    lining: Optional[str] = Field(default=None, description="Lining composition or specification")
     weave_type: Optional[str] = Field(default="4-way stretch technical twill")
     stretch_warp_pct: Optional[float] = Field(default=18.0)
     stretch_weft_pct: Optional[float] = Field(default=22.0)
@@ -47,13 +48,26 @@ class FabricSpec(BaseModel):
 
 
 class BOMItem(BaseModel):
-    item_type: str = Field(description="Main Fabric, Lining, Buttons, Zipper, Trim")
+    item_type: str = Field(default="Main Fabric", description="Main Fabric, Lining, Buttons, Zipper, Trim")
+    item_name: Optional[str] = Field(default=None, description="Component name or description")
     placement: str = Field(description="Body, Collar, Front Closure, Cuffs")
     supplier_code: Optional[str] = None
     material: Optional[str] = None
     color_code: Optional[str] = None
     unit_cost_usd: Optional[float] = None
     quantity: Optional[float] = 1.0
+
+    @model_validator(mode="before")
+    @classmethod
+    def sync_name_and_type(cls, values: dict) -> dict:
+        if isinstance(values, dict):
+            name = values.get("item_name")
+            itype = values.get("item_type")
+            if name and not itype:
+                values["item_type"] = name
+            elif itype and not name:
+                values["item_name"] = itype
+        return values
 
 
 class MeasurementItem(BaseModel):
@@ -71,6 +85,7 @@ class LogoPlacement(BaseModel):
     calculated_area_cm2: float = Field(default=0.0, description="Computed surface area (width * height)")
     description: Optional[str] = None
     technique: Optional[str] = Field(default="Embroidery")
+    colors: Optional[List[str]] = Field(default_factory=list)
 
     @model_validator(mode="before")
     @classmethod
@@ -114,3 +129,10 @@ class TechPackSpec(BaseModel):
     costing: CostingSpec
     source_pdf_name: Optional[str] = None
     page_count: int = 1
+
+
+# Domain Model Aliases for downstream convenience
+BOMComponent = BOMItem
+BrandingLogoSpec = LogoPlacement
+MeasurementSpec = List[MeasurementItem]
+
