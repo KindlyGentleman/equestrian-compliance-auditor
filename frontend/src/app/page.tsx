@@ -110,13 +110,16 @@ export default function AtelierDashboard() {
     }
   };
 
+  const [mobileTab, setMobileTab] = useState<"document" | "scorecard">("scorecard");
+
   const handleJumpToPage = (page: number, category: string) => {
     setCurrentPage(page);
     setHighlightCategory(category);
+    setMobileTab("document");
   };
 
   return (
-    <div className="flex h-screen flex-col bg-luxury-parchment overflow-hidden">
+    <div className="flex h-[100dvh] flex-col bg-luxury-parchment overflow-hidden">
       {/* Top Application Bar */}
       <Header
         selectedDiscipline={selectedDiscipline}
@@ -128,22 +131,28 @@ export default function AtelierDashboard() {
 
       {/* Global Error Banner */}
       {errorMessage && (
-        <div className="bg-rose-50 border-b border-rose-200 px-6 py-2 flex items-center justify-between text-xs text-rose-800">
-          <span>{errorMessage}</span>
+        <div className="bg-rose-50 border-b border-rose-200 px-4 sm:px-6 py-2 flex items-center justify-between text-xs text-rose-900 shadow-2xs">
+          <span className="font-medium">{errorMessage}</span>
           <button
+            type="button"
             onClick={() => setErrorMessage(null)}
-            className="font-bold ml-4 hover:text-rose-950"
+            className="min-h-[36px] min-w-[36px] inline-flex items-center justify-center font-bold ml-4 text-rose-700 hover:text-rose-950 transition"
+            aria-label="Dismiss error notification"
           >
             Dismiss
           </button>
         </div>
       )}
 
-      {/* Main Split-Screen Workspace */}
-      <main className="flex-1 p-3.5 sm:p-4 overflow-hidden">
-        <div className="grid h-full grid-cols-1 lg:grid-cols-2 gap-4">
+      {/* Main Workspace */}
+      <main className="relative flex-1 p-2.5 sm:p-4 overflow-hidden">
+        <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
           {/* Left Pane: Synchronized PDF Document Viewer */}
-          <div className="h-full overflow-hidden">
+          <div
+            className={`h-full overflow-hidden ${
+              mobileTab === "document" ? "block" : "hidden lg:block"
+            }`}
+          >
             <PDFViewer
               pdfUrl={pdfUrl}
               fileName={fileName}
@@ -158,13 +167,50 @@ export default function AtelierDashboard() {
           </div>
 
           {/* Right Pane: Luxury Compliance Audit Scorecard */}
-          <div className="h-full overflow-hidden">
+          <div
+            className={`h-full overflow-hidden ${
+              mobileTab === "scorecard" ? "block" : "hidden lg:block"
+            }`}
+          >
             <AuditScorecard
               scorecard={scorecard}
               onJumpToPage={handleJumpToPage}
               onOpenVendorNotes={() => setIsVendorModalOpen(true)}
               isLoading={isLoading}
             />
+          </div>
+        </div>
+
+        {/* Floating Mobile View Switcher (Thumb Zone) */}
+        <div className="fixed bottom-4 inset-x-0 z-30 flex justify-center pointer-events-none lg:hidden">
+          <div className="pointer-events-auto flex items-center rounded-full bg-white/95 p-1.5 shadow-xl border border-luxury-border backdrop-blur-md">
+            <button
+              type="button"
+              onClick={() => setMobileTab("document")}
+              className={`min-h-[40px] px-4 rounded-full text-xs font-semibold transition-all ${
+                mobileTab === "document"
+                  ? "bg-equestrian-forest text-white shadow-xs"
+                  : "text-luxury-slate/80 hover:text-luxury-slate"
+              }`}
+            >
+              Document View
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileTab("scorecard")}
+              className={`min-h-[40px] px-4 rounded-full text-xs font-semibold transition-all flex items-center space-x-1.5 ${
+                mobileTab === "scorecard"
+                  ? "bg-equestrian-forest text-white shadow-xs"
+                  : "text-luxury-slate/80 hover:text-luxury-slate"
+              }`}
+            >
+              <span>Audit Scorecard</span>
+              {scorecard && scorecard.findings.length > 0 && (
+                <span className="rounded-full bg-rose-600 px-1.5 py-0.2 text-[10px] text-white">
+                  {scorecard.findings.length}
+                </span>
+              )}
+            </button>
           </div>
         </div>
       </main>
