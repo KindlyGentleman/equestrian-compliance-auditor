@@ -1,12 +1,12 @@
 {
   "project": "Equestrian Compliance & Specification Auditor",
   "version": "1.0.0",
-  "last_updated": "2026-09-30T20:10:00+07:00",
+  "last_updated": "2026-09-30T20:15:00+07:00",
   "status_summary": {
     "total": 34,
-    "backlog": 22,
+    "backlog": 17,
     "in_progress": 0,
-    "tested_by_ai": 12,
+    "tested_by_ai": 17,
     "human_review_pending": 0,
     "done": 0
   },
@@ -26,11 +26,11 @@
     {"id": "TICK-0303", "stage": "Stage 3", "title": "Missing Data Sanitizer & Unit Normalizer", "status": "TESTED_BY_AI", "file": "tickets/TICK-0303-missing-data-sanitizer.md"},
     {"id": "TICK-0304", "stage": "Stage 3", "title": "Extraction Validation Suite & Edge-Case Tests", "status": "TESTED_BY_AI", "file": "tickets/TICK-0304-extraction-validation-suite.md"},
 
-    {"id": "TICK-0401", "stage": "Stage 4", "title": "FEI Regulatory Corpus Curation & Ingestion", "status": "BACKLOG", "file": "tickets/TICK-0401-fei-corpus-curation.md"},
-    {"id": "TICK-0402", "stage": "Stage 4", "title": "Luxury Brand Quality & Production SOP Corpus", "status": "BACKLOG", "file": "tickets/TICK-0402-brand-sop-corpus.md"},
-    {"id": "TICK-0403", "stage": "Stage 4", "title": "Pre-compiled Structured Quantitative Rule Catalog", "status": "BACKLOG", "file": "tickets/TICK-0403-structured-rule-catalog.md"},
-    {"id": "TICK-0404", "stage": "Stage 4", "title": "Qdrant Hybrid Vector Store Setup", "status": "BACKLOG", "file": "tickets/TICK-0404-qdrant-hybrid-store.md"},
-    {"id": "TICK-0405", "stage": "Stage 4", "title": "Hybrid Retrieval Engine & Query Synthesizer", "status": "BACKLOG", "file": "tickets/TICK-0405-hybrid-retrieval-engine.md"},
+    {"id": "TICK-0401", "stage": "Stage 4", "title": "FEI Regulatory Corpus Curation & Ingestion", "status": "TESTED_BY_AI", "file": "tickets/TICK-0401-fei-corpus-curation.md"},
+    {"id": "TICK-0402", "stage": "Stage 4", "title": "Luxury Brand Quality & Production SOP Corpus", "status": "TESTED_BY_AI", "file": "tickets/TICK-0402-brand-sop-corpus.md"},
+    {"id": "TICK-0403", "stage": "Stage 4", "title": "Pre-compiled Structured Quantitative Rule Catalog", "status": "TESTED_BY_AI", "file": "tickets/TICK-0403-structured-rule-catalog.md"},
+    {"id": "TICK-0404", "stage": "Stage 4", "title": "Qdrant Hybrid Vector Store Setup", "status": "TESTED_BY_AI", "file": "tickets/TICK-0404-qdrant-hybrid-store.md"},
+    {"id": "TICK-0405", "stage": "Stage 4", "title": "Hybrid Retrieval Engine & Query Synthesizer", "status": "TESTED_BY_AI", "file": "tickets/TICK-0405-hybrid-retrieval-engine.md"},
 
     {"id": "TICK-0501", "stage": "Stage 5", "title": "Layer 1 Deterministic Audit Engine", "status": "BACKLOG", "file": "tickets/TICK-0501-layer1-deterministic-engine.md"},
     {"id": "TICK-0502", "stage": "Stage 5", "title": "Layer 2 Semantic Reasoner", "status": "BACKLOG", "file": "tickets/TICK-0502-layer2-semantic-reasoner.md"},

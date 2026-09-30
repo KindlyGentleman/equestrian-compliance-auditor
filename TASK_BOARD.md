@@ -17,12 +17,12 @@
 | **Stage 1** | Environment Setup & Scaffolding | 3 | 0 | 0 | 3 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 2** | SOTA Ingestion & OCR Pipeline | 5 | 0 | 0 | 5 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 3** | Pydantic Schema & Structuring | 4 | 0 | 0 | 4 | 0 | 0 | `[TESTED_BY_AI]` |
-| **Stage 4** | Regulatory Knowledge Base & RAG | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
+| **Stage 4** | Regulatory Knowledge Base & RAG | 5 | 0 | 0 | 5 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 5** | Dual-Layer Comparative Audit Engine | 3 | 3 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
 | **Stage 6** | Verifier Gate & Vendor Action Generator | 4 | 4 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
 | **Stage 7** | FastAPI Backend & Endpoints | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
 | **Stage 8** | Next.js Luxury UI & Split-Screen | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
-| **Total** | **All Stages** | **34** | **22** | **0** | **12** | **0** | **0** | `35% Tested by AI` |
+| **Total** | **All Stages** | **34** | **17** | **0** | **17** | **0** | **0** | `50% Tested by AI` |
 
 ---
 
@@ -47,11 +47,11 @@
 - [x] [TICK-0304](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0304-extraction-validation-suite.md) — Automated test suite for structured extraction across sample tech packs `[TESTED_BY_AI]`
 
 ### STAGE 4: Regulatory Knowledge Base & Hybrid RAG (FR-3)
-- [ ] [TICK-0401](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0401-fei-corpus-curation.md) — FEI Rulebook ingestion & chunking (Show Jumping Art 256, Dressage Art 427, Eventing Art 538, Logo Guidelines) `[BACKLOG]`
-- [ ] [TICK-0402](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0402-brand-sop-corpus.md) — Luxury Brand Quality SOP corpus creation (target FOB/COGS, fabric breathability min, seam strength, color codes) `[BACKLOG]`
-- [ ] [TICK-0403](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0403-structured-rule-catalog.md) — Pre-compiled structured quantitative rule catalog (`rules_catalog.json` for deterministic checks) `[BACKLOG]`
-- [ ] [TICK-0404](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0404-qdrant-hybrid-store.md) — Qdrant vector store initialization with hybrid search (dense embeddings + BM25/payload filters) `[BACKLOG]`
-- [ ] [TICK-0405](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0405-hybrid-retrieval-engine.md) — Hybrid retrieval engine with discipline and garment category filtering `[BACKLOG]`
+- [x] [TICK-0401](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0401-fei-corpus-curation.md) — FEI Rulebook ingestion & chunking (Show Jumping Art 256, Dressage Art 427, Eventing Art 538, Logo Guidelines) `[TESTED_BY_AI]`
+- [x] [TICK-0402](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0402-brand-sop-corpus.md) — Luxury Brand Quality SOP corpus creation (target FOB/COGS, fabric breathability min, seam strength, color codes) `[TESTED_BY_AI]`
+- [x] [TICK-0403](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0403-structured-rule-catalog.md) — Pre-compiled structured quantitative rule catalog (`rules_catalog.json` for deterministic checks) `[TESTED_BY_AI]`
+- [x] [TICK-0404](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0404-qdrant-hybrid-store.md) — Qdrant vector store initialization with hybrid search (dense embeddings + BM25/payload filters) `[TESTED_BY_AI]`
+- [x] [TICK-0405](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0405-hybrid-retrieval-engine.md) — Hybrid retrieval engine with discipline and garment category filtering `[TESTED_BY_AI]`
 
 ### STAGE 5: Dual-Layer Comparative Audit Engine (FR-4)
 - [ ] [TICK-0501](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0501-layer1-deterministic-engine.md) — Layer 1 Deterministic Audit Engine (Python code-level evaluator for logo cm², tolerances, COGS, breathability) `[BACKLOG]`
