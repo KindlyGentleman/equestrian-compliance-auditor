@@ -44,7 +44,7 @@ cache/
 *.jpeg
 !frontend/public/*.png
 !frontend/public/*.jpg
-brag-output*/work/
+brag-output*/
 *.wav
 
 # Testing & Coverage

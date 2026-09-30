@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-10-01T00:00:00.000Z" agent="Antigravity" version="24.7.17" type="device">
+  <diagram id="maison-equestre-arch" name="Maison Équestre System Architecture">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1150" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title_banner" value="MAISON ÉQUESTRE ATELIER PRO: HIGH-STAKES OLYMPIC EQUESTRIAN COMPLIANCE AUDITOR
+System Architecture &amp; Multi-Modal Hybrid RAG Pipeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0C1F16;strokeColor=#C5A880;strokeWidth=2;fontColor=#C5A880;fontFamily=Georgia;fontSize=16;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1620" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_client" value="PRESENTATION &amp; CLIENT TIER (Next.js 14 App Router)" style="swimlane;html=1;startSize=36;rounded=1;arcSize=8;fontFamily=Georgia;fontSize=14;fontStyle=1;strokeWidth=2;fillColor=#FBFBF9;strokeColor=#163828;fontColor=#163828;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="380" height="960" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_user" value="Senior Technical Designer
+(Apparel &amp; Olympic Sourcing)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#163828;fontColor=#151C22;fontStyle=1;" vertex="1" parent="c_client">
+          <mxGeometry x="70" y="175" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_split" value="Split-Screen Technical Flat Viewer
+- Synchronized BOM / Sketch Canvas
+- Bounding Box Inspection Zone" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#C5A880;fontColor=#151C22;" vertex="1" parent="c_client">
+          <mxGeometry x="70" y="260" width="320" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_scorecard" value="Luxury Compliance Audit Scorecard
+- 0.35s Execution Latency Metric
+- Category Score Progress Bars
+- Violation &amp; Warning Badges" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#C5A880;fontColor=#151C22;" vertex="1" parent="c_client">
+          <mxGeometry x="70" y="360" width="320" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_grounding" value="Verbatim Citation &amp; Gate Modal
+- FEI Official Rulebook Quotation
+- Delta Tolerance Math Display" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#C5A880;fontColor=#151C22;" vertex="1" parent="c_client">
+          <mxGeometry x="70" y="470" width="320" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_rules" value="Dynamic Rules Catalog Modal
+- Live Search &amp; Filter Engine
+- '+ Add Rule' In-App Form
+- Delete Custom Brand Rules" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#047857;fontColor=#151C22;fontStyle=1;" vertex="1" parent="c_client">
+          <mxGeometry x="70" y="570" width="320" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_vendor" value="Supplier Action Plan &amp; Export Modal
+- Official Letterhead PDF Export
+- Markdown Supplier Briefing
+- Direct Factory Email Draft" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#C5A880;fontColor=#151C22;" vertex="1" parent="c_client">
+          <mxGeometry x="70" y="680" width="320" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cert" value="Digital Certificate of FEI Compliance
+- Official Landscape A4 Document
+- Olympic Regulatory Verification Seal
+- Double Gold Border Layout" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#ECFDF5;strokeColor=#047857;fontColor=#065F46;fontStyle=1;" vertex="1" parent="c_client">
+          <mxGeometry x="70" y="790" width="320" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_api_client" value="Centralized Typed API Client
+(frontend/src/lib/api.ts)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#0C1F16;strokeColor=#C5A880;fontColor=#C5A880;fontStyle=1;" vertex="1" parent="c_client">
+          <mxGeometry x="70" y="900" width="320" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c_api" value="GATEWAY &amp; ORCHESTRATION TIER (FastAPI / Python 3.12)" style="swimlane;html=1;startSize=36;rounded=1;arcSize=8;fontFamily=Georgia;fontSize=14;fontStyle=1;strokeWidth=2;fillColor=#FBFBF9;strokeColor=#163828;fontColor=#163828;" vertex="1" parent="1">
+          <mxGeometry x="450" y="120" width="360" height="960" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_audit_router" value="POST /api/audit/upload
+POST /api/audit/sample
+GET  /api/audit/{id}
+GET  /api/audit/{id}/certificate" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#163828;fontColor=#151C22;fontFamily=Courier;" vertex="1" parent="c_api">
+          <mxGeometry x="480" y="180" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_rules_router" value="GET    /api/rules
+POST   /api/rules (Add Custom)
+PUT    /api/rules/{id}
+DELETE /api/rules/{id}
+POST   /api/rules/search" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#047857;fontColor=#151C22;fontFamily=Courier;fontStyle=1;" vertex="1" parent="c_api">
+          <mxGeometry x="480" y="310" width="300" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_vendor_router" value="POST /api/vendor/action-plan
+GET  /api/vendor/export-notes
+POST /api/vendor/export-notes" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#163828;fontColor=#151C22;fontFamily=Courier;" vertex="1" parent="c_api">
+          <mxGeometry x="480" y="455" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_coordinator" value="Audit Coordinator Engine
+(backend/app/engine/audit_coordinator.py)
+- End-to-End Audit Orchestration
+- Strict &lt;30s SLA Enforcement
+- Audit Run History Serialization" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#0C1F16;strokeColor=#C5A880;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="c_api">
+          <mxGeometry x="480" y="580" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cert_gen" value="Official Certificate PDF Engine
+(backend/app/api/audit_router.py)
+- PyMuPDF Vector Drawing
+- Olympic Verification Seals
+- A4 Landscape Print Ready" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#ECFDF5;strokeColor=#047857;fontColor=#065F46;fontStyle=1;" vertex="1" parent="c_api">
+          <mxGeometry x="480" y="720" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_vendor_gen" value="Vendor Notes Generator
+(backend/app/api/vendor_router.py)
+- Letterhead PDF &amp; Markdown Exporter" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#C5A880;fontColor=#151C22;" vertex="1" parent="c_api">
+          <mxGeometry x="480" y="850" width="300" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ingest" value="MULTI-MODAL INGESTION &amp; STRUCTURING" style="swimlane;html=1;startSize=36;rounded=1;arcSize=8;fontFamily=Georgia;fontSize=14;fontStyle=1;strokeWidth=2;fillColor=#FBFBF9;strokeColor=#163828;fontColor=#163828;" vertex="1" parent="1">
+          <mxGeometry x="840" y="120" width="420" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_parser" value="PyMuPDF4LLM Markdown Parser
+- Single-Pass Vector &amp; Text Extraction
+- Page Boundary Markers &amp; Typography" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#163828;fontColor=#151C22;" vertex="1" parent="c_ingest">
+          <mxGeometry x="870" y="180" width="360" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_ocr" value="RapidOCR ONNX Runtime Fallback
+- Density Gate: Activated Only on Scanned Pages
+- Zero Latency Overhead on Digital PDFs" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#C5A880;fontColor=#151C22;" vertex="1" parent="c_ingest">
+          <mxGeometry x="870" y="260" width="360" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_table" value="Deterministic Table Extractor
+(pdfplumber + Heuristic Layout Parser)
+- BOM Tables &amp; Material Compositions
+- POM Point of Measure Dimensions" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#163828;fontColor=#151C22;" vertex="1" parent="c_ingest">
+          <mxGeometry x="870" y="340" width="360" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cropper" value="Image &amp; Figure Cropper (image_cropper.py)
+- Crops Technical Flat Sketches &amp; Emblems
+- High-Res PNG Figures for Inspector UI" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#163828;fontColor=#151C22;" vertex="1" parent="c_ingest">
+          <mxGeometry x="870" y="430" width="360" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_struct" value="Gemini Extraction &amp; Structuring Service
+- Google GenAI (Gemini 1.5/2.0 Flash) / Mock Engine
+- Pydantic TechPackSpec Schema Enforcement" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#0C1F16;strokeColor=#C5A880;fontColor=#C5A880;fontStyle=1;" vertex="1" parent="c_ingest">
+          <mxGeometry x="870" y="510" width="360" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c_rag" value="HYBRID KNOWLEDGE &amp; RAG RETRIEVAL TIER" style="swimlane;html=1;startSize=36;rounded=1;arcSize=8;fontFamily=Georgia;fontSize=14;fontStyle=1;strokeWidth=2;fillColor=#FBFBF9;strokeColor=#163828;fontColor=#163828;" vertex="1" parent="1">
+          <mxGeometry x="840" y="610" width="420" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_catalog" value="Codified Regulatory Catalog JSON
+(backend/app/knowledge/regulatory_catalog.json)
+- FEI Jumping Rules Art. 256
+- FEI Dressage Rules Art. 427
+- FEI Eventing Rules Art. 538
+- Maison Équestre Brand SOPs" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#047857;fontColor=#151C22;fontStyle=1;" vertex="1" parent="c_rag">
+          <mxGeometry x="870" y="670" width="360" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_vector" value="Qdrant Vector Database Engine
+- Local Persistent On-Disk / Memory Storage
+- HNSW Indexing for Dense Semantic Chunks" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#163828;fontColor=#151C22;" vertex="1" parent="c_rag">
+          <mxGeometry x="870" y="785" width="360" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_embed" value="Hybrid Embedder &amp; Search Engine
+(backend/app/rag/retriever.py)
+- FastEmbed / Sentence-Transformers (384-dim)
+- BM25 Exact Keyword Match for Rule Articles
+- Reciprocal Rank Fusion (RRF) Reranking" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#0C1F16;strokeColor=#C5A880;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="c_rag">
+          <mxGeometry x="870" y="875" width="360" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_crud" value="Live Rule CRUD &amp; Syncer Service
+- In-Memory Update without Server Restart
+- Real-Time Validation &amp; Conflict Prevention" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#ECFDF5;strokeColor=#047857;fontColor=#065F46;fontStyle=1;" vertex="1" parent="c_rag">
+          <mxGeometry x="870" y="990" width="360" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c_verify" value="DETERMINISTIC VERIFIER GATE &amp; VERDICT ENGINE" style="swimlane;html=1;startSize=36;rounded=1;arcSize=8;fontFamily=Georgia;fontSize=14;fontStyle=1;strokeWidth=2;fillColor=#FBFBF9;strokeColor=#163828;fontColor=#163828;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="120" width="370" height="960" as="geometry" />
+        </mxCell>
+        <mxCell id="c5_spec_model" value="Validated TechPackSpec Instance
+- Style, Discipline, Season Metadata
+- POM Dimensions (cm, mm, tolerances)
+- Embroidery Logos &amp; Surface Areas
+- Bill of Materials &amp; Cost Ceilings" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#163828;fontColor=#151C22;fontFamily=Courier;" vertex="1" parent="c_verify">
+          <mxGeometry x="1320" y="180" width="310" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="c5_engine" value="Deterministic Rule Engine
+(backend/app/verifier/rule_engine.py)
+- Mathematical Operators (&lt;=, &gt;=, ==, in)
+- Unit Conversions (cm², %, EUR, mm)
+- Zero LLM Hallucinations in Math" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#0C1F16;strokeColor=#C5A880;fontColor=#FFFFFF;fontStyle=1;" vertex="1" parent="c_verify">
+          <mxGeometry x="1320" y="310" width="310" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="c5_ground" value="Verbatim Citation Grounding Gate
+- Links Every Violation to Legal Text
+- 100% Traceability to FEI Rulebooks
+- Eliminates False Violations" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#ECFDF5;strokeColor=#047857;fontColor=#065F46;fontStyle=1;" vertex="1" parent="c_verify">
+          <mxGeometry x="1320" y="435" width="310" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="c5_score" value="Audit Scorecard Aggregator
+- Overall Score Calculation (%)
+- Category Breakdown (Branding, Materials, POM)
+- Status Verdict: PASS | WARNING | VIOLATION" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#C5A880;fontColor=#151C22;" vertex="1" parent="c_verify">
+          <mxGeometry x="1320" y="560" width="310" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="c5_remedy" value="Supplier Remediation Generator
+(backend/app/verifier/remediation.py)
+- Exact Delta Overage Calculations
+- Downscale Scaling Instructions
+- Commercial Variance Alerts" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#FFFFFF;strokeColor=#163828;fontColor=#151C22;" vertex="1" parent="c_verify">
+          <mxGeometry x="1320" y="685" width="310" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="c5_verified_payload" value="Verified Findings Payload
+- VerifiedFinding Objects
+- Target Bounding Boxes for UI
+- Execution Timers &amp; Memory Footprint" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fontFamily=Helvetica;fontSize=11;strokeWidth=1.5;fillColor=#0C1F16;strokeColor=#C5A880;fontColor=#C5A880;fontStyle=1;" vertex="1" parent="c_verify">
+          <mxGeometry x="1320" y="810" width="310" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="e_user_split" value="Uploads PDF" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c1_user" target="c1_split">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_split_api" value="Invokes API" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c1_split" target="c1_api_client">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="880" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_api_upload" value="POST /api/audit/upload" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c1_api_client" target="c2_audit_router">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="925" />
+              <mxPoint x="410" y="225" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_rules_crud" value="CRUD /api/rules" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c1_rules" target="c2_rules_router">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="612" />
+              <mxPoint x="420" y="362" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_router_coord" value="Orchestrates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c2_audit_router" target="c2_coordinator">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_coord_ingest" value="Extracts Document" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c2_coordinator" target="c3_parser">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="810" y="630" />
+              <mxPoint x="810" y="212" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_parse_ocr" value="Raster fallback" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c3_parser" target="c3_ocr">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_ocr_table" value="Normalized Text" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c3_ocr" target="c3_table">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_table_crop" value="BOM &amp; POM Data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c3_table" target="c3_cropper">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_crop_struct" value="Figures &amp; Tables" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c3_cropper" target="c3_struct">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_struct_model" value="Extracts Spec" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c3_struct" target="c5_spec_model">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1270" y="540" />
+              <mxPoint x="1270" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_struct_rag" value="Queries Relevant Rules" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c3_struct" target="c4_embed">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1050" y="580" />
+              <mxPoint x="1050" y="875" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_router_crud" value="Live Rule Updates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c2_rules_router" target="c4_crud">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="820" y="362" />
+              <mxPoint x="820" y="1022" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_crud_catalog" value="Persists Catalog" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c4_crud" target="c4_catalog">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="1022" />
+              <mxPoint x="850" y="717" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_catalog_vector" value="Indexes Rules" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c4_catalog" target="c4_vector">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_vector_embed" value="Retrieves Embeddings" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c4_vector" target="c4_embed">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_rag_verifier" value="Candidate Rule Chunks" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c4_embed" target="c5_engine">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1280" y="922" />
+              <mxPoint x="1280" y="357" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_spec_verifier" value="Normalized Measurements" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c5_spec_model" target="c5_engine">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_engine_ground" value="Evaluates Delta" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c5_engine" target="c5_ground">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_ground_score" value="100% Verified Citations" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c5_ground" target="c5_score">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_score_remedy" value="Flags &amp; Overages" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c5_score" target="c5_remedy">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_remedy_payload" value="Generates Action Plan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c5_remedy" target="c5_verified_payload">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_payload_coord" value="Returns Scorecard" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c5_verified_payload" target="c2_coordinator">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1270" y="855" />
+              <mxPoint x="1270" y="640" />
+              <mxPoint x="810" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_coord_cert" value="Audit Passed / Verified" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c2_coordinator" target="c2_cert_gen">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_coord_vendor" value="Action Plan Data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c2_coordinator" target="c2_vendor_gen">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_coord_ui" value="0.35s Sub-Second Response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c2_coordinator" target="c1_scorecard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="630" />
+              <mxPoint x="440" y="402" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cert_ui" value="Download A4 PDF" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c2_cert_gen" target="c1_cert">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_vendor_ui" value="Action Modal Export" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9E7E50;fontFamily=Helvetica;fontSize=10;fontColor=#4A5560;" edge="1" parent="1" source="c2_vendor_gen" target="c1_vendor">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

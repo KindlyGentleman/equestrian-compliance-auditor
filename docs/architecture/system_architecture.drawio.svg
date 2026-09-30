@@ -1,0 +1,344 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1720px" height="1120px" viewBox="0 0 1720 1120" style="background-color: #F8F9FA; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <style>
+      @keyframes ge-flow-animation {
+        to {
+          stroke-dashoffset: -32;
+        }
+      }
+      .flow-path {
+        stroke-dasharray: 8 6;
+        animation: ge-flow-animation 1.2s linear infinite;
+      }
+      .gold-flow {
+        stroke: #9E7E50;
+        stroke-width: 2.5;
+        fill: none;
+      }
+      .green-flow {
+        stroke: #047857;
+        stroke-width: 2.5;
+        fill: none;
+      }
+      .node-card {
+        rx: 8px;
+        ry: 8px;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.04));
+      }
+      .swimlane-title {
+        font-family: Georgia, serif;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+      .node-title {
+        font-size: 12px;
+        font-weight: bold;
+        fill: #151C22;
+      }
+      .node-desc {
+        font-size: 10.5px;
+        fill: #4A5560;
+        line-height: 1.3;
+      }
+      .code-font {
+        font-family: Consolas, monospace;
+        font-size: 10.5px;
+      }
+    </style>
+    <marker id="arrow-gold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#9E7E50" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#047857" />
+    </marker>
+  </defs>
+  <!-- Header Title Banner -->
+  <rect x="40" y="25" width="1640" height="70" rx="10" fill="#0C1F16" stroke="#C5A880" stroke-width="2" />
+  <text x="860" y="54" fill="#C5A880" font-family="Georgia, serif" font-size="18" font-weight="bold" text-anchor="middle" letter-spacing="1">MAISON ÉQUESTRE ATELIER PRO : OLYMPIC EQUESTRIAN COMPLIANCE AUDITOR</text>
+  <text x="860" y="76" fill="#FBFBF9" font-size="11.5" text-anchor="middle" letter-spacing="0.5">High-Precision Multi-Modal Technical Specification Ingestion, Hybrid Qdrant RAG, and Sub-Second Deterministic Verifier Engine</text>
+  <!-- Swimlane: PRESENTATION & CLIENT TIER -->
+  <rect x="40" y="115" width="380" height="965" rx="12" fill="#FBFBF9" stroke="#163828" stroke-width="2" />
+  <path d="M 40 155 L 420 155" stroke="#E2E4E1" stroke-width="1.5" />
+  <text x="58" y="140" class="swimlane-title" fill="#163828">PRESENTATION & CLIENT TIER</text>
+  <text x="402" y="140" font-size="11" fill="#9E7E50" text-anchor="end" font-weight="600">Next.js 14 App Router</text>
+  <!-- Swimlane: API & ORCHESTRATION TIER -->
+  <rect x="440" y="115" width="360" height="965" rx="12" fill="#FBFBF9" stroke="#163828" stroke-width="2" />
+  <path d="M 440 155 L 800 155" stroke="#E2E4E1" stroke-width="1.5" />
+  <text x="458" y="140" class="swimlane-title" fill="#163828">API & ORCHESTRATION TIER</text>
+  <text x="782" y="140" font-size="11" fill="#9E7E50" text-anchor="end" font-weight="600">FastAPI / Python 3.12</text>
+  <!-- Swimlane: MULTI-MODAL INGESTION ENGINE -->
+  <rect x="820" y="115" width="420" height="465" rx="12" fill="#FBFBF9" stroke="#163828" stroke-width="2" />
+  <path d="M 820 155 L 1240 155" stroke="#E2E4E1" stroke-width="1.5" />
+  <text x="838" y="140" class="swimlane-title" fill="#163828">MULTI-MODAL INGESTION ENGINE</text>
+  <text x="1222" y="140" font-size="11" fill="#9E7E50" text-anchor="end" font-weight="600">PyMuPDF4LLM + RapidOCR</text>
+  <!-- Swimlane: HYBRID KNOWLEDGE & RAG RETRIEVAL -->
+  <rect x="820" y="600" width="420" height="480" rx="12" fill="#FBFBF9" stroke="#163828" stroke-width="2" />
+  <path d="M 820 640 L 1240 640" stroke="#E2E4E1" stroke-width="1.5" />
+  <text x="838" y="625" class="swimlane-title" fill="#163828">HYBRID KNOWLEDGE & RAG RETRIEVAL</text>
+  <text x="1222" y="625" font-size="11" fill="#9E7E50" text-anchor="end" font-weight="600">Qdrant Vector DB + Exact BM25</text>
+  <!-- Swimlane: DETERMINISTIC VERIFIER GATE -->
+  <rect x="1260" y="115" width="420" height="965" rx="12" fill="#FBFBF9" stroke="#163828" stroke-width="2" />
+  <path d="M 1260 155 L 1680 155" stroke="#E2E4E1" stroke-width="1.5" />
+  <text x="1278" y="140" class="swimlane-title" fill="#163828">DETERMINISTIC VERIFIER GATE</text>
+  <text x="1662" y="140" font-size="11" fill="#9E7E50" text-anchor="end" font-weight="600">Zero False-Positive Engine</text>
+  <g transform="translate(60, 175)">
+    <rect width="340" height="65" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Senior Technical Designer</text>
+    <text x="16" y="42" class="node-desc">Olympic Equestrian Technical Wear Sourcing</text>
+    <text x="16" y="58" class="node-desc">Direct Tech Pack PDF Ingestion</text>
+  </g>
+  <g transform="translate(60, 260)">
+    <rect width="340" height="75" class="node-card" fill="#FFFFFF" stroke="#C5A880" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Split-Screen Technical Flat Viewer</text>
+    <text x="16" y="42" class="node-desc">Synchronized Technical Canvas & BOM Viewer</text>
+    <text x="16" y="58" class="node-desc">Collar & Chest Highlighted Inspection Zones</text>
+    <text x="16" y="74" class="node-desc">Page Jumping (POM, BOM, Branding)</text>
+  </g>
+  <g transform="translate(60, 355)">
+    <rect width="340" height="85" class="node-card" fill="#FFFFFF" stroke="#C5A880" stroke-width="1.5" />
+    <rect x="245" y="10" width="80" height="20" rx="4" fill="#ECFDF5" />
+    <text x="285.0" y="23.5" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">0.35s SLA</text>
+    <text x="16" y="24" class="node-title" fill="#151C22">Luxury Compliance Audit Scorecard</text>
+    <text x="16" y="42" class="node-desc">Overall Compliance Score KPI (71.4%)</text>
+    <text x="16" y="58" class="node-desc">Sub-Second Response Badge: 0.35s SLA</text>
+    <text x="16" y="74" class="node-desc">Category Progress Bars (Materials, POM, Logo)</text>
+  </g>
+  <g transform="translate(60, 460)">
+    <rect width="340" height="80" class="node-card" fill="#FFFFFF" stroke="#C5A880" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Verbatim Citation & Gate Modal</text>
+    <text x="16" y="42" class="node-desc">FEI Official Rulebook Quotation Card</text>
+    <text x="16" y="58" class="node-desc">Observed vs Allowed Tolerance Math</text>
+    <text x="16" y="74" class="node-desc">Zero False-Positive Trust Seal Badge</text>
+  </g>
+  <g transform="translate(60, 560)">
+    <rect width="340" height="90" class="node-card" fill="#FFFFFF" stroke="#047857" stroke-width="1.5" />
+    <rect x="240" y="10" width="85" height="20" rx="4" fill="#ECFDF5" />
+    <text x="282.5" y="23.5" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">CRUD ACTIVE</text>
+    <text x="16" y="24" class="node-title" fill="#047857">Dynamic Regulatory Rules Modal</text>
+    <text x="16" y="42" class="node-desc">Live Rule Search & Multi-Discipline Tabs</text>
+    <text x="16" y="58" class="node-desc">+ Add Custom Brand Rule Form Active</text>
+    <text x="16" y="74" class="node-desc">Delete Deprecated SOPs in Real Time</text>
+  </g>
+  <g transform="translate(60, 670)">
+    <rect width="340" height="85" class="node-card" fill="#FFFFFF" stroke="#C5A880" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Supplier Action Plan & Export Modal</text>
+    <text x="16" y="42" class="node-desc">Official Supplier Letterhead PDF Download</text>
+    <text x="16" y="58" class="node-desc">Executive Markdown Remediation Package</text>
+    <text x="16" y="74" class="node-desc">Pre-formatted Factory Email Dispatch</text>
+  </g>
+  <g transform="translate(60, 775)">
+    <rect width="340" height="85" class="node-card" fill="#ECFDF5" stroke="#047857" stroke-width="1.5" />
+    <rect x="235" y="10" width="90" height="20" rx="4" fill="#D1FAE5" />
+    <text x="280.0" y="23.5" font-size="9" font-weight="bold" fill="#065F46" text-anchor="middle">VERIFIED A4</text>
+    <text x="16" y="24" class="node-title" fill="#065F46">Digital Certificate of FEI Compliance</text>
+    <text x="16" y="42" class="node-desc">Official A4 Landscape Certificate PDF</text>
+    <text x="16" y="58" class="node-desc">Olympic Regulatory Verdict & Seal</text>
+    <text x="16" y="74" class="node-desc">Double Gold Border Luxury Styling</text>
+  </g>
+  <g transform="translate(60, 880)">
+    <rect width="340" height="50" class="node-card" fill="#0C1F16" stroke="#C5A880" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#C5A880">Centralized Typed API Client</text>
+    <text x="16" y="42" class="node-desc">frontend/src/lib/api.ts (Strict TypeScript)</text>
+  </g>
+  <g transform="translate(460, 175)">
+    <rect width="320" height="100" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Audit Router (POST /api/audit)</text>
+    <text x="16" y="42" class="code-font">POST /api/audit/upload (PDF Parse)</text>
+    <text x="16" y="58" class="code-font">POST /api/audit/sample (Instant Mock)</text>
+    <text x="16" y="74" class="code-font">GET  /api/audit/{id} (State)</text>
+    <text x="16" y="90" class="code-font">GET  /api/audit/{id}/certificate (A4 PDF)</text>
+  </g>
+  <g transform="translate(460, 295)">
+    <rect width="320" height="115" class="node-card" fill="#FFFFFF" stroke="#047857" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#047857">Dynamic Rules Router (/api/rules)</text>
+    <text x="16" y="42" class="code-font">GET    /api/rules (Catalog List)</text>
+    <text x="16" y="58" class="code-font">POST   /api/rules (Create Custom Rule)</text>
+    <text x="16" y="74" class="code-font">PUT    /api/rules/{id} (Update)</text>
+    <text x="16" y="90" class="code-font">DELETE /api/rules/{id} (Remove)</text>
+    <text x="16" y="106" class="code-font">POST   /api/rules/search (Hybrid Search)</text>
+  </g>
+  <g transform="translate(460, 430)">
+    <rect width="320" height="85" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Vendor Router (/api/vendor)</text>
+    <text x="16" y="42" class="code-font">POST /api/vendor/action-plan</text>
+    <text x="16" y="58" class="code-font">GET  /api/vendor/export-notes (PDF)</text>
+    <text x="16" y="74" class="code-font">POST /api/vendor/export-notes</text>
+  </g>
+  <g transform="translate(460, 535)">
+    <rect width="320" height="105" class="node-card" fill="#0C1F16" stroke="#C5A880" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#FFFFFF">Audit Coordinator Engine</text>
+    <text x="16" y="42" class="node-desc">backend/app/engine/audit_coordinator.py</text>
+    <text x="16" y="58" class="node-desc">- Multi-Stage Execution Pipeline</text>
+    <text x="16" y="74" class="node-desc">- Sub-30s Strict SLA Monitoring</text>
+    <text x="16" y="90" class="node-desc">- Ingestion -> Structuring -> RAG -> Verifier</text>
+  </g>
+  <g transform="translate(460, 660)">
+    <rect width="320" height="90" class="node-card" fill="#ECFDF5" stroke="#047857" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#065F46">Official Certificate Generator</text>
+    <text x="16" y="42" class="node-desc">backend/app/api/audit_router.py</text>
+    <text x="16" y="58" class="node-desc">- PyMuPDF Vector Document Assembly</text>
+    <text x="16" y="74" class="node-desc">- Double Gold Border & Olympic Seal</text>
+    <text x="16" y="90" class="node-desc">- High-Res Print Export (<0.15s)</text>
+  </g>
+  <g transform="translate(460, 770)">
+    <rect width="320" height="85" class="node-card" fill="#FFFFFF" stroke="#C5A880" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Vendor Letterhead Generator</text>
+    <text x="16" y="42" class="node-desc">backend/app/api/vendor_router.py</text>
+    <text x="16" y="58" class="node-desc">- Formatted Supplier Correction Notices</text>
+    <text x="16" y="74" class="node-desc">- Exact Embroidery Reduction Specs</text>
+  </g>
+  <g transform="translate(840, 175)">
+    <rect width="380" height="65" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">PyMuPDF4LLM Markdown Parser</text>
+    <text x="16" y="42" class="node-desc">Single-Pass Layout, Font & Structural Extraction</text>
+    <text x="16" y="58" class="node-desc">Generates Page Boundary Anchors for UI Sync</text>
+  </g>
+  <g transform="translate(840, 255)">
+    <rect width="380" height="65" class="node-card" fill="#FFFFFF" stroke="#C5A880" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">RapidOCR ONNX Runtime Fallback</text>
+    <text x="16" y="42" class="node-desc">Activated selectively on rasterized/scanned pages</text>
+    <text x="16" y="58" class="node-desc">Zero latency overhead on digital vector PDFs</text>
+  </g>
+  <g transform="translate(840, 335)">
+    <rect width="380" height="80" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Deterministic Table Extractor</text>
+    <text x="16" y="42" class="node-desc">pdfplumber + Heuristic Layout Table Parsing</text>
+    <text x="16" y="58" class="node-desc">- Bill of Materials (BOM) & Material Blends</text>
+    <text x="16" y="74" class="node-desc">- Points of Measure (POM) Dimension Tables</text>
+  </g>
+  <g transform="translate(840, 430)">
+    <rect width="380" height="65" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Image & Figure Cropper</text>
+    <text x="16" y="42" class="node-desc">Extracts technical flats and collar/chest emblems</text>
+    <text x="16" y="58" class="node-desc">Persists PNG assets to backend/storage/figures/</text>
+  </g>
+  <g transform="translate(840, 510)">
+    <rect width="380" height="60" class="node-card" fill="#0C1F16" stroke="#C5A880" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#C5A880">Gemini Extraction & Structuring</text>
+    <text x="16" y="42" class="node-desc">Google GenAI (Gemini 2.0 Flash) / High-Speed Mock</text>
+    <text x="16" y="58" class="node-desc">Pydantic TechPackSpec Schema Enforcement</text>
+  </g>
+  <g transform="translate(840, 660)">
+    <rect width="380" height="95" class="node-card" fill="#FFFFFF" stroke="#047857" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#047857">Codified Regulatory Rule Catalog</text>
+    <text x="16" y="42" class="node-desc">backend/app/knowledge/regulatory_catalog.json</text>
+    <text x="16" y="58" class="node-desc">- FEI Jumping Art. 256 (Collar, Pocket, Surface)</text>
+    <text x="16" y="74" class="node-desc">- FEI Dressage Art. 427 (Jacket Colors, Tailcoat)</text>
+    <text x="16" y="90" class="node-desc">- FEI Eventing Art. 538 & Maison Brand SOPs</text>
+  </g>
+  <g transform="translate(840, 775)">
+    <rect width="380" height="75" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Qdrant Vector Database Engine</text>
+    <text x="16" y="42" class="node-desc">Local Persistent On-Disk Vector Storage</text>
+    <text x="16" y="58" class="node-desc">HNSW Indexing for Dense Semantic Embeddings</text>
+    <text x="16" y="74" class="node-desc">Filtered payload queries by discipline</text>
+  </g>
+  <g transform="translate(840, 870)">
+    <rect width="380" height="95" class="node-card" fill="#0C1F16" stroke="#C5A880" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#FFFFFF">Hybrid RAG Retriever (retriever.py)</text>
+    <text x="16" y="42" class="node-desc">FastEmbed / Sentence-Transformers (384-dim)</text>
+    <text x="16" y="58" class="node-desc">+ BM25 Exact Keyword Match for Rule Articles</text>
+    <text x="16" y="74" class="node-desc">+ Reciprocal Rank Fusion (RRF) Reranking</text>
+    <text x="16" y="90" class="node-desc">= 100% Verbatim Precision, Zero Hallucinations</text>
+  </g>
+  <g transform="translate(840, 985)">
+    <rect width="380" height="65" class="node-card" fill="#ECFDF5" stroke="#047857" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#065F46">Live Rule CRUD & Syncer Service</text>
+    <text x="16" y="42" class="node-desc">Immediate catalog sync without server restart</text>
+    <text x="16" y="58" class="node-desc">Dynamic conflict checking & validation</text>
+  </g>
+  <g transform="translate(1280, 175)">
+    <rect width="380" height="95" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Validated TechPackSpec Instance</text>
+    <text x="16" y="42" class="code-font">Structured Pydantic Model Data:</text>
+    <text x="16" y="58" class="code-font">- Style Code, Garment Type, Discipline</text>
+    <text x="16" y="74" class="code-font">- Measurements & Points of Measure (cm, tol)</text>
+    <text x="16" y="90" class="code-font">- Materials, Lining Silk %, Fabric Weight (GSM)</text>
+    <text x="16" y="106" class="code-font">- Embroidery Logo Dimensions (68cm² vs 60cm²)</text>
+  </g>
+  <g transform="translate(1280, 290)">
+    <rect width="380" height="95" class="node-card" fill="#0C1F16" stroke="#C5A880" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#FFFFFF">Deterministic Rule Engine (rule_engine.py)</text>
+    <text x="16" y="42" class="node-desc">Pure Python Mathematical Verification (<=, >=, ==, in)</text>
+    <text x="16" y="58" class="node-desc">Automated Unit Normalization (cm² to mm², EUR, %)</text>
+    <text x="16" y="74" class="node-desc">Evaluates 100% of codified rules in <10ms</text>
+    <text x="16" y="90" class="node-desc">Zero LLM Hallucinations in Mathematical Decisions</text>
+  </g>
+  <g transform="translate(1280, 405)">
+    <rect width="380" height="95" class="node-card" fill="#ECFDF5" stroke="#047857" stroke-width="1.5" />
+    <rect x="260" y="10" width="105" height="20" rx="4" fill="#D1FAE5" />
+    <text x="312.5" y="23.5" font-size="9" font-weight="bold" fill="#065F46" text-anchor="middle">ZERO FALSE +</text>
+    <text x="16" y="24" class="node-title" fill="#065F46">Verbatim Citation Grounding Gate</text>
+    <text x="16" y="42" class="node-desc">Cross-references every finding against legal rulebooks</text>
+    <text x="16" y="58" class="node-desc">Enforces 100% verbatim quotes from FEI Articles</text>
+    <text x="16" y="74" class="node-desc">Guarantees zero false-positive disqualifications</text>
+    <text x="16" y="90" class="node-desc">Links exact source rulebook and article references</text>
+  </g>
+  <g transform="translate(1280, 520)">
+    <rect width="380" height="90" class="node-card" fill="#FFFFFF" stroke="#C5A880" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Audit Scorecard Aggregator</text>
+    <text x="16" y="42" class="node-desc">Computes weighted category scores (0 - 100%)</text>
+    <text x="16" y="58" class="node-desc">Evaluates final status: PASS | WARNING | VIOLATION</text>
+    <text x="16" y="74" class="node-desc">Measures execution latency (sub-second SLA)</text>
+    <text x="16" y="90" class="node-desc">Builds VerifiedFinding array with bounding boxes</text>
+  </g>
+  <g transform="translate(1280, 630)">
+    <rect width="380" height="95" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#151C22">Supplier Remediation Generator</text>
+    <text x="16" y="42" class="node-desc">Calculates exact overage deltas (+8cm² / +13.3%)</text>
+    <text x="16" y="58" class="node-desc">Generates downscale instructions for embroidery files</text>
+    <text x="16" y="74" class="node-desc">Commercial tolerance & cost variance alerts</text>
+    <text x="16" y="90" class="node-desc">Formulates actionable vendor notes</text>
+  </g>
+  <g transform="translate(1280, 745)">
+    <rect width="380" height="85" class="node-card" fill="#0C1F16" stroke="#C5A880" stroke-width="1.5" />
+    <text x="16" y="24" class="node-title" fill="#C5A880">Verified Findings Payload</text>
+    <text x="16" y="42" class="node-desc">AuditScorecard Response Object</text>
+    <text x="16" y="58" class="node-desc">Embedded Findings, Verbatim Quotes & Remedies</text>
+    <text x="16" y="74" class="node-desc">Persisted in-memory audit history run logs</text>
+  </g>
+  <!-- Animated Flow Connectors -->
+  <path d="M 230 240 L 230 260" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 230 335 L 230 355" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 230 860 L 230 880" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 400 905 L 430 905 L 430 225 L 460 225" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 400 605 L 430 605 L 430 350 L 460 350" class="flow-path green-flow" marker-end="url(#arrow-green)" />
+  <path d="M 620 275 L 620 535" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 780 575 L 810 575 L 810 205 L 840 205" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 240 L 1030 255" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 320 L 1030 335" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 415 L 1030 430" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 495 L 1030 510" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1220 540 L 1250 540 L 1250 220 L 1280 220" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 570 L 1030 660" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 780 370 L 810 370 L 810 1015 L 840 1015" class="flow-path green-flow" marker-end="url(#arrow-green)" />
+  <path d="M 1030 985 L 1030 965" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 755 L 1030 775" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 850 L 1030 870" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1220 915 L 1250 915 L 1250 335 L 1280 335" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1470 270 L 1470 290" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1470 385 L 1470 405" class="flow-path green-flow" marker-end="url(#arrow-green)" />
+  <path d="M 1470 500 L 1470 520" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1470 610 L 1470 630" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1470 725 L 1470 745" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 1280 785 L 1245 785 L 1245 615 L 780 615" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 620 640 L 620 660" class="flow-path green-flow" marker-end="url(#arrow-green)" />
+  <path d="M 620 750 L 620 770" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 460 595 L 430 595 L 430 400 L 400 400" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 460 705 L 430 705 L 430 815 L 400 815" class="flow-path green-flow" marker-end="url(#arrow-green)" />
+  <path d="M 460 810 L 420 810 L 420 710 L 400 710" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <!-- Legend -->
+  <g transform="translate(1320, 875)">
+    <rect width="320" height="175" rx="8" fill="#FFFFFF" stroke="#E2E4E1" stroke-width="1.5" />
+    <text x="16" y="24" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#163828">SYSTEM PIPELINE LEGEND</text>
+    <line x1="16" y1="45" x2="55" y2="45" class="flow-path gold-flow" />
+    <text x="65" y="49" class="node-desc">Standard Data & Audit Pipeline Flow</text>
+    <line x1="16" y1="75" x2="55" y2="75" class="flow-path green-flow" />
+    <text x="65" y="79" class="node-desc">Dynamic Rules CRUD & Verbatim Verification</text>
+    <rect x="16" y="98" width="14" height="14" rx="3" fill="#0C1F16" stroke="#C5A880" />
+    <text x="40" y="110" class="node-desc">Core AI & Deterministic Engine Nodes</text>
+    <rect x="16" y="125" width="14" height="14" rx="3" fill="#ECFDF5" stroke="#047857" />
+    <text x="40" y="137" class="node-desc">Official FEI Verification & A4 Certificate</text>
+  </g>
+</svg>
