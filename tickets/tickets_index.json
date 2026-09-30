@@ -1,0 +1,56 @@
+{
+  "project": "Equestrian Compliance & Specification Auditor",
+  "version": "1.0.0",
+  "last_updated": "2026-09-29T22:56:30+07:00",
+  "status_summary": {
+    "total": 34,
+    "backlog": 26,
+    "in_progress": 0,
+    "tested_by_ai": 8,
+    "human_review_pending": 0,
+    "done": 0
+  },
+  "tickets": [
+    {"id": "TICK-0101", "stage": "Stage 1", "title": "Project Repository Scaffolding & Virtual Environment", "status": "TESTED_BY_AI", "file": "tickets/TICK-0101-project-scaffolding.md"},
+    {"id": "TICK-0102", "stage": "Stage 1", "title": "Core Dependencies Installation & Verification", "status": "TESTED_BY_AI", "file": "tickets/TICK-0102-core-dependencies.md"},
+    {"id": "TICK-0103", "stage": "Stage 1", "title": "Configuration Manager & Gemini API Client Setup", "status": "TESTED_BY_AI", "file": "tickets/TICK-0103-config-and-secrets.md"},
+
+    {"id": "TICK-0201", "stage": "Stage 2", "title": "PyMuPDF4LLM Text & Structural Document Parser", "status": "TESTED_BY_AI", "file": "tickets/TICK-0201-pdf-parser-core.md"},
+    {"id": "TICK-0202", "stage": "Stage 2", "title": "Tabular Data Extraction & Markdown Normalizer", "status": "TESTED_BY_AI", "file": "tickets/TICK-0202-table-markdown-extractor.md"},
+    {"id": "TICK-0203", "stage": "Stage 2", "title": "Technical Sketch & Logo Artwork Cropper", "status": "TESTED_BY_AI", "file": "tickets/TICK-0203-sketch-image-cropper.md"},
+    {"id": "TICK-0204", "stage": "Stage 2", "title": "RapidOCR-ONNX Fallback Parser for Scanned Elements", "status": "TESTED_BY_AI", "file": "tickets/TICK-0204-rapidocr-fallback.md"},
+    {"id": "TICK-0205", "stage": "Stage 2", "title": "Ingestion Pipeline Integration Test & Speed Benchmark", "status": "TESTED_BY_AI", "file": "tickets/TICK-0205-ingestion-benchmark.md"},
+
+    {"id": "TICK-0301", "stage": "Stage 3", "title": "Comprehensive Pydantic v2 Domain Schemas", "status": "BACKLOG", "file": "tickets/TICK-0301-pydantic-schemas.md"},
+    {"id": "TICK-0302", "stage": "Stage 3", "title": "Gemini 2.0 Flash Structured Extraction Engine", "status": "BACKLOG", "file": "tickets/TICK-0302-gemini-structuring-engine.md"},
+    {"id": "TICK-0303", "stage": "Stage 3", "title": "Missing Data Sanitizer & Unit Normalizer", "status": "BACKLOG", "file": "tickets/TICK-0303-missing-data-sanitizer.md"},
+    {"id": "TICK-0304", "stage": "Stage 3", "title": "Extraction Validation Suite & Edge-Case Tests", "status": "BACKLOG", "file": "tickets/TICK-0304-extraction-validation-suite.md"},
+
+    {"id": "TICK-0401", "stage": "Stage 4", "title": "FEI Regulatory Corpus Curation & Ingestion", "status": "BACKLOG", "file": "tickets/TICK-0401-fei-corpus-curation.md"},
+    {"id": "TICK-0402", "stage": "Stage 4", "title": "Luxury Brand Quality & Production SOP Corpus", "status": "BACKLOG", "file": "tickets/TICK-0402-brand-sop-corpus.md"},
+    {"id": "TICK-0403", "stage": "Stage 4", "title": "Pre-compiled Structured Quantitative Rule Catalog", "status": "BACKLOG", "file": "tickets/TICK-0403-structured-rule-catalog.md"},
+    {"id": "TICK-0404", "stage": "Stage 4", "title": "Qdrant Hybrid Vector Store Setup", "status": "BACKLOG", "file": "tickets/TICK-0404-qdrant-hybrid-store.md"},
+    {"id": "TICK-0405", "stage": "Stage 4", "title": "Hybrid Retrieval Engine & Query Synthesizer", "status": "BACKLOG", "file": "tickets/TICK-0405-hybrid-retrieval-engine.md"},
+
+    {"id": "TICK-0501", "stage": "Stage 5", "title": "Layer 1 Deterministic Audit Engine", "status": "BACKLOG", "file": "tickets/TICK-0501-layer1-deterministic-engine.md"},
+    {"id": "TICK-0502", "stage": "Stage 5", "title": "Layer 2 Semantic Reasoner", "status": "BACKLOG", "file": "tickets/TICK-0502-layer2-semantic-reasoner.md"},
+    {"id": "TICK-0503", "stage": "Stage 5", "title": "Audit Engine Coordinator", "status": "BACKLOG", "file": "tickets/TICK-0503-audit-engine-coordinator.md"},
+
+    {"id": "TICK-0601", "stage": "Stage 6", "title": "Automated Verbatim Citation Verifier Gate", "status": "BACKLOG", "file": "tickets/TICK-0601-citation-verifier-gate.md"},
+    {"id": "TICK-0602", "stage": "Stage 6", "title": "Audit Scorecard Model & Visual Status Aggregator", "status": "BACKLOG", "file": "tickets/TICK-0602-audit-scorecard-generator.md"},
+    {"id": "TICK-0603", "stage": "Stage 6", "title": "Automated Vendor Action Generator", "status": "BACKLOG", "file": "tickets/TICK-0603-vendor-action-generator.md"},
+    {"id": "TICK-0604", "stage": "Stage 6", "title": "Full Audit Engine End-to-End Latency & Accuracy Test", "status": "BACKLOG", "file": "tickets/TICK-0604-end-to-end-audit-benchmark.md"},
+
+    {"id": "TICK-0701", "stage": "Stage 7", "title": "FastAPI Application Scaffolding & Middleware", "status": "BACKLOG", "file": "tickets/TICK-0701-fastapi-scaffolding.md"},
+    {"id": "TICK-0702", "stage": "Stage 7", "title": "Tech Pack Upload & Audit Execution Endpoint", "status": "BACKLOG", "file": "tickets/TICK-0702-upload-audit-endpoint.md"},
+    {"id": "TICK-0703", "stage": "Stage 7", "title": "Scorecard Query & History Endpoints", "status": "BACKLOG", "file": "tickets/TICK-0703-scorecard-query-endpoints.md"},
+    {"id": "TICK-0704", "stage": "Stage 7", "title": "Vendor Revision Notes Export Endpoint", "status": "BACKLOG", "file": "tickets/TICK-0704-vendor-export-endpoints.md"},
+    {"id": "TICK-0705", "stage": "Stage 7", "title": "Regulatory Catalog & Brand SOP Inspection Endpoints", "status": "BACKLOG", "file": "tickets/TICK-0705-rules-management-endpoints.md"},
+
+    {"id": "TICK-0801", "stage": "Stage 8", "title": "Next.js 14 Luxury Theme Setup & Layout Skeleton", "status": "BACKLOG", "file": "tickets/TICK-0801-nextjs-luxury-scaffolding.md"},
+    {"id": "TICK-0802", "stage": "Stage 8", "title": "Side-by-Side Interactive PDF Viewer Component", "status": "BACKLOG", "file": "tickets/TICK-0802-split-screen-pdf-viewer.md"},
+    {"id": "TICK-0803", "stage": "Stage 8", "title": "Interactive Audit Scorecard Component", "status": "BACKLOG", "file": "tickets/TICK-0803-interactive-scorecard-ui.md"},
+    {"id": "TICK-0804", "stage": "Stage 8", "title": "Vendor Action Note Modal & One-Click Export UI", "status": "BACKLOG", "file": "tickets/TICK-0804-vendor-action-modal-ui.md"},
+    {"id": "TICK-0805", "stage": "Stage 8", "title": "Stakeholder Demo Verification Test (< 2-Minute Walkthrough)", "status": "BACKLOG", "file": "tickets/TICK-0805-end-to-end-stakeholder-demo.md"}
+  ]
+}
