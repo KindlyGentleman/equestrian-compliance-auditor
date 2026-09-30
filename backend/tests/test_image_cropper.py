@@ -7,10 +7,12 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-import pytest
-import pymupdf
-from PIL import Image
 import io
+
+import pymupdf
+import pytest
+from PIL import Image
+
 from backend.app.ingestion.image_cropper import ImageCropper, ImageCropperResult
 
 
@@ -33,7 +35,7 @@ def techpack_with_sketches_pdf(tmp_path_factory) -> Path:
 
     # Insert into PDF
     doc = pymupdf.open()
-    
+
     # Page 1: Flat sketch
     page1 = doc.new_page(width=595, height=842)
     page1.insert_text((50, 50), "FRONT & BACK TECHNICAL SKETCH", fontsize=14, color=(0, 0, 0))

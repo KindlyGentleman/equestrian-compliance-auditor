@@ -7,9 +7,10 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-import pytest
 import pymupdf
-from backend.app.ingestion.table_extractor import TableExtractor, TableExtractionResult
+import pytest
+
+from backend.app.ingestion.table_extractor import TableExtractionResult, TableExtractor
 
 
 @pytest.fixture(scope="module")

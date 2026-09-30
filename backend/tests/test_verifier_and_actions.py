@@ -10,15 +10,12 @@ from backend.app.models.audit import (
     VerifiedFinding,
 )
 from backend.app.models.tech_pack import (
-    AestheticDetails,
     ComplianceStatus,
     CostingSpec,
     Discipline,
     FabricSpec,
     GarmentMetadata,
     GarmentType,
-    LogoPlacement,
-    MeasurementItem,
     TechPackSpec,
 )
 

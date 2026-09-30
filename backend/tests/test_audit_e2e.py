@@ -2,13 +2,13 @@
 import io
 import time
 from pathlib import Path
-from PIL import Image
+
 import pymupdf
 import pytest
+from PIL import Image
 
 from backend.app.engine.audit_coordinator import AuditCoordinator
 from backend.app.engine.citation_verifier import CitationVerifier
-from backend.app.engine.sanitizer import TechPackSanitizer
 from backend.app.engine.scorecard_generator import ScorecardGenerator
 from backend.app.engine.structuring_service import StructuringService
 from backend.app.engine.vendor_action_generator import VendorActionGenerator
@@ -112,7 +112,7 @@ async def test_full_audit_pipeline_benchmark(sample_10p_techpack_pdf: Path):
     total_pipeline_time = time.perf_counter() - pipeline_start
 
     # Benchmarks and assertions
-    print(f"\n--- End-to-End Pipeline Performance Benchmark ---")
+    print("\n--- End-to-End Pipeline Performance Benchmark ---")
     print(f"1. Ingestion (10 pages): {t_ingest:.3f}s")
     print(f"2. Structuring & Sanitizing: {t_structure:.3f}s")
     print(f"3. Dual-Layer Audit: {t_audit:.3f}s")

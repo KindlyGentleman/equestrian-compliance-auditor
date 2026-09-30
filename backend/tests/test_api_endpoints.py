@@ -1,7 +1,7 @@
 """Comprehensive integration tests for Stage 7 FastAPI API endpoints."""
 import io
 from pathlib import Path
-from PIL import Image
+
 import pymupdf
 import pytest
 from fastapi.testclient import TestClient

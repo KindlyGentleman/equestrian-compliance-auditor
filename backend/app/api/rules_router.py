@@ -2,7 +2,8 @@
 import json
 import logging
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
+
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
 
@@ -17,11 +18,11 @@ router = APIRouter()
 
 class RuleSearchRequest(BaseModel):
     query: str = Field(description="Search text or query")
-    discipline: Optional[str] = Field(default=None, description="JUMPING, DRESSAGE, EVENTING, or ALL")
+    discipline: str | None = Field(default=None, description="JUMPING, DRESSAGE, EVENTING, or ALL")
     top_k: int = Field(default=5, ge=1, le=20)
 
 
-def load_catalog_rules() -> List[Dict[str, Any]]:
+def load_catalog_rules() -> list[dict[str, Any]]:
     path = Path(settings.RULES_CATALOG_PATH)
     if not path.exists():
         return []
@@ -33,11 +34,11 @@ def load_catalog_rules() -> List[Dict[str, Any]]:
         return []
 
 
-@router.get("", response_model=List[Dict[str, Any]])
+@router.get("", response_model=list[dict[str, Any]])
 def list_rules(
-    discipline: Optional[str] = Query(None, description="Filter by discipline e.g. JUMPING, DRESSAGE"),
-    category: Optional[str] = Query(None, description="Filter by category e.g. BRANDING_LOGO"),
-) -> List[Dict[str, Any]]:
+    discipline: str | None = Query(None, description="Filter by discipline e.g. JUMPING, DRESSAGE"),
+    category: str | None = Query(None, description="Filter by category e.g. BRANDING_LOGO"),
+) -> list[dict[str, Any]]:
     """List all codified quantitative rules with optional discipline and category filters."""
     rules = load_catalog_rules()
     if discipline:
@@ -53,8 +54,8 @@ def list_rules(
     return rules
 
 
-@router.get("/{rule_id}", response_model=Dict[str, Any])
-def get_rule_by_id(rule_id: str) -> Dict[str, Any]:
+@router.get("/{rule_id}", response_model=dict[str, Any])
+def get_rule_by_id(rule_id: str) -> dict[str, Any]:
     """Retrieve details for a specific codified rule."""
     rules = load_catalog_rules()
     rule = next((r for r in rules if r.get("rule_id", "").upper() == rule_id.upper()), None)
@@ -63,8 +64,8 @@ def get_rule_by_id(rule_id: str) -> Dict[str, Any]:
     return rule
 
 
-@router.post("/search", response_model=List[RuleChunk])
-def search_regulations(req: RuleSearchRequest) -> List[RuleChunk]:
+@router.post("/search", response_model=list[RuleChunk])
+def search_regulations(req: RuleSearchRequest) -> list[RuleChunk]:
     """Perform ad-hoc hybrid semantic search across FEI regulations and Brand SOPs."""
     return retriever.retrieve_rules(
         query=req.query,

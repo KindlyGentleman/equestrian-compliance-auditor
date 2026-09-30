@@ -12,8 +12,8 @@ from backend.app.engine.deterministic_engine import (
     deterministic_engine,
 )
 from backend.app.engine.sanitizer import (
-    SanitizerReport,
     SanitizedTechPack,
+    SanitizerReport,
     TechPackSanitizer,
     tech_pack_sanitizer,
 )

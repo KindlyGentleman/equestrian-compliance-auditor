@@ -1,12 +1,9 @@
 """Post-extraction sanitizer and unit normalizer for tech pack specifications."""
 import re
-from typing import Dict, List, Optional, Tuple
+
 from pydantic import BaseModel, Field
 
 from backend.app.models.tech_pack import (
-    FabricSpec,
-    MeasurementItem,
-    LogoPlacement,
     TechPackSpec,
 )
 
@@ -14,9 +11,9 @@ from backend.app.models.tech_pack import (
 class SanitizerReport(BaseModel):
     """Audit report of unit transformations, normalized fiber names, and missing fields."""
     completeness_score_pct: float = Field(ge=0.0, le=100.0)
-    missing_critical_specs: List[str] = Field(default_factory=list)
-    normalized_conversions: List[str] = Field(default_factory=list)
-    warnings: List[str] = Field(default_factory=list)
+    missing_critical_specs: list[str] = Field(default_factory=list)
+    normalized_conversions: list[str] = Field(default_factory=list)
+    warnings: list[str] = Field(default_factory=list)
 
 
 class SanitizedTechPack(BaseModel):
@@ -69,14 +66,14 @@ class TechPackSanitizer:
     def convert_oz_to_gsm(self, oz_yd2: float) -> float:
         return round(float(oz_yd2) * self.OZ_YD2_TO_GSM, 1)
 
-    def normalize_composition_string(self, raw_comp: str) -> Tuple[str, List[str]]:
+    def normalize_composition_string(self, raw_comp: str) -> tuple[str, list[str]]:
         """Standardize fiber codes to full names while preserving percentages."""
         if not raw_comp:
             return "MISSING_SPEC", ["Missing primary fabric composition"]
 
-        notes: List[str] = []
+        notes: list[str] = []
         tokens = re.split(r"([,;/+&]|\band\b)", raw_comp)
-        normalized_segments: List[str] = []
+        normalized_segments: list[str] = []
 
         for token in tokens:
             cleaned = token.strip()
@@ -102,9 +99,9 @@ class TechPackSanitizer:
 
     def sanitize(self, spec: TechPackSpec) -> SanitizedTechPack:
         """Run complete sanitization, unit conversion, and completeness audit."""
-        missing_critical: List[str] = []
-        conversions: List[str] = []
-        warnings: List[str] = []
+        missing_critical: list[str] = []
+        conversions: list[str] = []
+        warnings: list[str] = []
 
         # 1. Audit Fabric Specs & Normalize Composition
         if not spec.fabric.primary_composition or spec.fabric.primary_composition.strip() == "":

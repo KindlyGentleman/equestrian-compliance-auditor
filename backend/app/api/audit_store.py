@@ -1,9 +1,9 @@
 """Thread-safe persistent audit storage for tech pack scorecards and specifications."""
 import json
 import logging
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
-from datetime import datetime, timezone
+from typing import Any
 
 from backend.app.core.config import settings
 from backend.app.models.audit import AuditScorecard
@@ -18,16 +18,16 @@ class AuditRecord:
         audit_id: str,
         scorecard: AuditScorecard,
         spec: TechPackSpec,
-        pdf_path: Optional[str] = None,
-        created_at: Optional[str] = None,
+        pdf_path: str | None = None,
+        created_at: str | None = None,
     ):
         self.audit_id = audit_id
         self.scorecard = scorecard
         self.spec = spec
         self.pdf_path = pdf_path
-        self.created_at = created_at or datetime.now(timezone.utc).isoformat()
+        self.created_at = created_at or datetime.now(UTC).isoformat()
 
-    def to_summary(self) -> Dict[str, Any]:
+    def to_summary(self) -> dict[str, Any]:
         return {
             "audit_id": self.audit_id,
             "tech_pack_id": self.scorecard.tech_pack_id,
@@ -46,10 +46,10 @@ class AuditRecord:
 class AuditStore:
     """Manages in-memory and file-backed audit state."""
 
-    def __init__(self, storage_dir: Optional[str] = None):
+    def __init__(self, storage_dir: str | None = None):
         self.storage_dir = Path(storage_dir or settings.CACHE_DIR) / "audits"
         self.storage_dir.mkdir(parents=True, exist_ok=True)
-        self._records: Dict[str, AuditRecord] = {}
+        self._records: dict[str, AuditRecord] = {}
         self._load_existing()
 
     def _load_existing(self) -> None:
@@ -86,10 +86,10 @@ class AuditStore:
         except Exception as exc:
             logger.error("Failed to write audit file %s (%s)", json_file, exc)
 
-    def get(self, audit_id: str) -> Optional[AuditRecord]:
+    def get(self, audit_id: str) -> AuditRecord | None:
         return self._records.get(audit_id)
 
-    def list_history(self, limit: int = 50) -> List[Dict[str, Any]]:
+    def list_history(self, limit: int = 50) -> list[dict[str, Any]]:
         records = sorted(
             self._records.values(),
             key=lambda r: r.created_at,

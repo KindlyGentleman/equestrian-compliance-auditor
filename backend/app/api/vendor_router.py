@@ -1,10 +1,9 @@
 """FastAPI endpoints for generating and exporting vendor revision documents."""
-import io
 import logging
-from typing import Any, Dict, Optional
+
+import pymupdf
 from fastapi import APIRouter, HTTPException, Query, Response
 from pydantic import BaseModel
-import pymupdf
 
 from backend.app.api.audit_store import audit_store
 from backend.app.engine.vendor_action_generator import vendor_action_generator
@@ -15,7 +14,7 @@ router = APIRouter()
 
 
 class ExportNotesRequest(BaseModel):
-    custom_notes: Optional[str] = None
+    custom_notes: str | None = None
 
 
 def generate_vendor_pdf_letterhead(doc_data) -> bytes:
@@ -63,7 +62,7 @@ def generate_vendor_pdf_letterhead(doc_data) -> bytes:
 def export_vendor_notes(
     audit_id: str,
     format: str = Query("markdown", pattern="^(markdown|text|pdf)$"),
-    body: Optional[ExportNotesRequest] = None,
+    body: ExportNotesRequest | None = None,
 ):
     """Export supplier revision instructions in Markdown, Plain Text, or PDF format."""
     record = audit_store.get(audit_id)

@@ -1,16 +1,15 @@
 """RapidOCR-ONNX fallback parser for scanned/rasterized tech pack pages."""
-import io
 import time
-from typing import Any, List, Optional
+
 import pymupdf
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from rapidocr_onnxruntime import RapidOCR
 
 
 class OCRLine(BaseModel):
     text: str
     confidence: float
-    box: List[List[float]]
+    box: list[list[float]]
 
 
 class OCRPageResult(BaseModel):
@@ -27,7 +26,7 @@ class OCRFallback:
 
     def __init__(self, char_threshold: int = 30):
         self.char_threshold = char_threshold
-        self._engine: Optional[RapidOCR] = None
+        self._engine: RapidOCR | None = None
 
     @property
     def engine(self) -> RapidOCR:
@@ -60,9 +59,9 @@ class OCRFallback:
                 execution_time_seconds=round(elapsed, 4),
             )
 
-        lines: List[OCRLine] = []
-        text_lines: List[str] = []
-        confidences: List[float] = []
+        lines: list[OCRLine] = []
+        text_lines: list[str] = []
+        confidences: list[float] = []
 
         for item in results:
             # item structure: [box, text, confidence]

@@ -1,14 +1,15 @@
 """Canonical sample tech pack PDF generator for instant client demonstrations."""
 import io
 from pathlib import Path
-from PIL import Image
+
 import pymupdf
+from PIL import Image
 
 
 def create_sample_techpack_pdf(output_path: Path) -> Path:
     """Create a realistic 10-page luxury equestrian show jacket tech pack PDF."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    
+
     sketch = Image.new("RGB", (300, 300), color=(245, 243, 238))
     sketch_bytes = io.BytesIO()
     sketch.save(sketch_bytes, format="PNG")
@@ -33,14 +34,14 @@ def create_sample_techpack_pdf(output_path: Path) -> Path:
         page.insert_text((50, 50), "MAISON ÉQUESTRE", fontsize=16, fontname="helv", color=(0.09, 0.22, 0.16))
         page.insert_text((50, 72), f"TECHNICAL SPECIFICATION PACKAGE - {title.upper()}", fontsize=11, fontname="helv", color=(0.4, 0.4, 0.4))
         page.draw_line((50, 85), (545, 85), color=(0.8, 0.75, 0.65), width=1)
-        
+
         # Body text
         page.insert_text((50, 120), text, fontsize=10, fontname="helv", color=(0.15, 0.18, 0.22))
-        
+
         # Sketch placeholder box
         page.insert_image(pymupdf.Rect(380, 110, 530, 260), stream=sketch_bytes.getvalue())
         page.draw_rect(pymupdf.Rect(380, 110, 530, 260), color=(0.85, 0.85, 0.85), width=0.5)
-        
+
         # Footer
         page.draw_line((50, 800), (545, 800), color=(0.9, 0.9, 0.9), width=0.5)
         page.insert_text((50, 815), "CONFIDENTIAL - PROPERTY OF MAISON ÉQUESTRE ATELIER PRO", fontsize=8, fontname="helv", color=(0.6, 0.6, 0.6))

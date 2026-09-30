@@ -11,6 +11,7 @@ import {
   Filter,
 } from "lucide-react";
 import { RuleCatalogItem, Discipline } from "@/types";
+import { api } from "@/lib/api";
 
 interface RulesModalProps {
   isOpen: boolean;
@@ -45,11 +46,8 @@ export function RulesModal({
   const fetchRules = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch("/api/rules");
-      if (res.ok) {
-        const data = await res.json();
-        setRules(data);
-      }
+      const data = await api.getRules();
+      setRules(data);
     } catch {
       // Keep empty if network fails
     } finally {

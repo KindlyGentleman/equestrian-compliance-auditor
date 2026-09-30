@@ -1,10 +1,11 @@
 """FastAPI endpoints for Tech Pack upload, audit execution, and query operations."""
 import logging
+import shutil
 import time
 import uuid
 from pathlib import Path
-import shutil
-from typing import Any, Dict, List, Optional
+from typing import Any
+
 from fastapi import APIRouter, File, HTTPException, Query, UploadFile
 from fastapi.responses import FileResponse
 
@@ -14,18 +15,15 @@ from backend.app.engine.audit_coordinator import audit_coordinator
 from backend.app.engine.citation_verifier import citation_verifier
 from backend.app.engine.scorecard_generator import scorecard_generator
 from backend.app.engine.structuring_service import structuring_service
-from backend.app.engine.vendor_action_generator import vendor_action_generator
 from backend.app.ingestion.pipeline import ingestion_pipeline
-from backend.app.models.audit import AuditScorecard
-from backend.app.models.tech_pack import TechPackSpec
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
 
-@router.post("/sample", response_model=Dict[str, Any])
-async def load_sample_tech_pack() -> Dict[str, Any]:
+@router.post("/sample", response_model=dict[str, Any])
+async def load_sample_tech_pack() -> dict[str, Any]:
     """Generate or retrieve the canonical Grand Prix Show Coat tech pack and run audit."""
     pipeline_start = time.perf_counter()
     audit_id = f"aud_{uuid.uuid4().hex[:12]}"
@@ -81,8 +79,8 @@ async def load_sample_tech_pack() -> Dict[str, Any]:
     }
 
 
-@router.post("/upload", response_model=Dict[str, Any])
-async def upload_and_audit_tech_pack(file: UploadFile = File(...)) -> Dict[str, Any]:
+@router.post("/upload", response_model=dict[str, Any])
+async def upload_and_audit_tech_pack(file: UploadFile = File(...)) -> dict[str, Any]:
     """Upload tech pack PDF and execute full compliance audit pipeline."""
     if not file.filename.lower().endswith(".pdf"):
         raise HTTPException(
@@ -162,14 +160,14 @@ async def upload_and_audit_tech_pack(file: UploadFile = File(...)) -> Dict[str, 
     }
 
 
-@router.get("/history", response_model=List[Dict[str, Any]])
-def get_audit_history(limit: int = Query(50, ge=1, le=100)) -> List[Dict[str, Any]]:
+@router.get("/history", response_model=list[dict[str, Any]])
+def get_audit_history(limit: int = Query(50, ge=1, le=100)) -> list[dict[str, Any]]:
     """Retrieve historical audits with summary metrics."""
     return audit_store.list_history(limit=limit)
 
 
-@router.get("/{audit_id}", response_model=Dict[str, Any])
-def get_audit_by_id(audit_id: str) -> Dict[str, Any]:
+@router.get("/{audit_id}", response_model=dict[str, Any])
+def get_audit_by_id(audit_id: str) -> dict[str, Any]:
     """Retrieve complete scorecard and tech pack specification for an audit."""
     record = audit_store.get(audit_id)
     if not record:

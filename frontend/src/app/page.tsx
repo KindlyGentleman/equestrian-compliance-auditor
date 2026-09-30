@@ -7,11 +7,11 @@ import { AuditScorecard } from "@/components/AuditScorecard";
 import { VendorActionModal } from "@/components/VendorActionModal";
 import { HistoryDrawer } from "@/components/HistoryDrawer";
 import { RulesModal } from "@/components/RulesModal";
+import { api } from "@/lib/api";
 import {
   AuditScorecard as ScorecardType,
   AuditHistoryItem,
   Discipline,
-  TechPackSpec,
 } from "@/types";
 
 export default function AtelierDashboard() {
@@ -39,11 +39,8 @@ export default function AtelierDashboard() {
   const fetchHistory = async () => {
     setIsHistoryLoading(true);
     try {
-      const res = await fetch("/api/audit/history");
-      if (res.ok) {
-        const data = await res.json();
-        setHistoryList(data);
-      }
+      const data = await api.getAuditHistory();
+      setHistoryList(data);
     } catch {
       // Keep empty if network fails
     } finally {
@@ -56,25 +53,12 @@ export default function AtelierDashboard() {
     setErrorMessage(null);
     setHighlightCategory(null);
 
-    const formData = new FormData();
-    formData.append("file", file);
-
     try {
-      const res = await fetch("/api/audit/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!res.ok) {
-        const errorData = await res.json().catch(() => ({ detail: "Upload failed." }));
-        throw new Error(errorData.detail || "Upload failed.");
-      }
-
-      const data = await res.json();
+      const data = await api.uploadTechPack(file);
       setCurrentAuditId(data.audit_id);
       setScorecard(data.scorecard);
       setFileName(file.name);
-      setPdfUrl(`/api/audit/${data.audit_id}/pdf`);
+      setPdfUrl(api.getPdfUrl(data.audit_id));
       setTotalPages(data.spec?.page_count || 10);
       setCurrentPage(1);
       fetchHistory();
@@ -91,20 +75,11 @@ export default function AtelierDashboard() {
     setHighlightCategory(null);
 
     try {
-      const res = await fetch("/api/audit/sample", {
-        method: "POST",
-      });
-
-      if (!res.ok) {
-        const errorData = await res.json().catch(() => ({ detail: "Sample loading failed." }));
-        throw new Error(errorData.detail || "Sample loading failed.");
-      }
-
-      const data = await res.json();
+      const data = await api.loadSampleTechPack();
       setCurrentAuditId(data.audit_id);
       setScorecard(data.scorecard);
       setFileName("Grand_Prix_Show_Coat_SS26.pdf");
-      setPdfUrl(`/api/audit/${data.audit_id}/pdf`);
+      setPdfUrl(api.getPdfUrl(data.audit_id));
       setTotalPages(data.spec?.page_count || 10);
       setCurrentPage(1);
       fetchHistory();
@@ -121,14 +96,11 @@ export default function AtelierDashboard() {
     setHighlightCategory(null);
 
     try {
-      const res = await fetch(`/api/audit/${auditId}`);
-      if (!res.ok) throw new Error("Could not load audit record.");
-
-      const data = await res.json();
+      const data = await api.getAudit(auditId);
       setCurrentAuditId(data.audit_id);
       setScorecard(data.scorecard);
       setFileName(data.spec?.source_pdf_name || `TechPack_${data.scorecard.style_code}.pdf`);
-      setPdfUrl(`/api/audit/${data.audit_id}/pdf`);
+      setPdfUrl(api.getPdfUrl(data.audit_id));
       setTotalPages(data.spec?.page_count || 10);
       setCurrentPage(1);
     } catch (err: any) {

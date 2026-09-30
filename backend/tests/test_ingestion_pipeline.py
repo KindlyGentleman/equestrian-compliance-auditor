@@ -2,6 +2,7 @@
 import io
 import sys
 from pathlib import Path
+
 from PIL import Image, ImageDraw
 
 # Add project root to sys.path
@@ -9,8 +10,9 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-import pytest
 import pymupdf
+import pytest
+
 from backend.app.ingestion.pipeline import IngestionPipeline, IngestionResult
 
 
@@ -133,7 +135,7 @@ def test_ingestion_pipeline_digital_benchmark(multi_modal_techpack_pdf):
     assert len(result.ocr_pages_triggered) == 0  # Digital PDF should not need OCR
 
     # Timing assertions
-    print(f"\n[BENCHMARK] 10-Page Ingestion Timings:")
+    print("\n[BENCHMARK] 10-Page Ingestion Timings:")
     print(f"  - PyMuPDF4LLM Text: {result.timings.pdf_parse_seconds:.3f}s")
     print(f"  - OCR Stage:        {result.timings.ocr_seconds:.3f}s")
     print(f"  - Table Extraction: {result.timings.table_extraction_seconds:.3f}s")

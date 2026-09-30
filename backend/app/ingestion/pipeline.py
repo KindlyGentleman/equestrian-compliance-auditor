@@ -1,16 +1,15 @@
 """Unified Document Ingestion Pipeline coordinating text parsing, OCR fallback, table extraction, and image cropping."""
 import time
 from pathlib import Path
-from typing import Dict, List, Optional
+
 import psutil
 import pymupdf
 from pydantic import BaseModel, Field
 
-from backend.app.core.config import settings
-from backend.app.ingestion.pdf_parser import DocumentContent, PageContent, PDFParser, pdf_parser
-from backend.app.ingestion.table_extractor import ExtractedTable, TableExtractor, table_extractor
 from backend.app.ingestion.image_cropper import ExtractedFigure, ImageCropper, image_cropper
 from backend.app.ingestion.ocr_fallback import OCRFallback, ocr_fallback
+from backend.app.ingestion.pdf_parser import DocumentContent, PageContent, PDFParser, pdf_parser
+from backend.app.ingestion.table_extractor import ExtractedTable, TableExtractor, table_extractor
 
 
 class IngestionStageTiming(BaseModel):
@@ -27,10 +26,10 @@ class IngestionResult(BaseModel):
     file_name: str
     total_pages: int
     full_markdown: str
-    pages: List[PageContent]
-    tables: List[ExtractedTable] = Field(default_factory=list)
-    figures: List[ExtractedFigure] = Field(default_factory=list)
-    ocr_pages_triggered: List[int] = Field(default_factory=list)
+    pages: list[PageContent]
+    tables: list[ExtractedTable] = Field(default_factory=list)
+    figures: list[ExtractedFigure] = Field(default_factory=list)
+    ocr_pages_triggered: list[int] = Field(default_factory=list)
     timings: IngestionStageTiming
     peak_memory_mb: float = 0.0
 
@@ -40,10 +39,10 @@ class IngestionPipeline:
 
     def __init__(
         self,
-        parser: Optional[PDFParser] = None,
-        table_ext: Optional[TableExtractor] = None,
-        cropper: Optional[ImageCropper] = None,
-        ocr: Optional[OCRFallback] = None,
+        parser: PDFParser | None = None,
+        table_ext: TableExtractor | None = None,
+        cropper: ImageCropper | None = None,
+        ocr: OCRFallback | None = None,
         char_threshold: int = 30,
     ):
         self.parser = parser or pdf_parser
@@ -75,8 +74,8 @@ class IngestionPipeline:
 
         # Stage 2: Selective OCR Fallback on blank/rasterized pages
         t0 = time.time()
-        ocr_pages_triggered: List[int] = []
-        pages_needing_ocr: List[int] = []
+        ocr_pages_triggered: list[int] = []
+        pages_needing_ocr: list[int] = []
         for p in doc_content.pages:
             cleaned_text = "".join(p.markdown.split())
             if len(cleaned_text) < self.char_threshold or force_ocr:
@@ -108,7 +107,7 @@ class IngestionPipeline:
 
         # Stage 3: Structured Table Extraction & Normalization
         t0 = time.time()
-        tables: List[ExtractedTable] = []
+        tables: list[ExtractedTable] = []
         if extract_tables:
             table_result = self.table_extractor.extract_tables(path)
             tables = table_result.tables
@@ -116,7 +115,7 @@ class IngestionPipeline:
 
         # Stage 4: Figure and Artwork Cropping with Bounding Boxes
         t0 = time.time()
-        figures: List[ExtractedFigure] = []
+        figures: list[ExtractedFigure] = []
         if extract_figures:
             figure_result = self.cropper.extract_figures(path)
             figures = figure_result.figures

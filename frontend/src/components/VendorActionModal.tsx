@@ -14,6 +14,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { AuditScorecard, VendorRevisionDocument } from "@/types";
+import { api } from "@/lib/api";
 
 interface VendorActionModalProps {
   isOpen: boolean;
@@ -44,11 +45,13 @@ export function VendorActionModal({
     if (!auditId) return;
     setIsLoading(true);
     try {
-      const res = await fetch(`/api/audit/${auditId}/export-vendor-notes?format=markdown`);
-      if (res.ok) {
-        const mdText = await res.text();
-        const emailRes = await fetch(`/api/audit/${auditId}/export-vendor-notes?format=text`);
-        const emailText = emailRes.ok ? await emailRes.text() : "";
+      const mdText = (await api.exportVendorNotes(auditId, "markdown")) as string;
+      let emailText = "";
+      try {
+        emailText = (await api.exportVendorNotes(auditId, "text")) as string;
+      } catch {
+        emailText = "";
+      }
 
         // Structure into action items
         const actionableFindings = scorecard?.findings.filter(
@@ -80,7 +83,6 @@ export function VendorActionModal({
           markdown_content: mdText,
           email_draft_content: emailText,
         });
-      }
     } catch (err) {
       console.error("Failed to load vendor notes", err);
     } finally {

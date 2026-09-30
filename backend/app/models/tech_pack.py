@@ -1,6 +1,6 @@
 """Domain data models and schemas for Equestrian Tech Pack Specifications."""
 from enum import Enum
-from typing import Dict, List, Optional
+
 from pydantic import BaseModel, Field, model_validator
 
 
@@ -38,24 +38,24 @@ class GarmentMetadata(BaseModel):
 class FabricSpec(BaseModel):
     primary_composition: str = Field(description="e.g. 78% Polyamide, 22% Elastane")
     weight_gsm: float = Field(description="Fabric weight in grams per square meter")
-    lining: Optional[str] = Field(default=None, description="Lining composition or specification")
-    weave_type: Optional[str] = Field(default="4-way stretch technical twill")
-    stretch_warp_pct: Optional[float] = Field(default=18.0)
-    stretch_weft_pct: Optional[float] = Field(default=22.0)
-    breathability_g_m2_24h: Optional[float] = Field(default=12000.0, description="WVTR breathability")
-    water_resistance_mm: Optional[float] = Field(default=5000.0)
-    uv_rating: Optional[str] = Field(default="UPF 50+")
+    lining: str | None = Field(default=None, description="Lining composition or specification")
+    weave_type: str | None = Field(default="4-way stretch technical twill")
+    stretch_warp_pct: float | None = Field(default=18.0)
+    stretch_weft_pct: float | None = Field(default=22.0)
+    breathability_g_m2_24h: float | None = Field(default=12000.0, description="WVTR breathability")
+    water_resistance_mm: float | None = Field(default=5000.0)
+    uv_rating: str | None = Field(default="UPF 50+")
 
 
 class BOMItem(BaseModel):
     item_type: str = Field(default="Main Fabric", description="Main Fabric, Lining, Buttons, Zipper, Trim")
-    item_name: Optional[str] = Field(default=None, description="Component name or description")
+    item_name: str | None = Field(default=None, description="Component name or description")
     placement: str = Field(description="Body, Collar, Front Closure, Cuffs")
-    supplier_code: Optional[str] = None
-    material: Optional[str] = None
-    color_code: Optional[str] = None
-    unit_cost_usd: Optional[float] = None
-    quantity: Optional[float] = 1.0
+    supplier_code: str | None = None
+    material: str | None = None
+    color_code: str | None = None
+    unit_cost_usd: float | None = None
+    quantity: float | None = 1.0
 
     @model_validator(mode="before")
     @classmethod
@@ -75,7 +75,7 @@ class MeasurementItem(BaseModel):
     description: str = Field(description="e.g. Collar Stand Height, Chest Width")
     spec_cm: float = Field(description="Base size specification in centimeters")
     tolerance_plus_minus_cm: float = Field(default=0.5)
-    size_grading: Dict[str, float] = Field(default_factory=dict)
+    size_grading: dict[str, float] = Field(default_factory=dict)
 
 
 class LogoPlacement(BaseModel):
@@ -83,9 +83,9 @@ class LogoPlacement(BaseModel):
     width_cm: float = Field(ge=0.0)
     height_cm: float = Field(ge=0.0)
     calculated_area_cm2: float = Field(default=0.0, description="Computed surface area (width * height)")
-    description: Optional[str] = None
-    technique: Optional[str] = Field(default="Embroidery")
-    colors: Optional[List[str]] = Field(default_factory=list)
+    description: str | None = None
+    technique: str | None = Field(default="Embroidery")
+    colors: list[str] | None = Field(default_factory=list)
 
     @model_validator(mode="before")
     @classmethod
@@ -101,39 +101,39 @@ class LogoPlacement(BaseModel):
 
 class AestheticDetails(BaseModel):
     collar_type: str = Field(default="Notched Lapel", description="Stand-up, Notched, Peaked, Mandarin")
-    collar_contrast_color: Optional[str] = Field(default=None, description="e.g. Tonal, Black Velvet, Navy")
-    collar_fabric_type: Optional[str] = Field(default="Self-fabric")
+    collar_contrast_color: str | None = Field(default=None, description="e.g. Tonal, Black Velvet, Navy")
+    collar_fabric_type: str | None = Field(default="Self-fabric")
     piping_present: bool = Field(default=False)
-    piping_width_mm: Optional[float] = Field(default=0.0)
-    piping_color: Optional[str] = None
-    button_count: Optional[int] = Field(default=3)
-    button_material: Optional[str] = Field(default="Matte horn with engraved brand crest")
+    piping_width_mm: float | None = Field(default=0.0)
+    piping_color: str | None = None
+    button_count: int | None = Field(default=3)
+    button_material: str | None = Field(default="Matte horn with engraved brand crest")
 
 
 class CostingSpec(BaseModel):
     target_fob_usd: float = Field(description="Brand target FOB cost ceiling")
     actual_fob_usd: float = Field(description="Vendor quoted actual FOB cost")
-    fabric_cost_usd: Optional[float] = None
-    trim_cost_usd: Optional[float] = None
-    cmt_cost_usd: Optional[float] = None
+    fabric_cost_usd: float | None = None
+    trim_cost_usd: float | None = None
+    cmt_cost_usd: float | None = None
 
 
 class TechPackSpec(BaseModel):
     """Master structured technical package specification."""
     metadata: GarmentMetadata
     fabric: FabricSpec
-    bom: List[BOMItem] = Field(default_factory=list)
-    measurements: List[MeasurementItem] = Field(default_factory=list)
-    logos: List[LogoPlacement] = Field(default_factory=list)
+    bom: list[BOMItem] = Field(default_factory=list)
+    measurements: list[MeasurementItem] = Field(default_factory=list)
+    logos: list[LogoPlacement] = Field(default_factory=list)
     aesthetic: AestheticDetails = Field(default_factory=AestheticDetails)
     costing: CostingSpec
-    source_pdf_name: Optional[str] = None
+    source_pdf_name: str | None = None
     page_count: int = 1
 
 
 # Domain Model Aliases for downstream convenience
 BOMComponent = BOMItem
 BrandingLogoSpec = LogoPlacement
-MeasurementSpec = List[MeasurementItem]
+MeasurementSpec = list[MeasurementItem]
 TechPackMetadata = GarmentMetadata
 

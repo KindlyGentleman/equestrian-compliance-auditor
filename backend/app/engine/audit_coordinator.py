@@ -2,7 +2,6 @@
 import asyncio
 import logging
 import time
-from typing import List, Optional, Set
 
 from backend.app.engine.deterministic_engine import DeterministicEngine, deterministic_engine
 from backend.app.engine.semantic_reasoner import SemanticReasoner, semantic_reasoner
@@ -38,9 +37,9 @@ class AuditCoordinator:
 
     def __init__(
         self,
-        deterministic: Optional[DeterministicEngine] = None,
-        semantic: Optional[SemanticReasoner] = None,
-        rule_retriever: Optional[HybridRetriever] = None,
+        deterministic: DeterministicEngine | None = None,
+        semantic: SemanticReasoner | None = None,
+        rule_retriever: HybridRetriever | None = None,
     ):
         self.deterministic = deterministic or deterministic_engine
         self.semantic = semantic or semantic_reasoner
@@ -48,12 +47,12 @@ class AuditCoordinator:
 
     def _deduplicate_findings(
         self,
-        layer1_findings: List[AuditFinding],
-        layer2_findings: List[AuditFinding],
-    ) -> List[AuditFinding]:
+        layer1_findings: list[AuditFinding],
+        layer2_findings: list[AuditFinding],
+    ) -> list[AuditFinding]:
         """Merge Layer 1 and Layer 2 findings, prioritizing Layer 1 deterministic findings on overlap."""
-        seen_rules: Set[str] = {f.rule_id for f in layer1_findings if f.rule_id}
-        merged: List[AuditFinding] = list(layer1_findings)
+        seen_rules: set[str] = {f.rule_id for f in layer1_findings if f.rule_id}
+        merged: list[AuditFinding] = list(layer1_findings)
 
         for finding in layer2_findings:
             if finding.rule_id in seen_rules:
@@ -68,9 +67,9 @@ class AuditCoordinator:
         merged.sort(key=lambda f: SEVERITY_ORDER.get(f.severity, 99))
         return merged
 
-    def _compute_category_scores(self, findings: List[AuditFinding]) -> List[CategoryScore]:
+    def _compute_category_scores(self, findings: list[AuditFinding]) -> list[CategoryScore]:
         """Compute category compliance breakdown and scores."""
-        scores: List[CategoryScore] = []
+        scores: list[CategoryScore] = []
 
         for category in CORE_CATEGORIES:
             cat_findings = [f for f in findings if f.category == category]
@@ -99,7 +98,7 @@ class AuditCoordinator:
 
         return scores
 
-    def _compute_overall_status(self, findings: List[AuditFinding]) -> ComplianceStatus:
+    def _compute_overall_status(self, findings: list[AuditFinding]) -> ComplianceStatus:
         """Derive highest-precedence compliance status across all findings."""
         if any(f.severity == ComplianceStatus.VIOLATION for f in findings):
             return ComplianceStatus.VIOLATION
@@ -113,10 +112,10 @@ class AuditCoordinator:
         """Run Layer 1 deterministic and Layer 2 semantic audits concurrently."""
         start_time = time.time()
 
-        async def _run_layer1() -> List[AuditFinding]:
+        async def _run_layer1() -> list[AuditFinding]:
             return self.deterministic.audit(spec)
 
-        async def _run_layer2() -> List[AuditFinding]:
+        async def _run_layer2() -> list[AuditFinding]:
             try:
                 rule_chunks = self.retriever.retrieve_rules_for_techpack(spec, top_k=6)
                 return await self.semantic.audit_async(spec, rule_chunks)

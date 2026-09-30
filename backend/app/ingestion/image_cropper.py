@@ -1,6 +1,6 @@
 """Technical flat sketch and logo artwork cropper using PyMuPDF."""
 from pathlib import Path
-from typing import List, Optional
+
 import pymupdf
 from pydantic import BaseModel, Field
 
@@ -11,7 +11,7 @@ class ExtractedFigure(BaseModel):
     """Metadata and cache path for an extracted technical illustration or logo."""
     figure_id: str
     page_number: int
-    bounding_box: List[float] = Field(description="[x0, y0, x1, y1] on PDF canvas")
+    bounding_box: list[float] = Field(description="[x0, y0, x1, y1] on PDF canvas")
     width_px: int
     height_px: int
     file_path: str
@@ -21,13 +21,13 @@ class ExtractedFigure(BaseModel):
 class ImageCropperResult(BaseModel):
     """Aggregate result of figure extraction across a tech pack PDF."""
     total_figures: int
-    figures: List[ExtractedFigure]
+    figures: list[ExtractedFigure]
 
 
 class ImageCropper:
     """Extracts, crops, and caches technical sketches and logos from PDF pages."""
 
-    def __init__(self, output_dir: Optional[str] = None, min_size: int = 80):
+    def __init__(self, output_dir: str | None = None, min_size: int = 80):
         self.output_dir = Path(output_dir or settings.FIGURE_EXPORT_DIR)
         self.min_size = min_size
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -39,7 +39,7 @@ class ImageCropper:
             raise FileNotFoundError(f"PDF not found: {path}")
 
         doc = pymupdf.open(str(path))
-        extracted_figures: List[ExtractedFigure] = []
+        extracted_figures: list[ExtractedFigure] = []
 
         try:
             for page_idx in range(len(doc)):

@@ -9,10 +9,18 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 import pytest
+
 from backend.app.core.config import settings
-from backend.app.models.tech_pack import Discipline, GarmentMetadata, GarmentType, FabricSpec, CostingSpec, TechPackSpec
-from backend.app.rag.vector_store import RuleChunk, VectorStoreManager
+from backend.app.models.tech_pack import (
+    CostingSpec,
+    Discipline,
+    FabricSpec,
+    GarmentMetadata,
+    GarmentType,
+    TechPackSpec,
+)
 from backend.app.rag.retriever import HybridRetriever
+from backend.app.rag.vector_store import RuleChunk, VectorStoreManager
 
 
 @pytest.fixture(scope="module")
@@ -46,7 +54,7 @@ def test_rules_catalog_json_schema():
     catalog_path = Path(settings.RULES_CATALOG_PATH)
     assert catalog_path.exists(), f"Catalog missing: {catalog_path}"
 
-    with open(catalog_path, "r", encoding="utf-8") as f:
+    with open(catalog_path, encoding="utf-8") as f:
         data = json.load(f)
 
     assert "rules" in data

@@ -1,13 +1,8 @@
 """Layer 2 Semantic Reasoner evaluating qualitative and aesthetic compliance using Gemini 2.0 Flash."""
-import json
 import logging
-import time
-from typing import List, Optional
 
-from google.genai import types
 from pydantic import BaseModel, Field
 
-from backend.app.core.config import settings
 from backend.app.core.gemini_client import gemini_wrapper
 from backend.app.models.audit import AuditFinding, FindingCategory
 from backend.app.models.tech_pack import ComplianceStatus, Discipline, GarmentType, TechPackSpec
@@ -28,7 +23,7 @@ STRICT GROUNDING & ZERO FALSE POSITIVES:
 
 
 class SemanticFindingsPayload(BaseModel):
-    findings: List[AuditFinding] = Field(default_factory=list)
+    findings: list[AuditFinding] = Field(default_factory=list)
 
 
 class SemanticReasoner:
@@ -37,9 +32,9 @@ class SemanticReasoner:
     def __init__(self, client_wrapper=None):
         self.gemini = client_wrapper or gemini_wrapper
 
-    def _mock_semantic_eval(self, spec: TechPackSpec, rules: List[RuleChunk]) -> List[AuditFinding]:
+    def _mock_semantic_eval(self, spec: TechPackSpec, rules: list[RuleChunk]) -> list[AuditFinding]:
         """Deterministic heuristic evaluation for offline testing."""
-        findings: List[AuditFinding] = []
+        findings: list[AuditFinding] = []
         discipline_val = spec.metadata.discipline.value if isinstance(spec.metadata.discipline, Discipline) else str(spec.metadata.discipline)
 
         # Rule check: Prohibited neon/bright colors in Dressage
@@ -86,11 +81,9 @@ class SemanticReasoner:
     async def audit_async(
         self,
         spec: TechPackSpec,
-        relevant_rules: List[RuleChunk],
-    ) -> List[AuditFinding]:
+        relevant_rules: list[RuleChunk],
+    ) -> list[AuditFinding]:
         """Perform semantic audit using Gemini 2.0 Flash or deterministic fallback."""
-        start_time = time.time()
-
         if not self.gemini.use_mock and self.gemini.client is not None:
             try:
                 # Format context
@@ -124,7 +117,7 @@ class SemanticReasoner:
 
         return self._mock_semantic_eval(spec, relevant_rules)
 
-    def audit(self, spec: TechPackSpec, relevant_rules: List[RuleChunk]) -> List[AuditFinding]:
+    def audit(self, spec: TechPackSpec, relevant_rules: list[RuleChunk]) -> list[AuditFinding]:
         """Synchronous wrapper for audit_async."""
         import asyncio
         try:

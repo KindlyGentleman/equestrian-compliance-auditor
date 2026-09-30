@@ -3,10 +3,10 @@ import json
 import logging
 import time
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from backend.app.core.config import settings
-from backend.app.models.audit import AuditFinding, AuditRuleType, AuditSeverity, FindingCategory
+from backend.app.models.audit import AuditFinding, FindingCategory
 from backend.app.models.tech_pack import ComplianceStatus, Discipline, GarmentType, TechPackSpec
 
 logger = logging.getLogger(__name__)
@@ -15,22 +15,22 @@ logger = logging.getLogger(__name__)
 class DeterministicEngine:
     """Executes quantitative, zero-hallucination compliance audits directly in Python."""
 
-    def __init__(self, catalog_path: Optional[str] = None):
+    def __init__(self, catalog_path: str | None = None):
         self.catalog_path = Path(catalog_path or settings.RULES_CATALOG_PATH)
-        self.rules: List[Dict[str, Any]] = self._load_catalog()
+        self.rules: list[dict[str, Any]] = self._load_catalog()
 
-    def _load_catalog(self) -> List[Dict[str, Any]]:
+    def _load_catalog(self) -> list[dict[str, Any]]:
         if not self.catalog_path.exists():
             logger.warning("Rules catalog missing at %s; initializing empty rules", self.catalog_path)
             return []
-        with open(self.catalog_path, "r", encoding="utf-8") as f:
+        with open(self.catalog_path, encoding="utf-8") as f:
             data = json.load(f)
             return data.get("rules", [])
 
-    def audit(self, spec: TechPackSpec) -> List[AuditFinding]:
+    def audit(self, spec: TechPackSpec) -> list[AuditFinding]:
         """Evaluate tech pack specification against quantitative rules in catalog."""
         start_time = time.time()
-        findings: List[AuditFinding] = []
+        findings: list[AuditFinding] = []
         discipline_val = spec.metadata.discipline.value if isinstance(spec.metadata.discipline, Discipline) else str(spec.metadata.discipline)
 
         # 1. Branding & Logo Area Checks
@@ -63,7 +63,7 @@ class DeterministicEngine:
                             delta_explanation=f"Observed collar logo area is {delta:+.1f} cm² over the 60.0 cm² legal maximum.",
                             source_citation=citation,
                             source_rulebook=rulebook,
-                            remedy_suggestion=f"Reduce collar logo dimensions to ensure total surface area is at or below 60.0 cm².",
+                            remedy_suggestion="Reduce collar logo dimensions to ensure total surface area is at or below 60.0 cm².",
                             page_number=1,
                         )
                     )

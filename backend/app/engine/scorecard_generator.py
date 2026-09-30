@@ -1,7 +1,5 @@
 """Audit Scorecard Generator aggregating verified findings into structured executive reports."""
 import logging
-import time
-from typing import Dict, List, Optional
 
 from backend.app.models.audit import (
     AuditScorecard,
@@ -32,9 +30,9 @@ SEVERITY_WEIGHTS = {
 class ScorecardGenerator:
     """Constructs user-facing AuditScorecard with granular category breakdowns and overall ratings."""
 
-    def _compute_category_scores(self, findings: List[VerifiedFinding]) -> List[CategoryScore]:
+    def _compute_category_scores(self, findings: list[VerifiedFinding]) -> list[CategoryScore]:
         """Compute score percentages and issue tallies per category."""
-        scores: List[CategoryScore] = []
+        scores: list[CategoryScore] = []
 
         for category in SCORECARD_CATEGORIES:
             cat_findings = [f for f in findings if f.category == category]
@@ -70,7 +68,7 @@ class ScorecardGenerator:
 
         return scores
 
-    def _determine_overall_status(self, findings: List[VerifiedFinding]) -> ComplianceStatus:
+    def _determine_overall_status(self, findings: list[VerifiedFinding]) -> ComplianceStatus:
         """Derive highest precedence compliance status across all verified findings."""
         if any(f.severity == ComplianceStatus.VIOLATION for f in findings):
             return ComplianceStatus.VIOLATION
@@ -83,7 +81,7 @@ class ScorecardGenerator:
     def generate(
         self,
         tech_pack_id: str,
-        verified_findings: List[VerifiedFinding],
+        verified_findings: list[VerifiedFinding],
         spec: TechPackSpec,
         execution_time_seconds: float = 0.0,
     ) -> AuditScorecard:

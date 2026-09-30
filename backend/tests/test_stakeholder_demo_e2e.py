@@ -5,9 +5,9 @@ Verifies the two key presentation scenarios:
   and piping exceeding threshold, verifying verbatim citation gate and vendor note generation.
 - Scenario B: Fully compliant Dressage garment meeting all FEI Art. 427 and brand SOP standards.
 """
-import io
 import time
 from pathlib import Path
+
 import pymupdf
 import pytest
 from fastapi.testclient import TestClient
@@ -31,7 +31,7 @@ def scenario_a_pdf(tmp_path_factory) -> Path:
     pdf_path = temp_dir / "scenario_a_sj_coat_violations.pdf"
 
     doc = pymupdf.open()
-    
+
     # 1. Cover
     p1 = doc.new_page(width=595, height=842)
     p1.insert_text((50, 60), "MAISON ÉQUESTRE - TECHNICAL SPECIFICATION", fontsize=14)
@@ -69,7 +69,7 @@ def scenario_b_pdf(tmp_path_factory) -> Path:
     pdf_path = temp_dir / "scenario_b_dressage_compliant.pdf"
 
     doc = pymupdf.open()
-    
+
     # 1. Cover
     p1 = doc.new_page(width=595, height=842)
     p1.insert_text((50, 60), "MAISON ÉQUESTRE - DRESSAGE TECHNICAL SPECIFICATION", fontsize=14)
@@ -107,7 +107,7 @@ def test_scenario_a_demonstration_workflow(scenario_a_pdf: Path):
     # Step 1: Upload and audit
     with open(scenario_a_pdf, "rb") as f:
         upload_res = client.post("/api/audit/upload", files={"file": ("sovereign_coat.pdf", f, "application/pdf")})
-    
+
     assert upload_res.status_code == 200, f"Upload failed: {upload_res.text}"
     audit_data = upload_res.json()
     audit_id = audit_data["audit_id"]
@@ -151,7 +151,7 @@ def test_scenario_b_compliant_demonstration_workflow(scenario_b_pdf: Path):
 
     with open(scenario_b_pdf, "rb") as f:
         upload_res = client.post("/api/audit/upload", files={"file": ("etoile_tailcoat.pdf", f, "application/pdf")})
-    
+
     assert upload_res.status_code == 200, f"Upload failed: {upload_res.text}"
     audit_data = upload_res.json()
     scorecard = audit_data["scorecard"]

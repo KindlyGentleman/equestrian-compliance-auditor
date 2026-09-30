@@ -1,7 +1,7 @@
 """High-speed PDF layout and text parser using PyMuPDF4LLM."""
 import time
 from pathlib import Path
-from typing import List, Optional
+
 import pymupdf
 import pymupdf4llm
 from pydantic import BaseModel, Field
@@ -21,19 +21,19 @@ class DocumentContent(BaseModel):
     file_name: str
     total_pages: int
     full_markdown: str
-    pages: List[PageContent]
+    pages: list[PageContent]
     execution_time_seconds: float
 
 
 class PDFParser:
     """SOTA CPU-native parser converting tech pack PDFs into structured Markdown."""
 
-    def __init__(self, write_images: bool = False, image_dir: Optional[str] = None, use_ocr: bool = False):
+    def __init__(self, write_images: bool = False, image_dir: str | None = None, use_ocr: bool = False):
         self.write_images = write_images
         self.image_dir = image_dir
         self.use_ocr = use_ocr
 
-    def parse(self, pdf_path: str | Path, use_ocr: Optional[bool] = None) -> DocumentContent:
+    def parse(self, pdf_path: str | Path, use_ocr: bool | None = None) -> DocumentContent:
         """Parse multi-page tech pack PDF into page-mapped Markdown in a single optimized pass."""
         path = Path(pdf_path)
         if not path.exists():
@@ -46,8 +46,8 @@ class PDFParser:
             doc.close()
             raise ValueError(f"PDF document is empty (0 pages): {path}")
 
-        pages: List[PageContent] = []
-        full_md_parts: List[str] = []
+        pages: list[PageContent] = []
+        full_md_parts: list[str] = []
         should_use_ocr = self.use_ocr if use_ocr is None else use_ocr
 
         try:
@@ -63,7 +63,7 @@ class PDFParser:
             for page_idx, chunk in enumerate(raw_chunks):
                 page_num = page_idx + 1
                 page_text = chunk.get("text", "").strip()
-                
+
                 # Check for images on page
                 has_images = len(doc[page_idx].get_images()) > 0 if page_idx < total_pages else False
                 has_tables = "|" in page_text and "-|-" in page_text

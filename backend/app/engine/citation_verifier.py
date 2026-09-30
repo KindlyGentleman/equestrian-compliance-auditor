@@ -4,7 +4,6 @@ import json
 import logging
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set
 
 from backend.app.core.config import settings
 from backend.app.models.audit import AuditFinding, VerifiedFinding
@@ -26,11 +25,11 @@ def normalize_text(text: str) -> str:
 class CitationVerifier:
     """Validates finding citations against authentic regulatory texts, auto-downgrading unverified findings."""
 
-    def __init__(self, regulations_dir: Optional[str] = None, rules_catalog_path: Optional[str] = None):
+    def __init__(self, regulations_dir: str | None = None, rules_catalog_path: str | None = None):
         self.regulations_dir = Path(regulations_dir or settings.REGULATIONS_DIR)
         self.catalog_path = Path(rules_catalog_path or settings.RULES_CATALOG_PATH)
-        self.corpus_texts: List[str] = []
-        self.catalog_citations: Dict[str, str] = {}
+        self.corpus_texts: list[str] = []
+        self.catalog_citations: dict[str, str] = {}
         self._load_corpus()
 
     def _load_corpus(self) -> None:
@@ -38,7 +37,7 @@ class CitationVerifier:
         # 1. Load rules catalog
         if self.catalog_path.exists():
             try:
-                with open(self.catalog_path, "r", encoding="utf-8") as f:
+                with open(self.catalog_path, encoding="utf-8") as f:
                     data = json.load(f)
                     for rule in data.get("rules", []):
                         rid = rule.get("rule_id", "")
@@ -92,7 +91,7 @@ class CitationVerifier:
     def verify_finding(
         self,
         finding: AuditFinding,
-        provided_chunks: Optional[List[RuleChunk]] = None,
+        provided_chunks: list[RuleChunk] | None = None,
     ) -> VerifiedFinding:
         """Verify citation authenticity for a finding, downgrading to MANUAL_REVIEW if unverified."""
         citation = finding.source_citation.strip() if finding.source_citation else ""
@@ -157,9 +156,9 @@ class CitationVerifier:
 
     def verify_all(
         self,
-        findings: List[AuditFinding],
-        provided_chunks: Optional[List[RuleChunk]] = None,
-    ) -> List[VerifiedFinding]:
+        findings: list[AuditFinding],
+        provided_chunks: list[RuleChunk] | None = None,
+    ) -> list[VerifiedFinding]:
         """Batch verify all findings."""
         return [self.verify_finding(f, provided_chunks) for f in findings]
 

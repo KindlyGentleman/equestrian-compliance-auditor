@@ -1,13 +1,10 @@
 """Structured schema extraction engine using Gemini 2.0 Flash."""
-import json
 import logging
 import re
 from pathlib import Path
-from typing import List, Optional
 
 from google.genai import types
 
-from backend.app.core.config import settings
 from backend.app.core.gemini_client import gemini_wrapper
 from backend.app.engine.sanitizer import SanitizedTechPack, tech_pack_sanitizer
 from backend.app.ingestion.image_cropper import ExtractedFigure
@@ -51,7 +48,7 @@ class StructuringService:
     def _mock_heuristic_extract(
         self,
         markdown: str,
-        source_pdf_name: Optional[str] = None,
+        source_pdf_name: str | None = None,
         page_count: int = 1,
     ) -> TechPackSpec:
         """Heuristic rule-based extractor providing deterministic offline results."""
@@ -104,7 +101,7 @@ class StructuringService:
         )
 
         # 3. BOM Items
-        bom_items: List[BOMItem] = []
+        bom_items: list[BOMItem] = []
         bom_matches = re.findall(
             r"\|\s*([^|\n]+?)\s*\|\s*([^|\n]+?)\s*\|\s*([^|\n]+?)\s*\|\s*([^|\n]*?)\s*\|\s*\$?(\d+(?:\.\d+)?)\s*\|",
             markdown,
@@ -130,7 +127,7 @@ class StructuringService:
             ]
 
         # 4. Measurements
-        measurements: List[MeasurementItem] = []
+        measurements: list[MeasurementItem] = []
         pom_matches = re.findall(
             r"\|\s*(POM-\d+)\s*\|\s*([^|\n]+?)\s*\|\s*(\d+(?:\.\d+)?)\s*\|\s*(\d+(?:\.\d+)?)\s*\|",
             markdown,
@@ -154,7 +151,7 @@ class StructuringService:
             ]
 
         # 5. Logos & Branding
-        logos: List[LogoPlacement] = []
+        logos: list[LogoPlacement] = []
         logo_matches = re.findall(
             r"([A-Z\s]+(?:LOGO|EMBLEM))[:\s]+.*?(\d+(?:\.\d+)?)\s*cm\s*x\s*(\d+(?:\.\d+)?)\s*cm",
             markdown,
@@ -233,15 +230,15 @@ class StructuringService:
     async def extract_spec_async(
         self,
         markdown_content: str,
-        figures: Optional[List[ExtractedFigure]] = None,
-        source_pdf_name: Optional[str] = None,
+        figures: list[ExtractedFigure] | None = None,
+        source_pdf_name: str | None = None,
         page_count: int = 1,
     ) -> SanitizedTechPack:
         """Extract structured TechPackSpec via Gemini 2.0 Flash or deterministic fallback."""
         if not markdown_content or not markdown_content.strip():
             raise ValueError("Markdown content cannot be empty for spec extraction")
 
-        extracted_spec: Optional[TechPackSpec] = None
+        extracted_spec: TechPackSpec | None = None
 
         if not self.gemini.use_mock and self.gemini.client is not None:
             try:
@@ -285,8 +282,8 @@ class StructuringService:
     def extract_spec(
         self,
         markdown_content: str,
-        figures: Optional[List[ExtractedFigure]] = None,
-        source_pdf_name: Optional[str] = None,
+        figures: list[ExtractedFigure] | None = None,
+        source_pdf_name: str | None = None,
         page_count: int = 1,
     ) -> SanitizedTechPack:
         """Synchronous wrapper for extract_spec_async."""

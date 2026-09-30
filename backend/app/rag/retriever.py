@@ -1,6 +1,6 @@
 """Hybrid retrieval engine combining semantic vector search and discipline-filtered metadata."""
 import re
-from typing import List, Optional, Set
+
 from qdrant_client.models import FieldCondition, Filter, MatchAny
 
 from backend.app.models.tech_pack import Discipline, TechPackSpec
@@ -10,21 +10,21 @@ from backend.app.rag.vector_store import RuleChunk, VectorStoreManager, vector_s
 class HybridRetriever:
     """Retrieves relevant regulatory and brand SOP chunks with hybrid vector and lexical scoring."""
 
-    def __init__(self, vector_store: Optional[VectorStoreManager] = None):
+    def __init__(self, vector_store: VectorStoreManager | None = None):
         self.store = vector_store or vector_store_manager
 
     def retrieve_rules(
         self,
         query: str,
-        discipline: Optional[Discipline | str] = None,
-        garment_type: Optional[str] = None,
+        discipline: Discipline | str | None = None,
+        garment_type: str | None = None,
         top_k: int = 5,
-    ) -> List[RuleChunk]:
+    ) -> list[RuleChunk]:
         """Query Qdrant collection with discipline pre-filtering and lexical re-ranking."""
         query_vector = self.store.generate_embedding(query)
 
         # Build discipline filter (matching specific discipline or ALL)
-        query_filter: Optional[Filter] = None
+        query_filter: Filter | None = None
         if discipline:
             disc_str = discipline.value if isinstance(discipline, Discipline) else str(discipline).upper()
             if disc_str in ["JUMPING", "DRESSAGE", "EVENTING"]:
@@ -48,7 +48,7 @@ class HybridRetriever:
         # Lexical boost words extracted from query
         query_tokens = [w.lower() for w in re.findall(r"\w+", query) if len(w) > 2]
 
-        scored_chunks: List[RuleChunk] = []
+        scored_chunks: list[RuleChunk] = []
         for hit in search_results:
             payload = hit.payload or {}
             base_score = float(hit.score) if hasattr(hit, "score") and hit.score is not None else 0.5
@@ -79,17 +79,17 @@ class HybridRetriever:
         scored_chunks.sort(key=lambda c: c.score or 0.0, reverse=True)
         return scored_chunks[:top_k]
 
-    def retrieve_rules_for_techpack(self, spec: TechPackSpec, top_k: int = 6) -> List[RuleChunk]:
+    def retrieve_rules_for_techpack(self, spec: TechPackSpec, top_k: int = 6) -> list[RuleChunk]:
         """Generate targeted compliance queries for a tech pack and retrieve consolidated rules."""
         queries = [
             f"{spec.metadata.discipline.value} collar logo chest emblem surface area limits",
             f"{spec.metadata.discipline.value} {spec.metadata.garment_type.value} collar lapel contrast velvet piping rules",
-            f"Fabric breathability WVTR g/m2/24h and 4-way stretch standards",
+            "Fabric breathability WVTR g/m2/24h and 4-way stretch standards",
             f"{spec.metadata.garment_type.value} maximum target FOB COGS ceiling",
         ]
 
-        seen_chunk_ids: Set[str] = set()
-        consolidated: List[RuleChunk] = []
+        seen_chunk_ids: set[str] = set()
+        consolidated: list[RuleChunk] = []
 
         for q in queries:
             results = self.retrieve_rules(
@@ -106,9 +106,9 @@ class HybridRetriever:
         consolidated.sort(key=lambda c: c.score or 0.0, reverse=True)
         return consolidated[:top_k]
 
-    def format_context_for_prompt(self, chunks: List[RuleChunk]) -> str:
+    def format_context_for_prompt(self, chunks: list[RuleChunk]) -> str:
         """Format retrieved rule chunks into clean markdown blocks for LLM prompt context."""
-        parts: List[str] = []
+        parts: list[str] = []
         for idx, chunk in enumerate(chunks, start=1):
             parts.append(
                 f"### [Regulation Excerpt {idx}]: {chunk.rulebook} ({chunk.article_id})\n"

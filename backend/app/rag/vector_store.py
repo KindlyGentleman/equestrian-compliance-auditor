@@ -1,19 +1,14 @@
 """Local embedded Qdrant vector store and regulatory chunking manager."""
 import hashlib
-import json
 import logging
 import math
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+
 from pydantic import BaseModel, Field
 from qdrant_client import QdrantClient
 from qdrant_client.models import (
     Distance,
-    FieldCondition,
-    Filter,
-    MatchAny,
-    MatchValue,
     PointStruct,
     VectorParams,
 )
@@ -34,7 +29,7 @@ class RuleChunk(BaseModel):
     category: str = Field(description="Dress & Identification, Fabric, Costing, etc.")
     title: str
     content: str
-    score: Optional[float] = None
+    score: float | None = None
 
 
 class VectorStoreManager:
@@ -44,19 +39,29 @@ class VectorStoreManager:
 
     def __init__(
         self,
-        storage_path: Optional[str] = None,
-        collection_name: Optional[str] = None,
+        storage_path: str | None = None,
+        collection_name: str | None = None,
         in_memory: bool = False,
     ):
         self.collection_name = collection_name or settings.QDRANT_COLLECTION_NAME
         self.in_memory = in_memory
 
-        if in_memory or not storage_path and settings.APP_ENV == "testing":
+        if in_memory or (not storage_path and settings.APP_ENV == "testing"):
             self.client = QdrantClient(":memory:")
         else:
             resolved_path = Path(storage_path or settings.QDRANT_STORAGE_PATH)
             resolved_path.mkdir(parents=True, exist_ok=True)
-            self.client = QdrantClient(path=str(resolved_path))
+            try:
+                self.client = QdrantClient(path=str(resolved_path))
+            except RuntimeError as exc:
+                if "already accessed by another instance" in str(exc):
+                    logger.warning(
+                        "Local Qdrant directory is locked by another process (%s). Falling back to in-memory storage.",
+                        exc,
+                    )
+                    self.client = QdrantClient(":memory:")
+                else:
+                    raise
 
         self._ensure_collection()
 
@@ -70,7 +75,7 @@ class VectorStoreManager:
             )
             logger.info("Created Qdrant collection '%s' with size=%d", self.collection_name, self.VECTOR_SIZE)
 
-    def generate_embedding(self, text: str) -> List[float]:
+    def generate_embedding(self, text: str) -> list[float]:
         """Generate 768-dimensional normalized embedding via Gemini or deterministic hash fallback."""
         if not gemini_wrapper.use_mock and gemini_wrapper.client is not None:
             try:
@@ -102,10 +107,10 @@ class VectorStoreManager:
             vector[0] = 1.0
         return vector
 
-    def parse_markdown_file(self, file_path: Path) -> List[RuleChunk]:
+    def parse_markdown_file(self, file_path: Path) -> list[RuleChunk]:
         """Parse FEI or Brand SOP markdown file into granular rule chunks."""
         text = file_path.read_text(encoding="utf-8")
-        chunks: List[RuleChunk] = []
+        chunks: list[RuleChunk] = []
 
         # Extract front metadata
         fed_match = re.search(r"-\s*\*\*Federation\*\*:\s*([^\n]+)", text)
@@ -175,22 +180,22 @@ class VectorStoreManager:
 
     def index_all_regulations(
         self,
-        fei_dir: Optional[str] = None,
-        brand_dir: Optional[str] = None,
+        fei_dir: str | None = None,
+        brand_dir: str | None = None,
     ) -> int:
         """Scan regulation markdown directories, extract chunks, compute vectors, and upsert to Qdrant."""
         f_dir = Path(fei_dir or settings.FEI_REGULATIONS_DIR)
         b_dir = Path(brand_dir or settings.BRAND_SOPS_DIR)
 
         all_files = list(f_dir.glob("*.md")) + list(b_dir.glob("*.md"))
-        all_chunks: List[RuleChunk] = []
+        all_chunks: list[RuleChunk] = []
 
         for p in all_files:
             if p.name.startswith("."):
                 continue
             all_chunks.extend(self.parse_markdown_file(p))
 
-        points: List[PointStruct] = []
+        points: list[PointStruct] = []
         for idx, chunk in enumerate(all_chunks, start=1):
             text_to_embed = f"{chunk.rulebook} {chunk.title}\n{chunk.content}"
             vector = self.generate_embedding(text_to_embed)

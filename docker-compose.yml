@@ -1,0 +1,51 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: equestrian-compliance-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_NAME=Equestrian Compliance & Specification Auditor
+      - APP_ENV=production
+      - DEBUG=false
+      - HOST=0.0.0.0
+      - PORT=8000
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - GEMINI_MODEL_NAME=gemini-2.0-flash
+      - GEMINI_EMBEDDING_MODEL=text-embedding-004
+      - USE_MOCK_LLM=${USE_MOCK_LLM:-false}
+      - QDRANT_STORAGE_PATH=/app/storage/qdrant
+      - UPLOAD_DIR=/app/storage/uploads
+      - CACHE_DIR=/app/storage/cache
+      - FIGURE_EXPORT_DIR=/app/storage/figures
+      - REGULATIONS_DIR=/app/backend/app/data/regulations
+      - RULES_CATALOG_PATH=/app/backend/app/data/rules_catalog.json
+    volumes:
+      - backend_storage:/app/storage
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: equestrian-compliance-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  backend_storage:
+    name: equestrian_backend_storage

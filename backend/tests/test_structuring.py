@@ -10,8 +10,14 @@ if str(PROJECT_ROOT) not in sys.path:
 import pytest
 from pydantic import ValidationError
 
+from backend.app.engine.sanitizer import (
+    SanitizedTechPack,
+    TechPackSanitizer,
+)
+from backend.app.engine.structuring_service import (
+    StructuringService,
+)
 from backend.app.models.tech_pack import (
-    AestheticDetails,
     BOMItem,
     CostingSpec,
     Discipline,
@@ -19,17 +25,7 @@ from backend.app.models.tech_pack import (
     GarmentMetadata,
     GarmentType,
     LogoPlacement,
-    MeasurementItem,
     TechPackSpec,
-)
-from backend.app.engine.sanitizer import (
-    SanitizedTechPack,
-    TechPackSanitizer,
-    tech_pack_sanitizer,
-)
-from backend.app.engine.structuring_service import (
-    StructuringService,
-    structuring_service,
 )
 
 

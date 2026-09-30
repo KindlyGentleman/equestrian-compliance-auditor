@@ -1,9 +1,9 @@
 """FastAPI application entrypoint for Equestrian Compliance & Specification Auditor."""
-from contextlib import asynccontextmanager
-from datetime import datetime, timezone
 import logging
+from collections.abc import AsyncGenerator
+from contextlib import asynccontextmanager
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import AsyncGenerator, Dict
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -71,7 +71,7 @@ async def custom_http_exception_handler(request: Request, exc: HTTPException) ->
         content={
             "detail": exc.detail,
             "error_code": exc.status_code,
-            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "path": str(request.url),
         },
     )
@@ -86,24 +86,27 @@ async def global_exception_handler(request: Request, exc: Exception) -> JSONResp
         content={
             "detail": "An internal server error occurred while processing the request.",
             "error": str(exc),
-            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "path": str(request.url),
         },
     )
 
 
 @app.get("/api/health", tags=["System"])
-def health_check() -> Dict[str, str]:
+@app.get("/api/v1/health", tags=["System"])
+@app.get("/health", tags=["System"])
+def health_check() -> dict[str, str]:
     """Health check endpoint reporting API and environment status."""
     return {
         "status": "ok",
         "app": settings.APP_NAME,
         "env": settings.APP_ENV,
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "timestamp": datetime.now(UTC).isoformat(),
     }
 
 
-# Include Core Feature Routers
-app.include_router(audit_router, prefix="/api/audit", tags=["Audit"])
-app.include_router(vendor_router, prefix="/api/audit", tags=["Vendor"])
-app.include_router(rules_router, prefix="/api/rules", tags=["Rules"])
+# Include Core Feature Routers (Canonical v1 & Legacy Aliases)
+for prefix in ("/api/v1", "/api"):
+    app.include_router(audit_router, prefix=f"{prefix}/audit", tags=["Audit"])
+    app.include_router(vendor_router, prefix=f"{prefix}/audit", tags=["Vendor"])
+    app.include_router(rules_router, prefix=f"{prefix}/rules", tags=["Rules"])

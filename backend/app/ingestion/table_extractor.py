@@ -1,7 +1,8 @@
 """Tabular data extraction and markdown normalizer using pdfplumber."""
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
+
 import pdfplumber
 from pydantic import BaseModel, Field
 
@@ -10,15 +11,15 @@ class ExtractedTable(BaseModel):
     """Normalized structured table representation."""
     page_number: int
     table_type: str = Field(description="BOM, MEASUREMENTS, GRADING, or GENERIC")
-    headers: List[str]
-    rows: List[Dict[str, Any]]
+    headers: list[str]
+    rows: list[dict[str, Any]]
     markdown: str
 
 
 class TableExtractionResult(BaseModel):
     """Aggregate result of table extraction across a PDF."""
     total_tables: int
-    tables: List[ExtractedTable]
+    tables: list[ExtractedTable]
 
 
 class TableExtractor:
@@ -57,7 +58,7 @@ class TableExtractor:
         cleaned = re.sub(r"\s+", " ", cleaned).strip()
         return self.HEADER_MAPPINGS.get(cleaned, cleaned.replace(" ", "_"))
 
-    def _detect_table_type(self, headers: List[str]) -> str:
+    def _detect_table_type(self, headers: list[str]) -> str:
         """Infer table category based on standardized headers."""
         header_set = set(headers)
         if any(k in header_set for k in ["pom_code", "spec_cm", "tolerance_cm"]):
@@ -68,12 +69,12 @@ class TableExtractor:
             return "GRADING"
         return "GENERIC"
 
-    def _to_markdown_table(self, headers: List[str], data_rows: List[List[Any]]) -> str:
+    def _to_markdown_table(self, headers: list[str], data_rows: list[list[Any]]) -> str:
         """Convert headers and rows into clean GitHub-Flavored Markdown."""
         str_headers = [str(h) for h in headers]
         col_widths = [len(h) for h in str_headers]
 
-        formatted_rows: List[List[str]] = []
+        formatted_rows: list[list[str]] = []
         for row in data_rows:
             row_strs = [str(val if val is not None else "").strip() for val in row]
             # Ensure row length matches headers
@@ -86,7 +87,7 @@ class TableExtractor:
 
         header_line = "| " + " | ".join(h.ljust(col_widths[i]) for i, h in enumerate(str_headers)) + " |"
         sep_line = "|-" + "-|-".join("-" * col_widths[i] for i in range(len(headers))) + "-|"
-        
+
         row_lines = [
             "| " + " | ".join(cell.ljust(col_widths[i]) for i, cell in enumerate(r)) + " |"
             for r in formatted_rows
@@ -99,7 +100,7 @@ class TableExtractor:
         if not path.exists():
             raise FileNotFoundError(f"PDF not found: {path}")
 
-        extracted_tables: List[ExtractedTable] = []
+        extracted_tables: list[ExtractedTable] = []
 
         with pdfplumber.open(str(path)) as pdf:
             for page_idx, page in enumerate(pdf.pages):
@@ -114,13 +115,13 @@ class TableExtractor:
                     normalized_headers = [self._normalize_header(h) for h in raw_headers]
                     table_type = self._detect_table_type(normalized_headers)
 
-                    data_rows: List[Dict[str, Any]] = []
-                    raw_data_rows: List[List[Any]] = []
+                    data_rows: list[dict[str, Any]] = []
+                    raw_data_rows: list[list[Any]] = []
 
                     for row in table[1:]:
                         if not any(row):  # Skip all-None empty rows
                             continue
-                        row_dict: Dict[str, Any] = {}
+                        row_dict: dict[str, Any] = {}
                         raw_data_rows.append(row)
                         for col_idx, norm_header in enumerate(normalized_headers):
                             val = row[col_idx] if col_idx < len(row) else None

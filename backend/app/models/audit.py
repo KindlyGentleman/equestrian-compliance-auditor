@@ -1,6 +1,6 @@
 """Data models for Compliance Findings, Scorecards, and Vendor Actions."""
-from datetime import datetime, timezone
-from typing import Dict, List, Optional
+from datetime import UTC, datetime
+
 from pydantic import BaseModel, Field
 
 from backend.app.models.tech_pack import ComplianceStatus, Discipline, GarmentType
@@ -31,13 +31,13 @@ class AuditFinding(BaseModel):
     source_citation: str = Field(description="Verbatim excerpt from rulebook or SOP")
     source_rulebook: str = Field(description="e.g. FEI Jumping Rules, Art. 256.3.1")
     remedy_suggestion: str = Field(description="Actionable advice for vendor or designer")
-    page_number: Optional[int] = Field(default=1, description="Source page in tech pack PDF")
-    bounding_box: Optional[List[float]] = Field(default=None, description="[x0, y0, x1, y1] on page")
+    page_number: int | None = Field(default=1, description="Source page in tech pack PDF")
+    bounding_box: list[float] | None = Field(default=None, description="[x0, y0, x1, y1] on page")
 
 
 class VerifiedFinding(AuditFinding):
     is_verbatim_verified: bool = Field(default=False)
-    verification_notes: Optional[str] = None
+    verification_notes: str | None = None
 
 
 class CategoryScore(BaseModel):
@@ -56,9 +56,9 @@ class PreliminaryAuditReport(BaseModel):
     overall_status: ComplianceStatus
     overall_score_pct: float = Field(ge=0.0, le=100.0)
     execution_time_seconds: float
-    timestamp: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
-    category_scores: List[CategoryScore] = Field(default_factory=list)
-    findings: List[AuditFinding] = Field(default_factory=list)
+    timestamp: str = Field(default_factory=lambda: datetime.now(UTC).isoformat())
+    category_scores: list[CategoryScore] = Field(default_factory=list)
+    findings: list[AuditFinding] = Field(default_factory=list)
 
 
 class AuditScorecard(BaseModel):
@@ -70,10 +70,10 @@ class AuditScorecard(BaseModel):
     overall_status: ComplianceStatus
     overall_score_pct: float = Field(ge=0.0, le=100.0)
     execution_time_seconds: float
-    timestamp: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
-    category_scores: List[CategoryScore] = Field(default_factory=list)
-    findings: List[VerifiedFinding] = Field(default_factory=list)
-    vendor_revision_notes: Optional[str] = None
+    timestamp: str = Field(default_factory=lambda: datetime.now(UTC).isoformat())
+    category_scores: list[CategoryScore] = Field(default_factory=list)
+    findings: list[VerifiedFinding] = Field(default_factory=list)
+    vendor_revision_notes: str | None = None
 
 
 class VendorRevisionItem(BaseModel):
@@ -88,9 +88,9 @@ class VendorRevisionDocument(BaseModel):
     tech_pack_id: str
     style_code: str
     style_name: str
-    generated_date: str = Field(default_factory=lambda: datetime.now(timezone.utc).strftime("%Y-%m-%d"))
+    generated_date: str = Field(default_factory=lambda: datetime.now(UTC).strftime("%Y-%m-%d"))
     summary: str
-    action_items: List[VendorRevisionItem] = Field(default_factory=list)
+    action_items: list[VendorRevisionItem] = Field(default_factory=list)
     markdown_content: str
     email_draft_content: str
 

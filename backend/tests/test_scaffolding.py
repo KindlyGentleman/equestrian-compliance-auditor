@@ -1,12 +1,11 @@
 """Automated verification test for TICK-0101: Project Scaffolding & Environment."""
-import os
 from pathlib import Path
 
 
 def test_directory_structure():
     """Verify that all core project directories and module markers exist."""
     base_dir = Path(__file__).resolve().parent.parent.parent
-    
+
     expected_dirs = [
         base_dir / "backend" / "app" / "api",
         base_dir / "backend" / "app" / "core",
@@ -20,11 +19,11 @@ def test_directory_structure():
         base_dir / "frontend",
         base_dir / "tickets",
     ]
-    
+
     for directory in expected_dirs:
         assert directory.exists(), f"Missing required directory: {directory}"
         assert directory.is_dir(), f"Expected a directory, found file: {directory}"
-        
+
     expected_init_files = [
         base_dir / "backend" / "app" / "__init__.py",
         base_dir / "backend" / "app" / "api" / "__init__.py",
@@ -35,7 +34,7 @@ def test_directory_structure():
         base_dir / "backend" / "app" / "engine" / "__init__.py",
         base_dir / "backend" / "tests" / "__init__.py",
     ]
-    
+
     for init_file in expected_init_files:
         assert init_file.exists(), f"Missing module marker: {init_file}"
 
@@ -45,7 +44,7 @@ def test_gitignore_rules():
     base_dir = Path(__file__).resolve().parent.parent.parent
     gitignore_path = base_dir / ".gitignore"
     assert gitignore_path.exists(), ".gitignore file must exist"
-    
+
     content = gitignore_path.read_text(encoding="utf-8")
     critical_patterns = [
         ".venv",

@@ -1,7 +1,6 @@
 """Automated Vendor Action Generator synthesizing supplier revision notes and email drafts."""
-from datetime import datetime, timezone
 import logging
-from typing import Dict, List
+from datetime import UTC, datetime
 
 from backend.app.models.audit import (
     AuditScorecard,
@@ -22,7 +21,6 @@ class VendorActionGenerator:
         """Route finding to the responsible vendor or atelier team."""
         cat = finding.category
         title_lower = finding.title.lower()
-        obs_lower = finding.observed_value.lower()
 
         if cat == FindingCategory.BRANDING_LOGO:
             return "Embroidery & Trim Supplier"
@@ -61,7 +59,7 @@ class VendorActionGenerator:
 
     def generate_notes(self, scorecard: AuditScorecard) -> VendorRevisionDocument:
         """Generate structured action items, markdown report, and email draft."""
-        action_items: List[VendorRevisionItem] = []
+        action_items: list[VendorRevisionItem] = []
 
         # Only create action items for non-PASS findings
         actionable_findings = [
@@ -89,7 +87,7 @@ class VendorActionGenerator:
             )
 
         # Generate Markdown Document
-        today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        today_str = datetime.now(UTC).strftime("%Y-%m-%d")
         md_lines = [
             f"# Technical Package Revision Request: {scorecard.style_name} ({scorecard.style_code})",
             f"**Audit Status:** {scorecard.overall_status.value} | **Compliance Score:** {scorecard.overall_score_pct}% | **Date:** {today_str}",
@@ -103,7 +101,7 @@ class VendorActionGenerator:
         ]
 
         # Group by target team
-        teams: Dict[str, List[VendorRevisionItem]] = {}
+        teams: dict[str, list[VendorRevisionItem]] = {}
         for item in action_items:
             teams.setdefault(item.target_team, []).append(item)
 
@@ -125,7 +123,7 @@ class VendorActionGenerator:
         email_lines = [
             f"Subject: Revision Required: Technical Specification for Style {scorecard.style_code} ({scorecard.style_name})",
             "",
-            f"Dear Partner,",
+            "Dear Partner,",
             "",
             f"The compliance review for technical specification {scorecard.style_code} ({scorecard.style_name}) has concluded.",
             f"Current Compliance Status: {scorecard.overall_status.value} ({scorecard.overall_score_pct}%).",

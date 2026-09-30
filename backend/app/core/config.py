@@ -1,35 +1,35 @@
 """Centralized configuration management using Pydantic Settings."""
 from pathlib import Path
 from typing import Literal
-from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 class Settings(BaseSettings):
     """Application settings with environment variable overrides."""
-    
+
     # App General
     APP_NAME: str = "Equestrian Compliance & Specification Auditor"
     APP_ENV: Literal["development", "testing", "production"] = "development"
     DEBUG: bool = True
     PORT: int = 8000
     HOST: str = "0.0.0.0"
-    
+
     # Gemini API
     GEMINI_API_KEY: str = ""
     GEMINI_MODEL_NAME: str = "gemini-2.0-flash"
     GEMINI_EMBEDDING_MODEL: str = "text-embedding-004"
     USE_MOCK_LLM: bool = False
-    
+
     # Storage Directories
     QDRANT_STORAGE_PATH: str = str(BASE_DIR / "storage" / "qdrant")
     QDRANT_COLLECTION_NAME: str = "equestrian_regulations"
     UPLOAD_DIR: str = str(BASE_DIR / "storage" / "uploads")
     CACHE_DIR: str = str(BASE_DIR / "storage" / "cache")
     FIGURE_EXPORT_DIR: str = str(BASE_DIR / "storage" / "figures")
-    
+
     # Rules & Knowledge Base
     REGULATIONS_DIR: str = str(BASE_DIR / "app" / "data" / "regulations")
     FEI_REGULATIONS_DIR: str = str(BASE_DIR / "app" / "data" / "regulations" / "fei")
