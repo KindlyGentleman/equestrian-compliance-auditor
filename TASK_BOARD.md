@@ -21,8 +21,8 @@
 | **Stage 5** | Dual-Layer Comparative Audit Engine | 3 | 0 | 0 | 3 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 6** | Verifier Gate & Vendor Action Generator | 4 | 0 | 0 | 4 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 7** | FastAPI Backend & Endpoints | 5 | 0 | 0 | 5 | 0 | 0 | `[TESTED_BY_AI]` |
-| **Stage 8** | Next.js Luxury UI & Split-Screen | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
-| **Total** | **All Stages** | **34** | **5** | **0** | **29** | **0** | **0** | `85% Tested by AI` |
+| **Stage 8** | Next.js Luxury UI & Split-Screen | 5 | 0 | 0 | 5 | 0 | 0 | `[TESTED_BY_AI]` |
+| **Total** | **All Stages** | **34** | **0** | **0** | **34** | **0** | **0** | `100% Tested by AI` |
 
 ---
 
@@ -72,11 +72,11 @@
 - [x] [TICK-0705](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0705-rules-management-endpoints.md) — Regulatory catalog and brand SOP inspection endpoints (`GET /api/rules`) `[TESTED_BY_AI]`
 
 ### STAGE 8: Next.js Luxury UI & Split-Screen Experience
-- [ ] [TICK-0801](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0801-nextjs-luxury-scaffolding.md) — Next.js 14 App Router project setup with Luxury equestrian minimalist theme (dark/light, refined typography) `[BACKLOG]`
-- [ ] [TICK-0802](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0802-split-screen-pdf-viewer.md) — Side-by-side interactive PDF viewer with page jump and region highlighting `[BACKLOG]`
-- [ ] [TICK-0803](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0803-interactive-scorecard-ui.md) — Interactive Audit Scorecard component with Pass/Warning/Violation badges and collapsible citations `[BACKLOG]`
-- [ ] [TICK-0804](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0804-vendor-action-modal-ui.md) — Vendor Action Note preview, inline editor, and one-click copy/download modal `[BACKLOG]`
-- [ ] [TICK-0805](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0805-end-to-end-stakeholder-demo.md) — Stakeholder demo verification test (under 2-minute executive walkthrough readiness) `[BACKLOG]`
+- [x] [TICK-0801](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0801-nextjs-luxury-scaffolding.md) — Next.js 14 App Router project setup with Luxury equestrian minimalist theme (dark/light, refined typography) `[TESTED_BY_AI]`
+- [x] [TICK-0802](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0802-split-screen-pdf-viewer.md) — Side-by-side interactive PDF viewer with page jump and region highlighting `[TESTED_BY_AI]`
+- [x] [TICK-0803](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0803-interactive-scorecard-ui.md) — Interactive Audit Scorecard component with Pass/Warning/Violation badges and collapsible citations `[TESTED_BY_AI]`
+- [x] [TICK-0804](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0804-vendor-action-modal-ui.md) — Vendor Action Note preview, inline editor, and one-click copy/download modal `[TESTED_BY_AI]`
+- [x] [TICK-0805](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0805-end-to-end-stakeholder-demo.md) — Stakeholder demo verification test (under 2-minute executive walkthrough readiness) `[TESTED_BY_AI]`
 
 ---
 

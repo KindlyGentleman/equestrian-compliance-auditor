@@ -47,10 +47,10 @@
     {"id": "TICK-0704", "stage": "Stage 7", "title": "Vendor Revision Notes Export Endpoint", "status": "TESTED_BY_AI", "file": "tickets/TICK-0704-vendor-export-endpoints.md"},
     {"id": "TICK-0705", "stage": "Stage 7", "title": "Regulatory Catalog & Brand SOP Inspection Endpoints", "status": "TESTED_BY_AI", "file": "tickets/TICK-0705-rules-management-endpoints.md"},
 
-    {"id": "TICK-0801", "stage": "Stage 8", "title": "Next.js 14 Luxury Theme Setup & Layout Skeleton", "status": "BACKLOG", "file": "tickets/TICK-0801-nextjs-luxury-scaffolding.md"},
-    {"id": "TICK-0802", "stage": "Stage 8", "title": "Side-by-Side Interactive PDF Viewer Component", "status": "BACKLOG", "file": "tickets/TICK-0802-split-screen-pdf-viewer.md"},
-    {"id": "TICK-0803", "stage": "Stage 8", "title": "Interactive Audit Scorecard Component", "status": "BACKLOG", "file": "tickets/TICK-0803-interactive-scorecard-ui.md"},
-    {"id": "TICK-0804", "stage": "Stage 8", "title": "Vendor Action Note Modal & One-Click Export UI", "status": "BACKLOG", "file": "tickets/TICK-0804-vendor-action-modal-ui.md"},
-    {"id": "TICK-0805", "stage": "Stage 8", "title": "Stakeholder Demo Verification Test (< 2-Minute Walkthrough)", "status": "BACKLOG", "file": "tickets/TICK-0805-end-to-end-stakeholder-demo.md"}
+    {"id": "TICK-0801", "stage": "Stage 8", "title": "Next.js 14 Luxury Theme Setup & Layout Skeleton", "status": "TESTED_BY_AI", "file": "tickets/TICK-0801-nextjs-luxury-scaffolding.md"},
+    {"id": "TICK-0802", "stage": "Stage 8", "title": "Side-by-Side Interactive PDF Viewer Component", "status": "TESTED_BY_AI", "file": "tickets/TICK-0802-split-screen-pdf-viewer.md"},
+    {"id": "TICK-0803", "stage": "Stage 8", "title": "Interactive Audit Scorecard Component", "status": "TESTED_BY_AI", "file": "tickets/TICK-0803-interactive-scorecard-ui.md"},
+    {"id": "TICK-0804", "stage": "Stage 8", "title": "Vendor Action Note Modal & One-Click Export UI", "status": "TESTED_BY_AI", "file": "tickets/TICK-0804-vendor-action-modal-ui.md"},
+    {"id": "TICK-0805", "stage": "Stage 8", "title": "Stakeholder Demo Verification Test (< 2-Minute Walkthrough)", "status": "TESTED_BY_AI", "file": "tickets/TICK-0805-end-to-end-stakeholder-demo.md"}
   ]
 }

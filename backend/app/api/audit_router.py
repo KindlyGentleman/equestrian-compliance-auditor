@@ -24,6 +24,63 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
+@router.post("/sample", response_model=Dict[str, Any])
+async def load_sample_tech_pack() -> Dict[str, Any]:
+    """Generate or retrieve the canonical Grand Prix Show Coat tech pack and run audit."""
+    pipeline_start = time.perf_counter()
+    audit_id = f"aud_{uuid.uuid4().hex[:12]}"
+    upload_dir = Path(settings.UPLOAD_DIR)
+    upload_dir.mkdir(parents=True, exist_ok=True)
+    sample_pdf_path = upload_dir / f"{audit_id}_grand_prix_show_coat_ss26.pdf"
+
+    from backend.app.api.sample_generator import create_sample_techpack_pdf
+    create_sample_techpack_pdf(sample_pdf_path)
+
+    # 1. Ingestion Pipeline
+    ingest_result = ingestion_pipeline.process(sample_pdf_path)
+
+    # 2. Structuring and Sanitizing
+    sanitized_pack = await structuring_service.extract_spec_async(
+        markdown_content=ingest_result.full_markdown,
+        figures=ingest_result.figures,
+        source_pdf_name="grand_prix_show_coat_ss26.pdf",
+        page_count=ingest_result.total_pages,
+    )
+    clean_spec = sanitized_pack.spec
+
+    # 3. Dual-Layer Audit Engine
+    prelim_report = await audit_coordinator.run_audit_async(clean_spec)
+
+    # 4. Citation Verifier Gate
+    verified_findings = citation_verifier.verify_all(prelim_report.findings)
+
+    # 5. Scorecard Generation
+    total_elapsed = time.perf_counter() - pipeline_start
+    scorecard = scorecard_generator.generate(
+        tech_pack_id=f"TP-{clean_spec.metadata.style_code}",
+        verified_findings=verified_findings,
+        spec=clean_spec,
+        execution_time_seconds=total_elapsed,
+    )
+
+    # 6. Save in persistent audit store
+    record = AuditRecord(
+        audit_id=audit_id,
+        scorecard=scorecard,
+        spec=clean_spec,
+        pdf_path=str(sample_pdf_path),
+    )
+    audit_store.save(record)
+
+    logger.info("Sample audit completed for %s in %.2fs -> %s", audit_id, total_elapsed, scorecard.overall_status)
+    return {
+        "audit_id": audit_id,
+        "scorecard": scorecard.model_dump(),
+        "spec": clean_spec.model_dump(),
+        "execution_time_seconds": round(total_elapsed, 3),
+    }
+
+
 @router.post("/upload", response_model=Dict[str, Any])
 async def upload_and_audit_tech_pack(file: UploadFile = File(...)) -> Dict[str, Any]:
     """Upload tech pack PDF and execute full compliance audit pipeline."""
