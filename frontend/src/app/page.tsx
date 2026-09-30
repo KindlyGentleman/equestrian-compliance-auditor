@@ -174,6 +174,7 @@ export default function AtelierDashboard() {
           >
             <AuditScorecard
               scorecard={scorecard}
+              auditId={currentAuditId}
               onJumpToPage={handleJumpToPage}
               onOpenVendorNotes={() => setIsVendorModalOpen(true)}
               isLoading={isLoading}

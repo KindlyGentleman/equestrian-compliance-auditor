@@ -13,11 +13,14 @@ import {
   Clock,
   ClipboardCheck,
   Layers,
+  Award,
 } from "lucide-react";
 import { AuditScorecard as ScorecardType, ComplianceStatus, VerifiedFinding } from "@/types";
+import { api } from "@/lib/api";
 
 interface AuditScorecardProps {
   scorecard: ScorecardType | null;
+  auditId?: string | null;
   onJumpToPage: (page: number, category: string) => void;
   onOpenVendorNotes: () => void;
   isLoading: boolean;
@@ -25,6 +28,7 @@ interface AuditScorecardProps {
 
 export function AuditScorecard({
   scorecard,
+  auditId,
   onJumpToPage,
   onOpenVendorNotes,
   isLoading,
@@ -129,14 +133,28 @@ export function AuditScorecard({
             </h2>
           </div>
 
-          <button
-            type="button"
-            onClick={onOpenVendorNotes}
-            className="min-h-[40px] inline-flex items-center justify-center space-x-2 rounded-lg bg-equestrian-forest px-3.5 py-2 text-xs font-semibold text-white shadow-xs hover:bg-equestrian-emerald transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-luxury-brass shrink-0"
-          >
-            <ClipboardCheck className="h-4 w-4 text-luxury-gold" />
-            <span>Vendor Action Plan</span>
-          </button>
+          <div className="flex items-center space-x-2 shrink-0">
+            {auditId && (
+              <a
+                href={api.getCertificateUrl(auditId)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-[40px] inline-flex items-center justify-center space-x-1.5 rounded-lg border border-luxury-brass/50 bg-white px-3 py-2 text-xs font-semibold text-luxury-slate shadow-2xs hover:bg-luxury-parchment hover:border-luxury-brass transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-luxury-brass"
+                title="Download Official FEI Compliance Certificate PDF"
+              >
+                <Award className="h-4 w-4 text-luxury-brass" />
+                <span>Certificate</span>
+              </a>
+            )}
+            <button
+              type="button"
+              onClick={onOpenVendorNotes}
+              className="min-h-[40px] inline-flex items-center justify-center space-x-2 rounded-lg bg-equestrian-forest px-3.5 py-2 text-xs font-semibold text-white shadow-xs hover:bg-equestrian-emerald transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-luxury-brass"
+            >
+              <ClipboardCheck className="h-4 w-4 text-luxury-gold" />
+              <span>Vendor Action Plan</span>
+            </button>
+          </div>
         </div>
 
         {/* Executive Status KPI Banner */}

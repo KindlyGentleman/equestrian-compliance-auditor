@@ -58,7 +58,7 @@ def generate_vendor_pdf_letterhead(doc_data) -> bytes:
     return pdf_bytes
 
 
-@router.post("/{audit_id}/export-vendor-notes")
+@router.api_route("/{audit_id}/export-vendor-notes", methods=["GET", "POST"])
 def export_vendor_notes(
     audit_id: str,
     format: str = Query("markdown", pattern="^(markdown|text|pdf)$"),

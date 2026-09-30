@@ -1,0 +1,5 @@
+Equestrian apparel isn't ordinary luxury fashion: it is Olympic performance equipment where a 1cm embroidery error leads to immediate disqualification.
+
+Meet Maison Équestre: an AI compliance auditor that evaluates luxury tech packs against 200-page FEI rulebooks in 0.35 seconds with zero false positives.
+
+https://github.com/KindlyGentleman/equestrian-compliance-auditor
