@@ -31,6 +31,7 @@ class Settings(BaseSettings):
     FIGURE_EXPORT_DIR: str = str(BASE_DIR / "storage" / "figures")
     
     # Rules & Knowledge Base
+    REGULATIONS_DIR: str = str(BASE_DIR / "app" / "data" / "regulations")
     FEI_REGULATIONS_DIR: str = str(BASE_DIR / "app" / "data" / "regulations" / "fei")
     BRAND_SOPS_DIR: str = str(BASE_DIR / "app" / "data" / "regulations" / "brand")
     RULES_CATALOG_PATH: str = str(BASE_DIR / "app" / "data" / "rules_catalog.json")

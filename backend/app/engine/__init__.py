@@ -1,7 +1,11 @@
-"""Compliance audit, structuring, and dual-layer comparative engines."""
+"""Compliance audit, structuring, verifier gate, and vendor actions."""
 from backend.app.engine.audit_coordinator import (
     AuditCoordinator,
     audit_coordinator,
+)
+from backend.app.engine.citation_verifier import (
+    CitationVerifier,
+    citation_verifier,
 )
 from backend.app.engine.deterministic_engine import (
     DeterministicEngine,
@@ -13,6 +17,10 @@ from backend.app.engine.sanitizer import (
     TechPackSanitizer,
     tech_pack_sanitizer,
 )
+from backend.app.engine.scorecard_generator import (
+    ScorecardGenerator,
+    scorecard_generator,
+)
 from backend.app.engine.semantic_reasoner import (
     SemanticReasoner,
     semantic_reasoner,
@@ -20,6 +28,10 @@ from backend.app.engine.semantic_reasoner import (
 from backend.app.engine.structuring_service import (
     StructuringService,
     structuring_service,
+)
+from backend.app.engine.vendor_action_generator import (
+    VendorActionGenerator,
+    vendor_action_generator,
 )
 
 __all__ = [
@@ -35,4 +47,10 @@ __all__ = [
     "semantic_reasoner",
     "AuditCoordinator",
     "audit_coordinator",
+    "CitationVerifier",
+    "citation_verifier",
+    "ScorecardGenerator",
+    "scorecard_generator",
+    "VendorActionGenerator",
+    "vendor_action_generator",
 ]

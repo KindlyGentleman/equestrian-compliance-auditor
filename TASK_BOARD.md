@@ -19,10 +19,10 @@
 | **Stage 3** | Pydantic Schema & Structuring | 4 | 0 | 0 | 4 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 4** | Regulatory Knowledge Base & RAG | 5 | 0 | 0 | 5 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 5** | Dual-Layer Comparative Audit Engine | 3 | 0 | 0 | 3 | 0 | 0 | `[TESTED_BY_AI]` |
-| **Stage 6** | Verifier Gate & Vendor Action Generator | 4 | 4 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
+| **Stage 6** | Verifier Gate & Vendor Action Generator | 4 | 0 | 0 | 4 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 7** | FastAPI Backend & Endpoints | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
 | **Stage 8** | Next.js Luxury UI & Split-Screen | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
-| **Total** | **All Stages** | **34** | **14** | **0** | **20** | **0** | **0** | `59% Tested by AI` |
+| **Total** | **All Stages** | **34** | **10** | **0** | **24** | **0** | **0** | `71% Tested by AI` |
 
 ---
 
@@ -59,10 +59,10 @@
 - [x] [TICK-0503](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0503-audit-engine-coordinator.md) — Audit Engine Coordinator (orchestrating Layer 1 and Layer 2 outputs into unified findings) `[TESTED_BY_AI]`
 
 ### STAGE 6: Zero-False-Positive Verifier Gate & Vendor Action Generator (FR-5 & FR-6)
-- [ ] [TICK-0601](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0601-citation-verifier-gate.md) — Automated Verbatim Citation Verifier Gate (validating that semantic citations exist verbatim in source text, auto-downgrading unverified flags to `MANUAL_REVIEW`) `[BACKLOG]`
-- [ ] [TICK-0602](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0602-audit-scorecard-generator.md) — Audit Scorecard generator with visual status indicators (PASS / WARNING / VIOLATION / MANUAL_REVIEW) `[BACKLOG]`
-- [ ] [TICK-0603](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0603-vendor-action-generator.md) — Automated Vendor Action Generator synthesizing supplier revision notes with exact remediation instructions `[BACKLOG]`
-- [ ] [TICK-0604](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0604-end-to-end-audit-benchmark.md) — End-to-end benchmark test (< 30s latency, 100% ground-truth accuracy, zero false positives) `[BACKLOG]`
+- [x] [TICK-0601](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0601-citation-verifier-gate.md) — Automated Verbatim Citation Verifier Gate (validating that semantic citations exist verbatim in source text, auto-downgrading unverified flags to `MANUAL_REVIEW`) `[TESTED_BY_AI]`
+- [x] [TICK-0602](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0602-audit-scorecard-generator.md) — Audit Scorecard generator with visual status indicators (PASS / WARNING / VIOLATION / MANUAL_REVIEW) `[TESTED_BY_AI]`
+- [x] [TICK-0603](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0603-vendor-action-generator.md) — Automated Vendor Action Generator synthesizing supplier revision notes with exact remediation instructions `[TESTED_BY_AI]`
+- [x] [TICK-0604](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0604-end-to-end-audit-benchmark.md) — End-to-end benchmark test (< 30s latency, 100% ground-truth accuracy, zero false positives) `[TESTED_BY_AI]`
 
 ### STAGE 7: FastAPI Backend & API Integration
 - [ ] [TICK-0701](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0701-fastapi-scaffolding.md) — FastAPI application setup, CORS, lifespan handlers, and structured error middleware `[BACKLOG]`

@@ -1,12 +1,12 @@
 {
   "project": "Equestrian Compliance & Specification Auditor",
   "version": "1.0.0",
-  "last_updated": "2026-09-30T20:21:00+07:00",
+  "last_updated": "2026-09-30T20:26:00+07:00",
   "status_summary": {
     "total": 34,
-    "backlog": 14,
+    "backlog": 10,
     "in_progress": 0,
-    "tested_by_ai": 20,
+    "tested_by_ai": 24,
     "human_review_pending": 0,
     "done": 0
   },
@@ -36,10 +36,10 @@
     {"id": "TICK-0502", "stage": "Stage 5", "title": "Layer 2 Semantic Reasoner", "status": "TESTED_BY_AI", "file": "tickets/TICK-0502-layer2-semantic-reasoner.md"},
     {"id": "TICK-0503", "stage": "Stage 5", "title": "Audit Engine Coordinator", "status": "TESTED_BY_AI", "file": "tickets/TICK-0503-audit-engine-coordinator.md"},
 
-    {"id": "TICK-0601", "stage": "Stage 6", "title": "Automated Verbatim Citation Verifier Gate", "status": "BACKLOG", "file": "tickets/TICK-0601-citation-verifier-gate.md"},
-    {"id": "TICK-0602", "stage": "Stage 6", "title": "Audit Scorecard Model & Visual Status Aggregator", "status": "BACKLOG", "file": "tickets/TICK-0602-audit-scorecard-generator.md"},
-    {"id": "TICK-0603", "stage": "Stage 6", "title": "Automated Vendor Action Generator", "status": "BACKLOG", "file": "tickets/TICK-0603-vendor-action-generator.md"},
-    {"id": "TICK-0604", "stage": "Stage 6", "title": "Full Audit Engine End-to-End Latency & Accuracy Test", "status": "BACKLOG", "file": "tickets/TICK-0604-end-to-end-audit-benchmark.md"},
+    {"id": "TICK-0601", "stage": "Stage 6", "title": "Automated Verbatim Citation Verifier Gate", "status": "TESTED_BY_AI", "file": "tickets/TICK-0601-citation-verifier-gate.md"},
+    {"id": "TICK-0602", "stage": "Stage 6", "title": "Audit Scorecard Model & Visual Status Aggregator", "status": "TESTED_BY_AI", "file": "tickets/TICK-0602-audit-scorecard-generator.md"},
+    {"id": "TICK-0603", "stage": "Stage 6", "title": "Automated Vendor Action Generator", "status": "TESTED_BY_AI", "file": "tickets/TICK-0603-vendor-action-generator.md"},
+    {"id": "TICK-0604", "stage": "Stage 6", "title": "Full Audit Engine End-to-End Latency & Accuracy Test", "status": "TESTED_BY_AI", "file": "tickets/TICK-0604-end-to-end-audit-benchmark.md"},
 
     {"id": "TICK-0701", "stage": "Stage 7", "title": "FastAPI Application Scaffolding & Middleware", "status": "BACKLOG", "file": "tickets/TICK-0701-fastapi-scaffolding.md"},
     {"id": "TICK-0702", "stage": "Stage 7", "title": "Tech Pack Upload & Audit Execution Endpoint", "status": "BACKLOG", "file": "tickets/TICK-0702-upload-audit-endpoint.md"},
