@@ -1,12 +1,12 @@
 {
   "project": "Equestrian Compliance & Specification Auditor",
   "version": "1.0.0",
-  "last_updated": "2026-09-30T20:26:00+07:00",
+  "last_updated": "2026-09-30T20:33:00+07:00",
   "status_summary": {
     "total": 34,
-    "backlog": 10,
+    "backlog": 5,
     "in_progress": 0,
-    "tested_by_ai": 24,
+    "tested_by_ai": 29,
     "human_review_pending": 0,
     "done": 0
   },
@@ -41,11 +41,11 @@
     {"id": "TICK-0603", "stage": "Stage 6", "title": "Automated Vendor Action Generator", "status": "TESTED_BY_AI", "file": "tickets/TICK-0603-vendor-action-generator.md"},
     {"id": "TICK-0604", "stage": "Stage 6", "title": "Full Audit Engine End-to-End Latency & Accuracy Test", "status": "TESTED_BY_AI", "file": "tickets/TICK-0604-end-to-end-audit-benchmark.md"},
 
-    {"id": "TICK-0701", "stage": "Stage 7", "title": "FastAPI Application Scaffolding & Middleware", "status": "BACKLOG", "file": "tickets/TICK-0701-fastapi-scaffolding.md"},
-    {"id": "TICK-0702", "stage": "Stage 7", "title": "Tech Pack Upload & Audit Execution Endpoint", "status": "BACKLOG", "file": "tickets/TICK-0702-upload-audit-endpoint.md"},
-    {"id": "TICK-0703", "stage": "Stage 7", "title": "Scorecard Query & History Endpoints", "status": "BACKLOG", "file": "tickets/TICK-0703-scorecard-query-endpoints.md"},
-    {"id": "TICK-0704", "stage": "Stage 7", "title": "Vendor Revision Notes Export Endpoint", "status": "BACKLOG", "file": "tickets/TICK-0704-vendor-export-endpoints.md"},
-    {"id": "TICK-0705", "stage": "Stage 7", "title": "Regulatory Catalog & Brand SOP Inspection Endpoints", "status": "BACKLOG", "file": "tickets/TICK-0705-rules-management-endpoints.md"},
+    {"id": "TICK-0701", "stage": "Stage 7", "title": "FastAPI Application Scaffolding & Middleware", "status": "TESTED_BY_AI", "file": "tickets/TICK-0701-fastapi-scaffolding.md"},
+    {"id": "TICK-0702", "stage": "Stage 7", "title": "Tech Pack Upload & Audit Execution Endpoint", "status": "TESTED_BY_AI", "file": "tickets/TICK-0702-upload-audit-endpoint.md"},
+    {"id": "TICK-0703", "stage": "Stage 7", "title": "Scorecard Query & History Endpoints", "status": "TESTED_BY_AI", "file": "tickets/TICK-0703-scorecard-query-endpoints.md"},
+    {"id": "TICK-0704", "stage": "Stage 7", "title": "Vendor Revision Notes Export Endpoint", "status": "TESTED_BY_AI", "file": "tickets/TICK-0704-vendor-export-endpoints.md"},
+    {"id": "TICK-0705", "stage": "Stage 7", "title": "Regulatory Catalog & Brand SOP Inspection Endpoints", "status": "TESTED_BY_AI", "file": "tickets/TICK-0705-rules-management-endpoints.md"},
 
     {"id": "TICK-0801", "stage": "Stage 8", "title": "Next.js 14 Luxury Theme Setup & Layout Skeleton", "status": "BACKLOG", "file": "tickets/TICK-0801-nextjs-luxury-scaffolding.md"},
     {"id": "TICK-0802", "stage": "Stage 8", "title": "Side-by-Side Interactive PDF Viewer Component", "status": "BACKLOG", "file": "tickets/TICK-0802-split-screen-pdf-viewer.md"},

@@ -3,7 +3,7 @@
 
 - **Ticket ID**: `TICK-0705`
 - **Stage**: Stage 7: FastAPI Backend & API Integration
-- **Status**: `[BACKLOG]`
+- **Status**: `[TESTED_BY_AI]`
 - **Assigned To**: Antigravity (AI Agent)
 - **Reviewer**: User (Human)
 - **Dependencies**: `TICK-0403`, `TICK-0701`
@@ -17,9 +17,9 @@ Implement reference inspection endpoints in `backend/app/api/rules_router.py`:
 - `POST /api/rules/search`: Performs ad-hoc hybrid semantic search across the FEI regulation and Brand SOP knowledge base.
 
 ### Subtasks
-- [ ] Implement `GET /api/rules` with query filters (`discipline`, `category`).
-- [ ] Implement `GET /api/rules/{id}` returning specific rule details.
-- [ ] Implement `POST /api/rules/search` exposing the hybrid retriever for user reference queries.
+- [x] Implement `GET /api/rules` with query filters (`discipline`, `category`).
+- [x] Implement `GET /api/rules/{id}` returning specific rule details.
+- [x] Implement `POST /api/rules/search` exposing the hybrid retriever for user reference queries.
 
 ### AI Testing Plan
 - Test rules listing endpoint: verify all catalog rules are returned.
@@ -30,4 +30,6 @@ Implement reference inspection endpoints in `backend/app/api/rules_router.py`:
 - [ ] Verify search endpoint accurately handles user queries.
 
 ### Work Log & Evidence
-- Status: `[BACKLOG]`
+- Status: `[TESTED_BY_AI]`
+- Automated tests in `backend/tests/test_api_endpoints.py`:
+  - `test_rules_catalog_endpoints`: PASSED (verified rules listing, discipline filtering, ID lookup, and hybrid semantic search).

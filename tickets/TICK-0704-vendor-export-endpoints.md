@@ -3,7 +3,7 @@
 
 - **Ticket ID**: `TICK-0704`
 - **Stage**: Stage 7: FastAPI Backend & API Integration
-- **Status**: `[BACKLOG]`
+- **Status**: `[TESTED_BY_AI]`
 - **Assigned To**: Antigravity (AI Agent)
 - **Reviewer**: User (Human)
 - **Dependencies**: `TICK-0702`
@@ -14,9 +14,9 @@
 Implement export endpoints in `backend/app/api/vendor_router.py`: `POST /api/audit/{id}/export-vendor-notes`. Supports exporting generated supplier revision letters in multiple formats: Markdown, plain text email draft, and downloadable PDF letterhead format.
 
 ### Subtasks
-- [ ] Implement `POST /api/audit/{id}/export-vendor-notes` supporting format query param (`markdown`, `text`, `pdf`).
-- [ ] Implement PDF generator using a lightweight template to create a clean, professional supplier letterhead.
-- [ ] Allow optional custom notes/comments to be appended by the human reviewer before export.
+- [x] Implement `POST /api/audit/{id}/export-vendor-notes` supporting format query param (`markdown`, `text`, `pdf`).
+- [x] Implement PDF generator using a lightweight template to create a clean, professional supplier letterhead.
+- [x] Allow optional custom notes/comments to be appended by the human reviewer before export.
 
 ### AI Testing Plan
 - Test export in Markdown format: verify response matches expected markdown template.
@@ -27,4 +27,6 @@ Implement export endpoints in `backend/app/api/vendor_router.py`: `POST /api/aud
 - [ ] Confirm email draft text is ready to paste directly into Outlook/Gmail.
 
 ### Work Log & Evidence
-- Status: `[BACKLOG]`
+- Status: `[TESTED_BY_AI]`
+- Automated tests in `backend/tests/test_api_endpoints.py`:
+  - `test_upload_and_audit_pdf`: PASSED (verified export in markdown, email plain text, and luxury letterhead PDF format).

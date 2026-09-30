@@ -20,9 +20,9 @@
 | **Stage 4** | Regulatory Knowledge Base & RAG | 5 | 0 | 0 | 5 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 5** | Dual-Layer Comparative Audit Engine | 3 | 0 | 0 | 3 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 6** | Verifier Gate & Vendor Action Generator | 4 | 0 | 0 | 4 | 0 | 0 | `[TESTED_BY_AI]` |
-| **Stage 7** | FastAPI Backend & Endpoints | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
+| **Stage 7** | FastAPI Backend & Endpoints | 5 | 0 | 0 | 5 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 8** | Next.js Luxury UI & Split-Screen | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
-| **Total** | **All Stages** | **34** | **10** | **0** | **24** | **0** | **0** | `71% Tested by AI` |
+| **Total** | **All Stages** | **34** | **5** | **0** | **29** | **0** | **0** | `85% Tested by AI` |
 
 ---
 
@@ -65,11 +65,11 @@
 - [x] [TICK-0604](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0604-end-to-end-audit-benchmark.md) — End-to-end benchmark test (< 30s latency, 100% ground-truth accuracy, zero false positives) `[TESTED_BY_AI]`
 
 ### STAGE 7: FastAPI Backend & API Integration
-- [ ] [TICK-0701](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0701-fastapi-scaffolding.md) — FastAPI application setup, CORS, lifespan handlers, and structured error middleware `[BACKLOG]`
-- [ ] [TICK-0702](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0702-upload-audit-endpoint.md) — Tech pack upload and async audit execution endpoint (`POST /api/audit/upload`) `[BACKLOG]`
-- [ ] [TICK-0703](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0703-scorecard-query-endpoints.md) — Scorecard retrieval and history endpoints (`GET /api/audit/{id}`, `GET /api/audit/history`) `[BACKLOG]`
-- [ ] [TICK-0704](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0704-vendor-export-endpoints.md) — Vendor revision notes export endpoint (`POST /api/audit/{id}/export-vendor-notes` for markdown/PDF/email) `[BACKLOG]`
-- [ ] [TICK-0705](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0705-rules-management-endpoints.md) — Regulatory catalog and brand SOP inspection endpoints (`GET /api/rules`) `[BACKLOG]`
+- [x] [TICK-0701](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0701-fastapi-scaffolding.md) — FastAPI application setup, CORS, lifespan handlers, and structured error middleware `[TESTED_BY_AI]`
+- [x] [TICK-0702](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0702-upload-audit-endpoint.md) — Tech pack upload and async audit execution endpoint (`POST /api/audit/upload`) `[TESTED_BY_AI]`
+- [x] [TICK-0703](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0703-scorecard-query-endpoints.md) — Scorecard retrieval and history endpoints (`GET /api/audit/{id}`, `GET /api/audit/history`) `[TESTED_BY_AI]`
+- [x] [TICK-0704](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0704-vendor-export-endpoints.md) — Vendor revision notes export endpoint (`POST /api/audit/{id}/export-vendor-notes` for markdown/PDF/email) `[TESTED_BY_AI]`
+- [x] [TICK-0705](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0705-rules-management-endpoints.md) — Regulatory catalog and brand SOP inspection endpoints (`GET /api/rules`) `[TESTED_BY_AI]`
 
 ### STAGE 8: Next.js Luxury UI & Split-Screen Experience
 - [ ] [TICK-0801](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0801-nextjs-luxury-scaffolding.md) — Next.js 14 App Router project setup with Luxury equestrian minimalist theme (dark/light, refined typography) `[BACKLOG]`

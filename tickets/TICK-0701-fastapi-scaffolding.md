@@ -3,7 +3,7 @@
 
 - **Ticket ID**: `TICK-0701`
 - **Stage**: Stage 7: FastAPI Backend & API Integration
-- **Status**: `[BACKLOG]`
+- **Status**: `[TESTED_BY_AI]`
 - **Assigned To**: Antigravity (AI Agent)
 - **Reviewer**: User (Human)
 - **Dependencies**: `TICK-0103`
@@ -14,11 +14,11 @@
 Implement the core FastAPI application in `backend/app/main.py`. Configure CORS for the Next.js frontend, set up async lifespan handlers to pre-warm the Qdrant connection and rule catalog, and implement standardized JSON error-handling middleware.
 
 ### Subtasks
-- [ ] Create `backend/app/main.py` with FastAPI initialization.
-- [ ] Configure `CORSMiddleware` supporting frontend development URLs (`localhost:3000`).
-- [ ] Add async lifespan context manager initializing vector store and rule catalog on startup.
-- [ ] Add global exception handler returning standardized error schemas (`detail`, `error_code`, `timestamp`).
-- [ ] Add health check endpoint (`GET /api/health`).
+- [x] Create `backend/app/main.py` with FastAPI initialization.
+- [x] Configure `CORSMiddleware` supporting frontend development URLs (`localhost:3000`).
+- [x] Add async lifespan context manager initializing vector store and rule catalog on startup.
+- [x] Add global exception handler returning standardized error schemas (`detail`, `error_code`, `timestamp`).
+- [x] Add health check endpoint (`GET /api/health`).
 
 ### AI Testing Plan
 - Test FastAPI startup and shutdown.
@@ -29,4 +29,6 @@ Implement the core FastAPI application in `backend/app/main.py`. Configure CORS 
 - [ ] Confirm OpenAPI docs (`/docs`) render cleanly.
 
 ### Work Log & Evidence
-- Status: `[BACKLOG]`
+- Status: `[TESTED_BY_AI]`
+- Automated tests in `backend/tests/test_api_endpoints.py`:
+  - `test_health_check_endpoint`: PASSED (confirms status ok and application info).
