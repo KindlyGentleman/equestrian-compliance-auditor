@@ -3,7 +3,7 @@
 
 - **Ticket ID**: `TICK-0502`
 - **Stage**: Stage 5: Dual-Layer Comparative Audit Engine
-- **Status**: `[BACKLOG]`
+- **Status**: `[TESTED_BY_AI]`
 - **Assigned To**: Antigravity (AI Agent)
 - **Reviewer**: User (Human)
 - **Dependencies**: `TICK-0302`, `TICK-0405`
@@ -18,10 +18,10 @@ Implement the Layer 2 Semantic Reasoning Engine in `backend/app/engine/semantic_
 - Discreet sponsor logo placement standards.
 
 ### Subtasks
-- [ ] Implement `SemanticReasoner.audit(spec: TechPackSpec, relevant_rules: List[RuleChunk]) -> List[AuditFinding]`.
-- [ ] Prompt engineering: Enforce strict grounding. The LLM is instructed to only flag an issue if it can quote the exact sentence from the provided `relevant_rules` context.
-- [ ] Output structured finding objects with fields: `rule_id`, `category`, `severity`, `rationale`, `verbatim_source_quote`.
-- [ ] Prevent ambiguous hallucinations: instruct model that if a rule does not explicitly prohibit a design feature, it must remain `PASS`.
+- [x] Implement `SemanticReasoner.audit(spec: TechPackSpec, relevant_rules: List[RuleChunk]) -> List[AuditFinding]`.
+- [x] Prompt engineering: Enforce strict grounding. The LLM is instructed to only flag an issue if it can quote the exact sentence from the provided `relevant_rules` context.
+- [x] Output structured finding objects with fields: `rule_id`, `category`, `severity`, `rationale`, `verbatim_source_quote`.
+- [x] Prevent ambiguous hallucinations: instruct model that if a rule does not explicitly prohibit a design feature, it must remain `PASS`.
 
 ### AI Testing Plan
 - Test with known qualitative violation:
@@ -34,4 +34,7 @@ Implement the Layer 2 Semantic Reasoning Engine in `backend/app/engine/semantic_
 - [ ] Verify that aesthetic findings cite verbatim FEI text passages.
 
 ### Work Log & Evidence
-- Status: `[BACKLOG]`
+- Status: `[TESTED_BY_AI]`
+- Unit tests executed in `backend/tests/test_audit_engine.py`:
+  - `test_semantic_reasoner_dressage_collar_color`: PASSED (flags non-conservative bright collar in Dressage).
+  - `test_semantic_reasoner_zero_false_positives`: PASSED (compliant jacket yields 0 false positives).

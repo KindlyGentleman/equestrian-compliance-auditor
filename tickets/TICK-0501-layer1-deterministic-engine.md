@@ -3,7 +3,7 @@
 
 - **Ticket ID**: `TICK-0501`
 - **Stage**: Stage 5: Dual-Layer Comparative Audit Engine
-- **Status**: `[BACKLOG]`
+- **Status**: `[TESTED_BY_AI]`
 - **Assigned To**: Antigravity (AI Agent)
 - **Reviewer**: User (Human)
 - **Dependencies**: `TICK-0301`, `TICK-0403`
@@ -14,13 +14,13 @@
 Implement the code-level Layer 1 Deterministic Audit Engine in `backend/app/engine/deterministic_engine.py`. This engine evaluates quantitative parameters directly in Python against `rules_catalog.json`. Because it uses pure mathematical comparisons, it executes in under 10ms with **0% hallucination risk**.
 
 ### Subtasks
-- [ ] Implement `DeterministicEngine.audit(spec: TechPackSpec) -> List[AuditFinding]`.
-- [ ] Implement rule evaluators:
+- [x] Implement `DeterministicEngine.audit(spec: TechPackSpec) -> List[AuditFinding]`.
+- [x] Implement rule evaluators:
   - **Logo Area**: Calculate surface area for every logo placement (Collar $\le 60\text{ cm}^2$, Chest/Pocket $\le 200\text{ cm}^2$, Sleeve $\le 100\text{ cm}^2$).
   - **Collar Dimensions**: Height min/max and tolerance limits ($\pm 0.5\text{ cm}$).
   - **Costing & FOB**: Target vs Actual FOB comparison (flag `VIOLATION` if actual > target by > 5%).
   - **Fabric Performance**: Breathability check (flag `WARNING` if $< 10,000\text{ g/m}^2/\text{24h}$), stretch % minimums.
-- [ ] Attach exact source citations and rule IDs to every finding.
+- [x] Attach exact source citations and rule IDs to every finding.
 
 ### AI Testing Plan
 - Unit test with synthetic tech packs containing known violations:
@@ -33,4 +33,9 @@ Implement the code-level Layer 1 Deterministic Audit Engine in `backend/app/engi
 - [ ] Confirm findings provide clear quantitative deltas (e.g. *"Observed: 68.0cm², Limit: 60.0cm², Delta: +8.0cm²"*).
 
 ### Work Log & Evidence
-- Status: `[BACKLOG]`
+- Status: `[TESTED_BY_AI]`
+- Unit tests executed in `backend/tests/test_audit_engine.py`:
+  - `test_deterministic_collar_logo_violation`: PASSED (flags 64 cm² collar logo vs 60 cm² limit).
+  - `test_deterministic_fob_costing_ceiling_violation`: PASSED (flags $72.50 actual FOB vs $65.00 ceiling).
+  - `test_deterministic_fabric_and_tolerance_warnings`: PASSED (flags low breathability and loose tolerance).
+  - `test_deterministic_performance_latency`: PASSED (< 15 ms execution budget).

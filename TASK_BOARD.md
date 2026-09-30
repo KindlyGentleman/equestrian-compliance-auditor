@@ -18,11 +18,11 @@
 | **Stage 2** | SOTA Ingestion & OCR Pipeline | 5 | 0 | 0 | 5 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 3** | Pydantic Schema & Structuring | 4 | 0 | 0 | 4 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 4** | Regulatory Knowledge Base & RAG | 5 | 0 | 0 | 5 | 0 | 0 | `[TESTED_BY_AI]` |
-| **Stage 5** | Dual-Layer Comparative Audit Engine | 3 | 3 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
+| **Stage 5** | Dual-Layer Comparative Audit Engine | 3 | 0 | 0 | 3 | 0 | 0 | `[TESTED_BY_AI]` |
 | **Stage 6** | Verifier Gate & Vendor Action Generator | 4 | 4 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
 | **Stage 7** | FastAPI Backend & Endpoints | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
 | **Stage 8** | Next.js Luxury UI & Split-Screen | 5 | 5 | 0 | 0 | 0 | 0 | `[BACKLOG]` |
-| **Total** | **All Stages** | **34** | **17** | **0** | **17** | **0** | **0** | `50% Tested by AI` |
+| **Total** | **All Stages** | **34** | **14** | **0** | **20** | **0** | **0** | `59% Tested by AI` |
 
 ---
 
@@ -54,9 +54,9 @@
 - [x] [TICK-0405](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0405-hybrid-retrieval-engine.md) — Hybrid retrieval engine with discipline and garment category filtering `[TESTED_BY_AI]`
 
 ### STAGE 5: Dual-Layer Comparative Audit Engine (FR-4)
-- [ ] [TICK-0501](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0501-layer1-deterministic-engine.md) — Layer 1 Deterministic Audit Engine (Python code-level evaluator for logo cm², tolerances, COGS, breathability) `[BACKLOG]`
-- [ ] [TICK-0502](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0502-layer2-semantic-reasoner.md) — Layer 2 Semantic Reasoner (Gemini 2.0 Flash prompt evaluating aesthetic rules, collar contrast, piping, lapels) `[BACKLOG]`
-- [ ] [TICK-0503](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0503-audit-engine-coordinator.md) — Audit Engine Coordinator (orchestrating Layer 1 and Layer 2 outputs into unified findings) `[BACKLOG]`
+- [x] [TICK-0501](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0501-layer1-deterministic-engine.md) — Layer 1 Deterministic Audit Engine (Python code-level evaluator for logo cm², tolerances, COGS, breathability) `[TESTED_BY_AI]`
+- [x] [TICK-0502](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0502-layer2-semantic-reasoner.md) — Layer 2 Semantic Reasoner (Gemini 2.0 Flash prompt evaluating aesthetic rules, collar contrast, piping, lapels) `[TESTED_BY_AI]`
+- [x] [TICK-0503](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0503-audit-engine-coordinator.md) — Audit Engine Coordinator (orchestrating Layer 1 and Layer 2 outputs into unified findings) `[TESTED_BY_AI]`
 
 ### STAGE 6: Zero-False-Positive Verifier Gate & Vendor Action Generator (FR-5 & FR-6)
 - [ ] [TICK-0601](file:///d:/03_Proyek/RAG%20Testing/tickets/TICK-0601-citation-verifier-gate.md) — Automated Verbatim Citation Verifier Gate (validating that semantic citations exist verbatim in source text, auto-downgrading unverified flags to `MANUAL_REVIEW`) `[BACKLOG]`

@@ -1,5 +1,5 @@
 """Data models for Compliance Findings, Scorecards, and Vendor Actions."""
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, List, Optional
 from pydantic import BaseModel, Field
 
@@ -47,6 +47,20 @@ class CategoryScore(BaseModel):
     issue_count: int = 0
 
 
+class PreliminaryAuditReport(BaseModel):
+    tech_pack_id: str
+    style_code: str
+    style_name: str
+    discipline: Discipline
+    garment_type: GarmentType
+    overall_status: ComplianceStatus
+    overall_score_pct: float = Field(ge=0.0, le=100.0)
+    execution_time_seconds: float
+    timestamp: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    category_scores: List[CategoryScore] = Field(default_factory=list)
+    findings: List[AuditFinding] = Field(default_factory=list)
+
+
 class AuditScorecard(BaseModel):
     tech_pack_id: str
     style_code: str
@@ -56,7 +70,7 @@ class AuditScorecard(BaseModel):
     overall_status: ComplianceStatus
     overall_score_pct: float = Field(ge=0.0, le=100.0)
     execution_time_seconds: float
-    timestamp: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+    timestamp: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     category_scores: List[CategoryScore] = Field(default_factory=list)
     findings: List[VerifiedFinding] = Field(default_factory=list)
     vendor_revision_notes: Optional[str] = None
@@ -74,7 +88,7 @@ class VendorRevisionDocument(BaseModel):
     tech_pack_id: str
     style_code: str
     style_name: str
-    generated_date: str = Field(default_factory=lambda: datetime.utcnow().strftime("%Y-%m-%d"))
+    generated_date: str = Field(default_factory=lambda: datetime.now(timezone.utc).strftime("%Y-%m-%d"))
     summary: str
     action_items: List[VendorRevisionItem] = Field(default_factory=list)
     markdown_content: str

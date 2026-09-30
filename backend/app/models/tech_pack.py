@@ -135,4 +135,5 @@ class TechPackSpec(BaseModel):
 BOMComponent = BOMItem
 BrandingLogoSpec = LogoPlacement
 MeasurementSpec = List[MeasurementItem]
+TechPackMetadata = GarmentMetadata
 

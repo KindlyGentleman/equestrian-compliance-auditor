@@ -1,12 +1,12 @@
 {
   "project": "Equestrian Compliance & Specification Auditor",
   "version": "1.0.0",
-  "last_updated": "2026-09-30T20:15:00+07:00",
+  "last_updated": "2026-09-30T20:21:00+07:00",
   "status_summary": {
     "total": 34,
-    "backlog": 17,
+    "backlog": 14,
     "in_progress": 0,
-    "tested_by_ai": 17,
+    "tested_by_ai": 20,
     "human_review_pending": 0,
     "done": 0
   },
@@ -32,9 +32,9 @@
     {"id": "TICK-0404", "stage": "Stage 4", "title": "Qdrant Hybrid Vector Store Setup", "status": "TESTED_BY_AI", "file": "tickets/TICK-0404-qdrant-hybrid-store.md"},
     {"id": "TICK-0405", "stage": "Stage 4", "title": "Hybrid Retrieval Engine & Query Synthesizer", "status": "TESTED_BY_AI", "file": "tickets/TICK-0405-hybrid-retrieval-engine.md"},
 
-    {"id": "TICK-0501", "stage": "Stage 5", "title": "Layer 1 Deterministic Audit Engine", "status": "BACKLOG", "file": "tickets/TICK-0501-layer1-deterministic-engine.md"},
-    {"id": "TICK-0502", "stage": "Stage 5", "title": "Layer 2 Semantic Reasoner", "status": "BACKLOG", "file": "tickets/TICK-0502-layer2-semantic-reasoner.md"},
-    {"id": "TICK-0503", "stage": "Stage 5", "title": "Audit Engine Coordinator", "status": "BACKLOG", "file": "tickets/TICK-0503-audit-engine-coordinator.md"},
+    {"id": "TICK-0501", "stage": "Stage 5", "title": "Layer 1 Deterministic Audit Engine", "status": "TESTED_BY_AI", "file": "tickets/TICK-0501-layer1-deterministic-engine.md"},
+    {"id": "TICK-0502", "stage": "Stage 5", "title": "Layer 2 Semantic Reasoner", "status": "TESTED_BY_AI", "file": "tickets/TICK-0502-layer2-semantic-reasoner.md"},
+    {"id": "TICK-0503", "stage": "Stage 5", "title": "Audit Engine Coordinator", "status": "TESTED_BY_AI", "file": "tickets/TICK-0503-audit-engine-coordinator.md"},
 
     {"id": "TICK-0601", "stage": "Stage 6", "title": "Automated Verbatim Citation Verifier Gate", "status": "BACKLOG", "file": "tickets/TICK-0601-citation-verifier-gate.md"},
     {"id": "TICK-0602", "stage": "Stage 6", "title": "Audit Scorecard Model & Visual Status Aggregator", "status": "BACKLOG", "file": "tickets/TICK-0602-audit-scorecard-generator.md"},
