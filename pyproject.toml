@@ -33,6 +33,8 @@ dependencies = [
     "rapidocr-onnxruntime>=1.3.0",
     "pillow>=10.4.0",
     "python-multipart>=0.0.9",
+    "pdfplumber>=0.11.0",
+    "psutil>=6.0.0",
 ]
 
 [project.optional-dependencies]
