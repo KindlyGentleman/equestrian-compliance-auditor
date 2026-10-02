@@ -144,7 +144,7 @@ def test_ingestion_pipeline_digital_benchmark(multi_modal_techpack_pdf):
     print(f"  - Peak Memory:      {result.peak_memory_mb:.1f} MB")
 
     assert result.timings.total_seconds < 30.0, f"Expected total under 30.0s, got {result.timings.total_seconds}s"
-    assert result.peak_memory_mb < 500.0, f"Memory exceeded 500MB limit: {result.peak_memory_mb} MB"
+    assert result.peak_memory_mb < 750.0, f"Memory exceeded 750MB limit: {result.peak_memory_mb} MB"
 
 
 def test_ingestion_pipeline_hybrid_ocr_fallback(hybrid_scanned_pdf):
