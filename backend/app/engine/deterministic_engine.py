@@ -112,6 +112,45 @@ class DeterministicEngine:
                         )
                     )
 
+        # Check for multiple collar or chest logos exceeding single emblem allowance
+        collar_logos = [logo for logo in spec.logos if "collar" in logo.location.lower()]
+        if len(collar_logos) > 1:
+            findings.append(
+                AuditFinding(
+                    finding_id="det_logo_collar_count_violation",
+                    rule_id="FEI-DRESS-LOGO-COLLAR" if discipline_val == "DRESSAGE" else "FEI-JUMP-LOGO-COLLAR",
+                    category=FindingCategory.BRANDING_LOGO,
+                    severity=ComplianceStatus.VIOLATION,
+                    title="Multiple Collar Logos Exceed Single Emblem Limit",
+                    observed_value=f"{len(collar_logos)} collar emblems specified",
+                    allowed_threshold="<= 1 single emblem",
+                    delta_explanation=f"FEI regulations restrict collar branding to one single emblem; {len(collar_logos)} were found.",
+                    source_citation="Brand manufacturer identification on jackets is restricted to one single emblem on the collar of maximum sixty square centimeters (60 cm²).",
+                    source_rulebook="FEI Dressage Rules, Art. 427.3.1" if discipline_val == "DRESSAGE" else "FEI Jumping Rules, Art. 256.3.1",
+                    remedy_suggestion="Remove secondary collar emblems to ensure only one emblem is placed on the collar.",
+                    page_number=1,
+                )
+            )
+
+        chest_logos = [logo for logo in spec.logos if "chest" in logo.location.lower() or "pocket" in logo.location.lower()]
+        if len(chest_logos) > 1:
+            findings.append(
+                AuditFinding(
+                    finding_id="det_logo_chest_count_violation",
+                    rule_id="FEI-JUMP-LOGO-CHEST",
+                    category=FindingCategory.BRANDING_LOGO,
+                    severity=ComplianceStatus.VIOLATION,
+                    title="Multiple Chest Logos Exceed Single Side Limit",
+                    observed_value=f"{len(chest_logos)} chest/pocket logos specified",
+                    allowed_threshold="<= 1 chest/pocket logo on one side only",
+                    delta_explanation=f"FEI regulations permit chest logo on one side only; {len(chest_logos)} were found.",
+                    source_citation="A sponsor or manufacturer logo may appear on the chest/pocket area of the competition jacket on one side only. The total surface area of this logo must not exceed two hundred square centimeters (200 cm²).",
+                    source_rulebook="FEI Jumping Rules, Art. 256.3.2",
+                    remedy_suggestion="Remove secondary chest or pocket emblems so identification appears on one side only.",
+                    page_number=1,
+                )
+            )
+
         # 2. Piping Width Check
         if spec.aesthetic.piping_present and spec.aesthetic.piping_width_mm:
             width = spec.aesthetic.piping_width_mm

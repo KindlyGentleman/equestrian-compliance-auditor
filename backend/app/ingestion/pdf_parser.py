@@ -45,6 +45,9 @@ class PDFParser:
         if total_pages == 0:
             doc.close()
             raise ValueError(f"PDF document is empty (0 pages): {path}")
+        if total_pages > 100:
+            doc.close()
+            raise ValueError(f"PDF exceeds maximum page limit (100 pages, found {total_pages}): {path}")
 
         pages: list[PageContent] = []
         full_md_parts: list[str] = []

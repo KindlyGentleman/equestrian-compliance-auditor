@@ -239,12 +239,14 @@ def build_animated_svg():
 
     # Helper function for rendering swimlanes
     def render_swimlane(x, y, w, h, title, subtitle):
+        t_esc = saxutils.escape(title)
+        st_esc = saxutils.escape(subtitle)
         res = [
-            f'  <!-- Swimlane: {title} -->',
+            f'  <!-- Swimlane: {t_esc} -->',
             f'  <rect x="{x}" y="{y}" width="{w}" height="{h}" rx="12" fill="#FBFBF9" stroke="#163828" stroke-width="2" />',
             f'  <path d="M {x} {y+40} L {x+w} {y+40}" stroke="#E2E4E1" stroke-width="1.5" />',
-            f'  <text x="{x+18}" y="{y+25}" class="swimlane-title" fill="#163828">{title}</text>',
-            f'  <text x="{x+w-18}" y="{y+25}" font-size="11" fill="#9E7E50" text-anchor="end" font-weight="600">{subtitle}</text>',
+            f'  <text x="{x+18}" y="{y+25}" class="swimlane-title" fill="#163828">{t_esc}</text>',
+            f'  <text x="{x+w-18}" y="{y+25}" font-size="11" fill="#9E7E50" text-anchor="end" font-weight="600">{st_esc}</text>',
         ]
         return '\n'.join(res)
 
@@ -258,27 +260,30 @@ def build_animated_svg():
     svg.append(render_swimlane(820, 115, 420, 465, "MULTI-MODAL INGESTION ENGINE", "PyMuPDF4LLM + RapidOCR"))
 
     # 4. Swimlane 4: Hybrid RAG & Knowledge
-    svg.append(render_swimlane(820, 600, 420, 480, "HYBRID KNOWLEDGE & RAG RETRIEVAL", "Qdrant Vector DB + Exact BM25"))
+    svg.append(render_swimlane(820, 600, 420, 480, "HYBRID KNOWLEDGE & RAG RETRIEVAL", "Qdrant DB & BM25"))
 
     # 5. Swimlane 5: Deterministic Verifier & Scorecard Engine
     svg.append(render_swimlane(1260, 115, 420, 965, "DETERMINISTIC VERIFIER GATE", "Zero False-Positive Engine"))
 
     # Render Node Cards
     def render_card(x, y, w, h, title, lines, fill="#FFFFFF", stroke="#C5A880", title_color="#151C22", is_code=False, badge=None):
+        t_esc = saxutils.escape(title)
         res = [
             f'  <g transform="translate({x}, {y})">',
             f'    <rect width="{w}" height="{h}" class="node-card" fill="{fill}" stroke="{stroke}" stroke-width="1.5" />',
         ]
         if badge:
             bx, by, bw, bh, btext, bbg, btc = badge
+            bt_esc = saxutils.escape(btext)
             res.append(f'    <rect x="{bx}" y="{by}" width="{bw}" height="{bh}" rx="4" fill="{bbg}" />')
-            res.append(f'    <text x="{bx+bw/2}" y="{by+bh/2+3.5}" font-size="9" font-weight="bold" fill="{btc}" text-anchor="middle">{btext}</text>')
+            res.append(f'    <text x="{bx+bw/2}" y="{by+bh/2+3.5}" font-size="9" font-weight="bold" fill="{btc}" text-anchor="middle">{bt_esc}</text>')
 
-        res.append(f'    <text x="16" y="24" class="node-title" fill="{title_color}">{title}</text>')
+        res.append(f'    <text x="16" y="24" class="node-title" fill="{title_color}">{t_esc}</text>')
         curr_y = 42
         for line in lines:
             font_cls = "code-font" if is_code else "node-desc"
-            res.append(f'    <text x="16" y="{curr_y}" class="{font_cls}">{line}</text>')
+            l_esc = saxutils.escape(line)
+            res.append(f'    <text x="16" y="{curr_y}" class="{font_cls}">{l_esc}</text>')
             curr_y += 16
         res.append('  </g>')
         return '\n'.join(res)
@@ -325,8 +330,9 @@ def build_animated_svg():
     # Flow Connectors (Animated SVG Paths with Markers)
     def render_flow(d, is_green=False, marker="arrow-gold"):
         cls = "green-flow" if is_green else "gold-flow"
+        stroke = "#047857" if is_green else "#9E7E50"
         m_id = "arrow-green" if is_green else "arrow-gold"
-        return f'  <path d="{d}" class="flow-path {cls}" marker-end="url(#{m_id})" />'
+        return f'  <path d="{d}" class="flow-path {cls}" fill="none" stroke="{stroke}" stroke-width="2.5" marker-end="url(#{m_id})" />'
 
     svg.append('  <!-- Animated Flow Connectors -->')
     # User -> Client Viewer

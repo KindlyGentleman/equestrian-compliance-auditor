@@ -1,10 +1,13 @@
-"""Technical flat sketch and logo artwork cropper using PyMuPDF."""
+import logging
+import re
 from pathlib import Path
 
 import pymupdf
 from pydantic import BaseModel, Field
 
 from backend.app.core.config import settings
+
+logger = logging.getLogger(__name__)
 
 
 class ExtractedFigure(BaseModel):
@@ -41,13 +44,19 @@ class ImageCropper:
         doc = pymupdf.open(str(path))
         extracted_figures: list[ExtractedFigure] = []
 
+        max_figures = 50
         try:
             for page_idx in range(len(doc)):
+                if len(extracted_figures) >= max_figures:
+                    logger.warning("Reached maximum figure extraction limit (%d); halting extraction", max_figures)
+                    break
                 page = doc[page_idx]
                 page_num = page_idx + 1
                 image_list = page.get_images(full=True)
 
                 for img_idx, img_info in enumerate(image_list):
+                    if len(extracted_figures) >= max_figures:
+                        break
                     xref = img_info[0]
                     base_image = doc.extract_image(xref)
                     image_bytes = base_image["image"]
@@ -64,7 +73,8 @@ class ImageCropper:
                     bbox = [round(c, 2) for c in rects[0]] if rects else [0.0, 0.0, float(width), float(height)]
 
                     fig_id = f"fig_p{page_num}_{img_idx + 1}"
-                    fig_filename = f"{path.stem}_{fig_id}.{ext}"
+                    safe_stem = re.sub(r"[^\w\-]", "_", path.stem)
+                    fig_filename = f"{safe_stem}_{fig_id}.{ext}"
                     fig_path = self.output_dir / fig_filename
 
                     with open(fig_path, "wb") as f:

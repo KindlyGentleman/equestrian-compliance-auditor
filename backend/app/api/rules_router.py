@@ -139,6 +139,12 @@ def update_rule(rule_id: str, req: RuleUpdateRequest) -> dict[str, Any]:
 @router.delete("/{rule_id}", response_model=dict[str, Any])
 def delete_rule(rule_id: str) -> dict[str, Any]:
     """Remove a codified rule from the active catalog."""
+    if rule_id.upper().startswith("FEI-"):
+        raise HTTPException(
+            status_code=403,
+            detail=f"Cannot delete baseline Olympic FEI regulation '{rule_id}'. Baseline regulatory rules are protected.",
+        )
+
     rules = load_catalog_rules()
     initial_len = len(rules)
     rules = [r for r in rules if r.get("rule_id", "").upper() != rule_id.upper()]

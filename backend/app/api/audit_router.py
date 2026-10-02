@@ -1,6 +1,6 @@
 """FastAPI endpoints for Tech Pack upload, audit execution, and query operations."""
 import logging
-import shutil
+import re
 import time
 import uuid
 from pathlib import Path
@@ -82,23 +82,56 @@ async def load_sample_tech_pack() -> dict[str, Any]:
 @router.post("/upload", response_model=dict[str, Any])
 async def upload_and_audit_tech_pack(file: UploadFile = File(...)) -> dict[str, Any]:
     """Upload tech pack PDF and execute full compliance audit pipeline."""
-    if not file.filename.lower().endswith(".pdf"):
+    raw_filename = file.filename or "tech_pack.pdf"
+    if not raw_filename.lower().endswith(".pdf"):
         raise HTTPException(
             status_code=400,
             detail="Invalid file format. Only PDF tech pack files are accepted.",
         )
 
+    # Windows reserved device names and traversal sanitization
+    stem = Path(raw_filename).stem.upper()
+    reserved_names = {
+        "CON", "PRN", "AUX", "NUL",
+        "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9",
+        "LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9",
+    }
+    safe_stem = f"safe_{stem}" if stem in reserved_names else stem
+    sanitized_name = re.sub(r"[^\w\.-]", "_", f"{safe_stem}.pdf")
+
     pipeline_start = time.perf_counter()
     audit_id = f"aud_{uuid.uuid4().hex[:12]}"
     upload_dir = Path(settings.UPLOAD_DIR)
     upload_dir.mkdir(parents=True, exist_ok=True)
-    clean_filename = f"{audit_id}_{Path(file.filename).name}"
-    saved_pdf_path = upload_dir / clean_filename
+    saved_pdf_path = upload_dir / f"{audit_id}_{sanitized_name}"
 
-    # Save uploaded file
+    # Read header chunk to verify PDF magic bytes
+    first_chunk = await file.read(1024)
+    if not first_chunk.startswith(b"%PDF-"):
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid file content. Uploaded file does not have a valid PDF header signature.",
+        )
+
+    # Stream write with strict 50 MB payload ceiling to prevent DoS
+    max_upload_size = 50 * 1024 * 1024
+    total_bytes = len(first_chunk)
+
     try:
         with open(saved_pdf_path, "wb") as out_file:
-            shutil.copyfileobj(file.file, out_file)
+            out_file.write(first_chunk)
+            while chunk := await file.read(1024 * 1024):
+                total_bytes += len(chunk)
+                if total_bytes > max_upload_size:
+                    out_file.close()
+                    saved_pdf_path.unlink(missing_ok=True)
+                    raise HTTPException(
+                        status_code=413,
+                        detail="File size exceeds maximum allowed limit (50 MB).",
+                    )
+                out_file.write(chunk)
+    except HTTPException:
+        raise
     except Exception as exc:
         logger.error("Failed to save uploaded file (%s)", exc)
         raise HTTPException(status_code=500, detail="Failed to write uploaded file to disk.")

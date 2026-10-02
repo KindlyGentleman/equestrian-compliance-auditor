@@ -41,7 +41,7 @@ class CitationVerifier:
                     data = json.load(f)
                     for rule in data.get("rules", []):
                         rid = rule.get("rule_id", "")
-                        cit = rule.get("citation", "")
+                        cit = rule.get("verbatim_citation", "") or rule.get("citation", "")
                         if rid and cit:
                             self.catalog_citations[rid] = cit
                             self.corpus_texts.append(cit)
@@ -59,8 +59,13 @@ class CitationVerifier:
 
         logger.debug("CitationVerifier loaded %d corpus documents", len(self.corpus_texts))
 
-    def _fuzzy_match(self, query: str, target: str, threshold: float = 0.90) -> bool:
-        """Evaluate if query matches target with sequence similarity above threshold."""
+    @staticmethod
+    def _extract_numbers(text: str) -> set[str]:
+        """Extract numeric tokens to guarantee regulatory threshold fidelity."""
+        return set(re.findall(r"\b\d+(?:\.\d+)?\b", text))
+
+    def _fuzzy_match(self, query: str, target: str, threshold: float = 0.94) -> bool:
+        """Evaluate if query matches target with sequence similarity and exact numeric preservation."""
         norm_query = normalize_text(query)
         norm_target = normalize_text(target)
 
@@ -69,6 +74,13 @@ class CitationVerifier:
 
         if norm_query in norm_target:
             return True
+
+        query_nums = self._extract_numbers(norm_query)
+        target_nums = self._extract_numbers(norm_target)
+
+        # Numerical thresholds in regulatory citations must exist in target corpus
+        if query_nums and not query_nums.issubset(target_nums):
+            return False
 
         # Windowed sequence matching
         q_len = len(norm_query)
@@ -80,8 +92,19 @@ class CitationVerifier:
         q_words = norm_query.split()
         window_size = len(q_words)
 
+        # Cap word scanning to prevent CPU exhaustion on massive texts
+        words = words[:5000]
+        q_tokens = set(q_words)
+
         for i in range(max(1, len(words) - window_size + 1)):
-            window = " ".join(words[i : i + window_size + 2])
+            window_slice = words[i : i + window_size + 2]
+            # Fast filter: skip expensive SequenceMatcher if token overlap is below 50%
+            if len(q_tokens.intersection(window_slice)) / max(1, len(q_tokens)) < 0.50:
+                continue
+
+            window = " ".join(window_slice)
+            if query_nums and not query_nums.issubset(self._extract_numbers(window)):
+                continue
             ratio = difflib.SequenceMatcher(None, norm_query, window).ratio()
             if ratio >= threshold:
                 return True
@@ -106,7 +129,7 @@ class CitationVerifier:
         # Fast path: check known rule ID in catalog
         if finding.rule_id in self.catalog_citations:
             known_cit = self.catalog_citations[finding.rule_id]
-            if self._fuzzy_match(citation, known_cit, threshold=0.88):
+            if self._fuzzy_match(citation, known_cit, threshold=0.92):
                 return VerifiedFinding(
                     **finding.model_dump(),
                     is_verbatim_verified=True,
@@ -116,7 +139,7 @@ class CitationVerifier:
         # Search provided chunks
         if provided_chunks:
             for chunk in provided_chunks:
-                if self._fuzzy_match(citation, chunk.content, threshold=0.88):
+                if self._fuzzy_match(citation, chunk.content, threshold=0.92):
                     return VerifiedFinding(
                         **finding.model_dump(),
                         is_verbatim_verified=True,
@@ -133,11 +156,11 @@ class CitationVerifier:
                     is_verbatim_verified=True,
                     verification_notes="Verbatim citation verified in official regulatory archive.",
                 )
-            if self._fuzzy_match(citation, doc, threshold=0.88):
+            if self._fuzzy_match(citation, doc, threshold=0.92):
                 return VerifiedFinding(
                     **finding.model_dump(),
                     is_verbatim_verified=True,
-                    verification_notes="Fuzzy citation verified in official regulatory archive (>= 88% similarity).",
+                    verification_notes="Fuzzy citation verified in official regulatory archive (>= 92% similarity).",
                 )
 
         # Unverified finding: downgrade VIOLATION to MANUAL_REVIEW

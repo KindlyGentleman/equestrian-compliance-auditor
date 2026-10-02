@@ -57,26 +57,26 @@
   <rect x="40" y="25" width="1640" height="70" rx="10" fill="#0C1F16" stroke="#C5A880" stroke-width="2" />
   <text x="860" y="54" fill="#C5A880" font-family="Georgia, serif" font-size="18" font-weight="bold" text-anchor="middle" letter-spacing="1">MAISON ÉQUESTRE ATELIER PRO : OLYMPIC EQUESTRIAN COMPLIANCE AUDITOR</text>
   <text x="860" y="76" fill="#FBFBF9" font-size="11.5" text-anchor="middle" letter-spacing="0.5">High-Precision Multi-Modal Technical Specification Ingestion, Hybrid Qdrant RAG, and Sub-Second Deterministic Verifier Engine</text>
-  <!-- Swimlane: PRESENTATION & CLIENT TIER -->
+  <!-- Swimlane: PRESENTATION &amp; CLIENT TIER -->
   <rect x="40" y="115" width="380" height="965" rx="12" fill="#FBFBF9" stroke="#163828" stroke-width="2" />
   <path d="M 40 155 L 420 155" stroke="#E2E4E1" stroke-width="1.5" />
-  <text x="58" y="140" class="swimlane-title" fill="#163828">PRESENTATION & CLIENT TIER</text>
+  <text x="58" y="140" class="swimlane-title" fill="#163828">PRESENTATION &amp; CLIENT TIER</text>
   <text x="402" y="140" font-size="11" fill="#9E7E50" text-anchor="end" font-weight="600">Next.js 14 App Router</text>
-  <!-- Swimlane: API & ORCHESTRATION TIER -->
+  <!-- Swimlane: API &amp; ORCHESTRATION TIER -->
   <rect x="440" y="115" width="360" height="965" rx="12" fill="#FBFBF9" stroke="#163828" stroke-width="2" />
   <path d="M 440 155 L 800 155" stroke="#E2E4E1" stroke-width="1.5" />
-  <text x="458" y="140" class="swimlane-title" fill="#163828">API & ORCHESTRATION TIER</text>
+  <text x="458" y="140" class="swimlane-title" fill="#163828">API &amp; ORCHESTRATION TIER</text>
   <text x="782" y="140" font-size="11" fill="#9E7E50" text-anchor="end" font-weight="600">FastAPI / Python 3.12</text>
   <!-- Swimlane: MULTI-MODAL INGESTION ENGINE -->
   <rect x="820" y="115" width="420" height="465" rx="12" fill="#FBFBF9" stroke="#163828" stroke-width="2" />
   <path d="M 820 155 L 1240 155" stroke="#E2E4E1" stroke-width="1.5" />
   <text x="838" y="140" class="swimlane-title" fill="#163828">MULTI-MODAL INGESTION ENGINE</text>
   <text x="1222" y="140" font-size="11" fill="#9E7E50" text-anchor="end" font-weight="600">PyMuPDF4LLM + RapidOCR</text>
-  <!-- Swimlane: HYBRID KNOWLEDGE & RAG RETRIEVAL -->
+  <!-- Swimlane: HYBRID KNOWLEDGE &amp; RAG RETRIEVAL -->
   <rect x="820" y="600" width="420" height="480" rx="12" fill="#FBFBF9" stroke="#163828" stroke-width="2" />
   <path d="M 820 640 L 1240 640" stroke="#E2E4E1" stroke-width="1.5" />
-  <text x="838" y="625" class="swimlane-title" fill="#163828">HYBRID KNOWLEDGE & RAG RETRIEVAL</text>
-  <text x="1222" y="625" font-size="11" fill="#9E7E50" text-anchor="end" font-weight="600">Qdrant Vector DB + Exact BM25</text>
+  <text x="838" y="625" class="swimlane-title" fill="#163828">HYBRID KNOWLEDGE &amp; RAG RETRIEVAL</text>
+  <text x="1222" y="625" font-size="11" fill="#9E7E50" text-anchor="end" font-weight="600">Qdrant DB &amp; BM25</text>
   <!-- Swimlane: DETERMINISTIC VERIFIER GATE -->
   <rect x="1260" y="115" width="420" height="965" rx="12" fill="#FBFBF9" stroke="#163828" stroke-width="2" />
   <path d="M 1260 155 L 1680 155" stroke="#E2E4E1" stroke-width="1.5" />
@@ -91,8 +91,8 @@
   <g transform="translate(60, 260)">
     <rect width="340" height="75" class="node-card" fill="#FFFFFF" stroke="#C5A880" stroke-width="1.5" />
     <text x="16" y="24" class="node-title" fill="#151C22">Split-Screen Technical Flat Viewer</text>
-    <text x="16" y="42" class="node-desc">Synchronized Technical Canvas & BOM Viewer</text>
-    <text x="16" y="58" class="node-desc">Collar & Chest Highlighted Inspection Zones</text>
+    <text x="16" y="42" class="node-desc">Synchronized Technical Canvas &amp; BOM Viewer</text>
+    <text x="16" y="58" class="node-desc">Collar &amp; Chest Highlighted Inspection Zones</text>
     <text x="16" y="74" class="node-desc">Page Jumping (POM, BOM, Branding)</text>
   </g>
   <g transform="translate(60, 355)">
@@ -106,7 +106,7 @@
   </g>
   <g transform="translate(60, 460)">
     <rect width="340" height="80" class="node-card" fill="#FFFFFF" stroke="#C5A880" stroke-width="1.5" />
-    <text x="16" y="24" class="node-title" fill="#151C22">Verbatim Citation & Gate Modal</text>
+    <text x="16" y="24" class="node-title" fill="#151C22">Verbatim Citation &amp; Gate Modal</text>
     <text x="16" y="42" class="node-desc">FEI Official Rulebook Quotation Card</text>
     <text x="16" y="58" class="node-desc">Observed vs Allowed Tolerance Math</text>
     <text x="16" y="74" class="node-desc">Zero False-Positive Trust Seal Badge</text>
@@ -116,13 +116,13 @@
     <rect x="240" y="10" width="85" height="20" rx="4" fill="#ECFDF5" />
     <text x="282.5" y="23.5" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">CRUD ACTIVE</text>
     <text x="16" y="24" class="node-title" fill="#047857">Dynamic Regulatory Rules Modal</text>
-    <text x="16" y="42" class="node-desc">Live Rule Search & Multi-Discipline Tabs</text>
+    <text x="16" y="42" class="node-desc">Live Rule Search &amp; Multi-Discipline Tabs</text>
     <text x="16" y="58" class="node-desc">+ Add Custom Brand Rule Form Active</text>
     <text x="16" y="74" class="node-desc">Delete Deprecated SOPs in Real Time</text>
   </g>
   <g transform="translate(60, 670)">
     <rect width="340" height="85" class="node-card" fill="#FFFFFF" stroke="#C5A880" stroke-width="1.5" />
-    <text x="16" y="24" class="node-title" fill="#151C22">Supplier Action Plan & Export Modal</text>
+    <text x="16" y="24" class="node-title" fill="#151C22">Supplier Action Plan &amp; Export Modal</text>
     <text x="16" y="42" class="node-desc">Official Supplier Letterhead PDF Download</text>
     <text x="16" y="58" class="node-desc">Executive Markdown Remediation Package</text>
     <text x="16" y="74" class="node-desc">Pre-formatted Factory Email Dispatch</text>
@@ -133,7 +133,7 @@
     <text x="280.0" y="23.5" font-size="9" font-weight="bold" fill="#065F46" text-anchor="middle">VERIFIED A4</text>
     <text x="16" y="24" class="node-title" fill="#065F46">Digital Certificate of FEI Compliance</text>
     <text x="16" y="42" class="node-desc">Official A4 Landscape Certificate PDF</text>
-    <text x="16" y="58" class="node-desc">Olympic Regulatory Verdict & Seal</text>
+    <text x="16" y="58" class="node-desc">Olympic Regulatory Verdict &amp; Seal</text>
     <text x="16" y="74" class="node-desc">Double Gold Border Luxury Styling</text>
   </g>
   <g transform="translate(60, 880)">
@@ -171,15 +171,15 @@
     <text x="16" y="42" class="node-desc">backend/app/engine/audit_coordinator.py</text>
     <text x="16" y="58" class="node-desc">- Multi-Stage Execution Pipeline</text>
     <text x="16" y="74" class="node-desc">- Sub-30s Strict SLA Monitoring</text>
-    <text x="16" y="90" class="node-desc">- Ingestion -> Structuring -> RAG -> Verifier</text>
+    <text x="16" y="90" class="node-desc">- Ingestion -&gt; Structuring -&gt; RAG -&gt; Verifier</text>
   </g>
   <g transform="translate(460, 660)">
     <rect width="320" height="90" class="node-card" fill="#ECFDF5" stroke="#047857" stroke-width="1.5" />
     <text x="16" y="24" class="node-title" fill="#065F46">Official Certificate Generator</text>
     <text x="16" y="42" class="node-desc">backend/app/api/audit_router.py</text>
     <text x="16" y="58" class="node-desc">- PyMuPDF Vector Document Assembly</text>
-    <text x="16" y="74" class="node-desc">- Double Gold Border & Olympic Seal</text>
-    <text x="16" y="90" class="node-desc">- High-Res Print Export (<0.15s)</text>
+    <text x="16" y="74" class="node-desc">- Double Gold Border &amp; Olympic Seal</text>
+    <text x="16" y="90" class="node-desc">- High-Res Print Export (&lt;0.15s)</text>
   </g>
   <g transform="translate(460, 770)">
     <rect width="320" height="85" class="node-card" fill="#FFFFFF" stroke="#C5A880" stroke-width="1.5" />
@@ -191,7 +191,7 @@
   <g transform="translate(840, 175)">
     <rect width="380" height="65" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
     <text x="16" y="24" class="node-title" fill="#151C22">PyMuPDF4LLM Markdown Parser</text>
-    <text x="16" y="42" class="node-desc">Single-Pass Layout, Font & Structural Extraction</text>
+    <text x="16" y="42" class="node-desc">Single-Pass Layout, Font &amp; Structural Extraction</text>
     <text x="16" y="58" class="node-desc">Generates Page Boundary Anchors for UI Sync</text>
   </g>
   <g transform="translate(840, 255)">
@@ -204,18 +204,18 @@
     <rect width="380" height="80" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
     <text x="16" y="24" class="node-title" fill="#151C22">Deterministic Table Extractor</text>
     <text x="16" y="42" class="node-desc">pdfplumber + Heuristic Layout Table Parsing</text>
-    <text x="16" y="58" class="node-desc">- Bill of Materials (BOM) & Material Blends</text>
+    <text x="16" y="58" class="node-desc">- Bill of Materials (BOM) &amp; Material Blends</text>
     <text x="16" y="74" class="node-desc">- Points of Measure (POM) Dimension Tables</text>
   </g>
   <g transform="translate(840, 430)">
     <rect width="380" height="65" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
-    <text x="16" y="24" class="node-title" fill="#151C22">Image & Figure Cropper</text>
+    <text x="16" y="24" class="node-title" fill="#151C22">Image &amp; Figure Cropper</text>
     <text x="16" y="42" class="node-desc">Extracts technical flats and collar/chest emblems</text>
     <text x="16" y="58" class="node-desc">Persists PNG assets to backend/storage/figures/</text>
   </g>
   <g transform="translate(840, 510)">
     <rect width="380" height="60" class="node-card" fill="#0C1F16" stroke="#C5A880" stroke-width="1.5" />
-    <text x="16" y="24" class="node-title" fill="#C5A880">Gemini Extraction & Structuring</text>
+    <text x="16" y="24" class="node-title" fill="#C5A880">Gemini Extraction &amp; Structuring</text>
     <text x="16" y="42" class="node-desc">Google GenAI (Gemini 2.0 Flash) / High-Speed Mock</text>
     <text x="16" y="58" class="node-desc">Pydantic TechPackSpec Schema Enforcement</text>
   </g>
@@ -225,7 +225,7 @@
     <text x="16" y="42" class="node-desc">backend/app/knowledge/regulatory_catalog.json</text>
     <text x="16" y="58" class="node-desc">- FEI Jumping Art. 256 (Collar, Pocket, Surface)</text>
     <text x="16" y="74" class="node-desc">- FEI Dressage Art. 427 (Jacket Colors, Tailcoat)</text>
-    <text x="16" y="90" class="node-desc">- FEI Eventing Art. 538 & Maison Brand SOPs</text>
+    <text x="16" y="90" class="node-desc">- FEI Eventing Art. 538 &amp; Maison Brand SOPs</text>
   </g>
   <g transform="translate(840, 775)">
     <rect width="380" height="75" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
@@ -244,25 +244,25 @@
   </g>
   <g transform="translate(840, 985)">
     <rect width="380" height="65" class="node-card" fill="#ECFDF5" stroke="#047857" stroke-width="1.5" />
-    <text x="16" y="24" class="node-title" fill="#065F46">Live Rule CRUD & Syncer Service</text>
+    <text x="16" y="24" class="node-title" fill="#065F46">Live Rule CRUD &amp; Syncer Service</text>
     <text x="16" y="42" class="node-desc">Immediate catalog sync without server restart</text>
-    <text x="16" y="58" class="node-desc">Dynamic conflict checking & validation</text>
+    <text x="16" y="58" class="node-desc">Dynamic conflict checking &amp; validation</text>
   </g>
   <g transform="translate(1280, 175)">
     <rect width="380" height="95" class="node-card" fill="#FFFFFF" stroke="#163828" stroke-width="1.5" />
     <text x="16" y="24" class="node-title" fill="#151C22">Validated TechPackSpec Instance</text>
     <text x="16" y="42" class="code-font">Structured Pydantic Model Data:</text>
     <text x="16" y="58" class="code-font">- Style Code, Garment Type, Discipline</text>
-    <text x="16" y="74" class="code-font">- Measurements & Points of Measure (cm, tol)</text>
+    <text x="16" y="74" class="code-font">- Measurements &amp; Points of Measure (cm, tol)</text>
     <text x="16" y="90" class="code-font">- Materials, Lining Silk %, Fabric Weight (GSM)</text>
     <text x="16" y="106" class="code-font">- Embroidery Logo Dimensions (68cm² vs 60cm²)</text>
   </g>
   <g transform="translate(1280, 290)">
     <rect width="380" height="95" class="node-card" fill="#0C1F16" stroke="#C5A880" stroke-width="1.5" />
     <text x="16" y="24" class="node-title" fill="#FFFFFF">Deterministic Rule Engine (rule_engine.py)</text>
-    <text x="16" y="42" class="node-desc">Pure Python Mathematical Verification (<=, >=, ==, in)</text>
+    <text x="16" y="42" class="node-desc">Pure Python Mathematical Verification (&lt;=, &gt;=, ==, in)</text>
     <text x="16" y="58" class="node-desc">Automated Unit Normalization (cm² to mm², EUR, %)</text>
-    <text x="16" y="74" class="node-desc">Evaluates 100% of codified rules in <10ms</text>
+    <text x="16" y="74" class="node-desc">Evaluates 100% of codified rules in &lt;10ms</text>
     <text x="16" y="90" class="node-desc">Zero LLM Hallucinations in Mathematical Decisions</text>
   </g>
   <g transform="translate(1280, 405)">
@@ -288,46 +288,46 @@
     <text x="16" y="24" class="node-title" fill="#151C22">Supplier Remediation Generator</text>
     <text x="16" y="42" class="node-desc">Calculates exact overage deltas (+8cm² / +13.3%)</text>
     <text x="16" y="58" class="node-desc">Generates downscale instructions for embroidery files</text>
-    <text x="16" y="74" class="node-desc">Commercial tolerance & cost variance alerts</text>
+    <text x="16" y="74" class="node-desc">Commercial tolerance &amp; cost variance alerts</text>
     <text x="16" y="90" class="node-desc">Formulates actionable vendor notes</text>
   </g>
   <g transform="translate(1280, 745)">
     <rect width="380" height="85" class="node-card" fill="#0C1F16" stroke="#C5A880" stroke-width="1.5" />
     <text x="16" y="24" class="node-title" fill="#C5A880">Verified Findings Payload</text>
     <text x="16" y="42" class="node-desc">AuditScorecard Response Object</text>
-    <text x="16" y="58" class="node-desc">Embedded Findings, Verbatim Quotes & Remedies</text>
+    <text x="16" y="58" class="node-desc">Embedded Findings, Verbatim Quotes &amp; Remedies</text>
     <text x="16" y="74" class="node-desc">Persisted in-memory audit history run logs</text>
   </g>
   <!-- Animated Flow Connectors -->
-  <path d="M 230 240 L 230 260" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 230 335 L 230 355" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 230 860 L 230 880" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 400 905 L 430 905 L 430 225 L 460 225" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 400 605 L 430 605 L 430 350 L 460 350" class="flow-path green-flow" marker-end="url(#arrow-green)" />
-  <path d="M 620 275 L 620 535" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 780 575 L 810 575 L 810 205 L 840 205" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1030 240 L 1030 255" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1030 320 L 1030 335" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1030 415 L 1030 430" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1030 495 L 1030 510" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1220 540 L 1250 540 L 1250 220 L 1280 220" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1030 570 L 1030 660" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 780 370 L 810 370 L 810 1015 L 840 1015" class="flow-path green-flow" marker-end="url(#arrow-green)" />
-  <path d="M 1030 985 L 1030 965" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1030 755 L 1030 775" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1030 850 L 1030 870" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1220 915 L 1250 915 L 1250 335 L 1280 335" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1470 270 L 1470 290" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1470 385 L 1470 405" class="flow-path green-flow" marker-end="url(#arrow-green)" />
-  <path d="M 1470 500 L 1470 520" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1470 610 L 1470 630" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1470 725 L 1470 745" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 1280 785 L 1245 785 L 1245 615 L 780 615" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 620 640 L 620 660" class="flow-path green-flow" marker-end="url(#arrow-green)" />
-  <path d="M 620 750 L 620 770" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 460 595 L 430 595 L 430 400 L 400 400" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
-  <path d="M 460 705 L 430 705 L 430 815 L 400 815" class="flow-path green-flow" marker-end="url(#arrow-green)" />
-  <path d="M 460 810 L 420 810 L 420 710 L 400 710" class="flow-path gold-flow" marker-end="url(#arrow-gold)" />
+  <path d="M 230 240 L 230 260" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 230 335 L 230 355" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 230 860 L 230 880" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 400 905 L 430 905 L 430 225 L 460 225" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 400 605 L 430 605 L 430 350 L 460 350" class="flow-path green-flow" fill="none" stroke="#047857" stroke-width="2.5" marker-end="url(#arrow-green)" />
+  <path d="M 620 275 L 620 535" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 780 575 L 810 575 L 810 205 L 840 205" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 240 L 1030 255" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 320 L 1030 335" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 415 L 1030 430" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 495 L 1030 510" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1220 540 L 1250 540 L 1250 220 L 1280 220" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 570 L 1030 660" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 780 370 L 810 370 L 810 1015 L 840 1015" class="flow-path green-flow" fill="none" stroke="#047857" stroke-width="2.5" marker-end="url(#arrow-green)" />
+  <path d="M 1030 985 L 1030 965" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 755 L 1030 775" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1030 850 L 1030 870" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1220 915 L 1250 915 L 1250 335 L 1280 335" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1470 270 L 1470 290" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1470 385 L 1470 405" class="flow-path green-flow" fill="none" stroke="#047857" stroke-width="2.5" marker-end="url(#arrow-green)" />
+  <path d="M 1470 500 L 1470 520" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1470 610 L 1470 630" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1470 725 L 1470 745" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 1280 785 L 1245 785 L 1245 615 L 780 615" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 620 640 L 620 660" class="flow-path green-flow" fill="none" stroke="#047857" stroke-width="2.5" marker-end="url(#arrow-green)" />
+  <path d="M 620 750 L 620 770" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 460 595 L 430 595 L 430 400 L 400 400" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
+  <path d="M 460 705 L 430 705 L 430 815 L 400 815" class="flow-path green-flow" fill="none" stroke="#047857" stroke-width="2.5" marker-end="url(#arrow-green)" />
+  <path d="M 460 810 L 420 810 L 420 710 L 400 710" class="flow-path gold-flow" fill="none" stroke="#9E7E50" stroke-width="2.5" marker-end="url(#arrow-gold)" />
   <!-- Legend -->
   <g transform="translate(1320, 875)">
     <rect width="320" height="175" rx="8" fill="#FFFFFF" stroke="#E2E4E1" stroke-width="1.5" />

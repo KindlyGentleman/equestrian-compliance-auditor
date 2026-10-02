@@ -76,11 +76,15 @@ class TechPackSanitizer:
         normalized_segments: list[str] = []
 
         for token in tokens:
-            cleaned = token.strip()
+            cleaned = re.sub(r"\s+", " ", token).strip()
             if not cleaned or cleaned in [",", ";", "/", "+", "&", "and"]:
                 continue
 
-            match = re.match(r"^(\d+(?:\.\d+)?)\s*%\s*([A-Za-z\s]+)$", cleaned)
+            if len(cleaned) > 100:
+                normalized_segments.append(cleaned[:100])
+                continue
+
+            match = re.match(r"^(\d+(?:\.\d+)?)\s*%\s*([A-Za-z]+(?:\s+[A-Za-z]+)*)$", cleaned)
             if match:
                 pct = match.group(1)
                 fiber_raw = match.group(2).strip().lower()
